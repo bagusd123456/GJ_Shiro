@@ -1,0 +1,4 @@
+repository "GJ_Shiro@Die_Hard__Sound_Bender@cloud"
+  path "/"
+    br "/main"
+    co "/main"
