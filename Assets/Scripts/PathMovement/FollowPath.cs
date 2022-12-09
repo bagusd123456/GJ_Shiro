@@ -61,6 +61,7 @@ public class FollowPath : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, 0, angle);
         if (Input.GetKeyDown(KeyCode.W) && _playerState == 0 && canEnter)
         {
+#if FollowPathv1
             creator.lastDistance = dstTravelled;
             pathIndex = targetPath;
 
@@ -68,6 +69,15 @@ public class FollowPath : MonoBehaviour
             dstTravelled = creator.lastDistance;
             transform.parent = creator.transform;
             transform.position = creator.path.GetClosestPointOnPath(transform.position);
+#elif FollowPathv2
+            creator.lastDistance = targetPoint;
+            pathIndex = targetPath;
+
+            creator = pathArray[pathIndex];
+            targetPoint = (int)creator.lastDistance;
+            transform.parent = creator.transform;
+            transform.position = creator.path.GetClosestPointOnPath(transform.position);
+#endif
         }
 
         else if (_playerState == 0 || _playerState == (PlayerState)2)

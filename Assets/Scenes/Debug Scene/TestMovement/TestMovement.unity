@@ -1556,6 +1556,7 @@ GameObject:
   - component: {fileID: 1093299021}
   - component: {fileID: 1093299025}
   - component: {fileID: 1093299026}
+  - component: {fileID: 1093299027}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1713,7 +1714,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1093299019}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3d72e4a51abb7c34f9490a983f314b10, type: 3}
   m_Name: 
@@ -1731,7 +1732,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aae937b8b3b26d14584f16e2c5657de7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetPoint: 1
+  _targetPoint: 0
   target: 0
   pathArray:
   - {fileID: 1459399423}
@@ -1741,6 +1742,21 @@ MonoBehaviour:
   creator: {fileID: 1459399423}
   rotateAround: {fileID: 543450652719231812}
   speed: 2
+--- !u!114 &1093299027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1093299019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89392d93f079f7e4e80fef2d897b234d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _state: 0
+  cdCombo: 1.5
+  cdDef: 1
 --- !u!1 &1120272328
 GameObject:
   m_ObjectHideFlags: 0
@@ -1914,6 +1930,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fe0d97693fc2d34788190a98fc861eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeBetweenClick: 0.3
 --- !u!114 &1201289924
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3664,7 +3681,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: c8b65a580d02f1d43ab9a99419d7e95e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

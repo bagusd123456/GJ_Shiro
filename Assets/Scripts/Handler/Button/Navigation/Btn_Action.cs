@@ -9,9 +9,15 @@ public class Btn_Action : MonoBehaviour,IPointerClickHandler, IPointerDownHandle
 {
     Slider btnSlider;
     PlayerAttack player;
+
+    int clickCount;
+    float clickTimer;
+    public float timeBetweenClick = .5f;
     public void OnPointerClick(PointerEventData eventData)
     {
-        
+        clickTimer = timeBetweenClick;
+        clickCount++;
+        Debug.Log("Click Count: " + clickCount);
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -34,12 +40,12 @@ public class Btn_Action : MonoBehaviour,IPointerClickHandler, IPointerDownHandle
         else if(btnSlider.value == -1)
         {
             btnSlider.value = 0;
-            Debug.Log("Defend");
+            StartCoroutine(player.Defend());
         }
         else
         {
             btnSlider.value = 0;
-            Debug.Log("Do Nothing");
+            //Debug.Log("Do Nothing");
         }
     }
 
@@ -59,6 +65,9 @@ public class Btn_Action : MonoBehaviour,IPointerClickHandler, IPointerDownHandle
     // Update is called once per frame
     void Update()
     {
-        
+        if (clickTimer > 0)
+            clickTimer -= Time.deltaTime;
+        else
+            clickCount = 0;
     }
 }
