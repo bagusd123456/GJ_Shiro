@@ -108,4 +108,12 @@ public class SceneLoad : MonoBehaviour
         Time.timeScale = 1f;
 
     }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            Restart();
+        }
+    }
 }

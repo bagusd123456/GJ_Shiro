@@ -29,6 +29,11 @@ public class RotateObject : MonoBehaviour
 
     public bool canMove = true;
 
+    public int WinLayer;
+
+    public Animator animator;
+
+    public GameObject model;
 
     private void Awake()
     {
@@ -50,7 +55,9 @@ public class RotateObject : MonoBehaviour
     void Start()
     {
         Debug.Log(transform.localPosition);
+
         
+        //animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -119,9 +126,9 @@ public class RotateObject : MonoBehaviour
     public void LookAtTarget()
     {
         Vector2 lookDir = rotateAround.position - transform.position;
-        float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
+        float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg + 270f;
 
-        transform.rotation = Quaternion.Euler(0, 0, angle);
+        transform.rotation = Quaternion.Euler(transform.rotation.x, 0, angle);
     }
 
     private void OnDrawGizmos()
@@ -131,10 +138,14 @@ public class RotateObject : MonoBehaviour
     public void TurnLeft()
     {
         isMoving = 2;
+        model.transform.rotation = Quaternion.Euler(190, 90, -90);
+        animator.SetBool("Running", true);
     }
     public void TurnRight()
     {
         isMoving = 1;
+        //model.transform.rotation = Quaternion.Euler(-90, 90, -90);
+        animator.SetBool("Running", true);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -164,7 +175,7 @@ public class RotateObject : MonoBehaviour
                 StartCoroutine(CanMove());
             }
 
-            if (currentLevelIndex == 10)
+            if (currentLevelIndex == WinLayer)
             {
                 StartCoroutine(Win());
             }
@@ -185,6 +196,8 @@ public class RotateObject : MonoBehaviour
     public void Idle()
     {
         isMoving = 0;
+
+        animator.SetBool("Running", false);
     }
 
 }
