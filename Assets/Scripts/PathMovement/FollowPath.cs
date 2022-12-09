@@ -6,10 +6,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using PathCreation;
 using static UnityEditor.Searcher.SearcherWindow.Alignment;
+using static UnityEngine.Rendering.DebugUI;
 
 public class FollowPath : MonoBehaviour
 {
-    public int targetPoint;
+    
+    public int targetPoint
+    {
+        get 
+        {
+            if (_targetPoint < 0) 
+                return 0;
+            else
+                return _targetPoint; 
+        }
+        set { _targetPoint = value; }
+    }
+    public int _targetPoint;
+
     public float target;
 
     public enum PlayerState { IDLE, BUSY, MOVING , ENTERING};
@@ -84,31 +98,42 @@ public class FollowPath : MonoBehaviour
         //Determine Angle
         var forward = transform.forward;
         var angle = Vector3.Angle(relativePos, forward);
-        if (Vector3.Cross(forward, relativePos).x < 0)
+        var direction = Vector3.Cross(forward, relativePos).x;
+
+        if (direction < 0)
         {
             target = horizontal;
-            Debug.Log("Turn Left");
+            //Debug.Log("Normal");
         }
+
+        else if(direction == 0)
+        {
+            if (horizontal > 0)
+                target = horizontal;
+            else
+                target = -horizontal;
+        }
+
         else
         {
             target = -horizontal;
-            Debug.Log("Turn Right");
+            //Debug.Log("Invert");
         }
 
         //Move Object to Points
-        if (targetPoint > -1 && targetPoint < creator.path.NumPoints - 1)
-        {
-            if (targetPoint > 0)
-                targetPoint += (int)target;
-            else if (targetPoint == 0)
-                targetPoint++;
+        if (targetPoint < creator.path.localPoints.Length - 1)
+            targetPoint += (int)horizontal;
+        else
+            if (horizontal < 0)
+                targetPoint += (int)horizontal;
             else
                 targetPoint = 0;
-        }
-        else if(targetPoint >= creator.path.NumPoints - 1)
-        {
-            targetPoint = 0;
-        }
+
+        if (targetPoint == 0)
+            if (horizontal > 0)
+                targetPoint += (int)horizontal;
+            else
+                targetPoint = creator.path.localPoints.Length - 1;
 
         transform.position = Vector3.Lerp(transform.position, creator.path.GetPoint(targetPoint), 1.5f);
 
