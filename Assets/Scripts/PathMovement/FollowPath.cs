@@ -1,5 +1,5 @@
-//#define FollowPathv1
-#define FollowPathv2
+#define FollowPathv1
+//#define FollowPathv2
 
 using System.Collections;
 using System.Collections.Generic;
@@ -26,8 +26,8 @@ public class FollowPath : MonoBehaviour
 
     public float target;
 
-    public enum PlayerState { IDLE, BUSY, MOVING , ENTERING};
-    PlayerState _playerState;
+    public enum State { IDLE, BUSY, MOVING };
+    public State _state = State.IDLE;
     public PathCreator[] pathArray;
     int pathIndex;
     public int targetPath;
@@ -39,7 +39,9 @@ public class FollowPath : MonoBehaviour
 
     float dstTravelled;
     float lastDistance;
-    
+
+    public int input;
+    public float direction;
     // Start is called before the first frame update
     void Start()
     {
@@ -47,19 +49,34 @@ public class FollowPath : MonoBehaviour
         transform.position = creator.path.GetPoint(1);
     }
 
+    public void MoveLeft()
+    {
+        input = -1;
+    }
+
+    public void MoveRight()
+    {
+        input = 1;
+    }
+
+    public void Idle()
+    {
+        input = 0;
+    }
+
     // Update is called once per frame
     void Update()
     {
         //Check Move Input
         float horizontal = Input.GetAxisRaw("Horizontal");
-        _playerState = horizontal > 0 || horizontal < 0 ? PlayerState.MOVING : PlayerState.IDLE;
+        _state = horizontal > 0 || horizontal < 0 ? State.MOVING : State.IDLE;
         
         //Rotate Character to Mid
         Vector2 lookDir = pathArray[pathIndex].transform.position - transform.position;
         float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
 
         transform.rotation = Quaternion.Euler(0, 0, angle);
-        if (Input.GetKeyDown(KeyCode.W) && _playerState == 0 && canEnter)
+        if (Input.GetKeyDown(KeyCode.W) && _state == 0 && canEnter)
         {
 #if FollowPathv1
             creator.lastDistance = dstTravelled;
@@ -80,20 +97,26 @@ public class FollowPath : MonoBehaviour
 #endif
         }
 
-        else if (_playerState == 0 || _playerState == (PlayerState)2)
+        else if (_state == 0 || _state == (State)2)
         {
             Move(horizontal);
         }
 
-        else if(_playerState == PlayerState.ENTERING)
+        else if(_state == State.BUSY)
         {
 
         }
 
-        else if(_playerState == PlayerState.BUSY)
+        if (CheckDirection() < 0)
+            Move(input);
+        else if (CheckDirection() == 0)
+            Move(input);
+        else
         {
-
+            Move(input);
         }
+
+        direction = CheckDirection();
     }
 
     public void Move(float horizontal)
@@ -103,13 +126,7 @@ public class FollowPath : MonoBehaviour
         transform.position = creator.path.GetPointAtDistance(dstTravelled, creator.pathEnd);
 
 #elif FollowPathv2
-        var relativePos = creator.transform.position - transform.position;
-
-        //Determine Angle
-        var forward = transform.forward;
-        var angle = Vector3.Angle(relativePos, forward);
-        var direction = Vector3.Cross(forward, relativePos).x;
-
+        
         if (direction < 0)
         {
             target = horizontal;
@@ -146,7 +163,17 @@ public class FollowPath : MonoBehaviour
                 targetPoint = creator.path.localPoints.Length - 1;
 
         transform.position = Vector3.Lerp(transform.position, creator.path.GetPoint(targetPoint), 1.5f);
-
 #endif
+    }
+
+    public float CheckDirection()
+    {
+        var relativePos = creator.transform.position - transform.position;
+
+        //Determine Angle
+        var forward = transform.forward;
+        var angle = Vector3.Angle(relativePos, forward);
+        var direction2 = Vector3.Cross(forward, relativePos).x;
+        return direction2;
     }
 }

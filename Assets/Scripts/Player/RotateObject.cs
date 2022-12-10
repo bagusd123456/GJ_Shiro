@@ -34,6 +34,7 @@ public class RotateObject : MonoBehaviour
     public Animator animator;
 
     public GameObject model;
+    public float targetRotation;
 
     private void Awake()
     {
@@ -63,6 +64,7 @@ public class RotateObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //transform.localRotation = Quaternion.Euler(rotationTarget);
         if (!GetComponent<PlayerCharacter>().isDead)
         {
             //float vertical = Input.GetAxisRaw("Vertical");
@@ -126,9 +128,14 @@ public class RotateObject : MonoBehaviour
     public void LookAtTarget()
     {
         Vector2 lookDir = rotateAround.position - transform.position;
-        float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg + 270f;
+        float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
 
-        transform.rotation = Quaternion.Euler(transform.rotation.x, 0, angle);
+        if(isMoving == 1)
+            transform.rotation = Quaternion.Euler(0, 0, Mathf.Lerp(0, angle,2f));
+        else if( isMoving == 2)
+            transform.rotation = Quaternion.Euler(0, 0, Mathf.Lerp(0, angle - 180, 2f));
+
+
     }
 
     private void OnDrawGizmos()
@@ -138,13 +145,13 @@ public class RotateObject : MonoBehaviour
     public void TurnLeft()
     {
         isMoving = 2;
-        model.transform.rotation = Quaternion.Euler(190, 90, -90);
+        
+
         animator.SetBool("Running", true);
     }
     public void TurnRight()
     {
         isMoving = 1;
-        //model.transform.rotation = Quaternion.Euler(-90, 90, -90);
         animator.SetBool("Running", true);
     }
 
