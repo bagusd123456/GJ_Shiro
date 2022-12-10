@@ -42,6 +42,7 @@ public class FollowPath : MonoBehaviour
 
     public int input;
     public float direction;
+    public bool invertInput;
     // Start is called before the first frame update
     void Start()
     {
@@ -67,6 +68,7 @@ public class FollowPath : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         //Check Move Input
         float horizontal = Input.GetAxisRaw("Horizontal");
         _state = horizontal > 0 || horizontal < 0 ? State.MOVING : State.IDLE;
@@ -107,16 +109,22 @@ public class FollowPath : MonoBehaviour
 
         }
 
-        if (CheckDirection() < 0)
-            Move(input);
-        else if (CheckDirection() == 0)
+        if(!invertInput)
             Move(input);
         else
-        {
-            Move(input);
-        }
-
+            Move(-input);
         direction = CheckDirection();
+
+    }
+
+    public void InvertInput()
+    {
+        if (CheckDirection() < 0)
+            invertInput = false;
+        else if (CheckDirection() > 0.2f && CheckDirection() < 0.2f)
+            invertInput = true;
+        else
+            invertInput = true;
     }
 
     public void Move(float horizontal)
