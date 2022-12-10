@@ -1402,7 +1402,10 @@ MonoBehaviour:
   Dead: 0
   canGo: 0
   batasKiri: 0
+  hadapKiri: 0
   batasKanan: 0
+  hadapKanan: 0
+  _hadap: 0
   canMove: 1
   WinLayer: 0
   animator: {fileID: 0}
@@ -3474,7 +3477,7 @@ GameObject:
   - component: {fileID: 1027680943}
   - component: {fileID: 1027680942}
   - component: {fileID: 1027680944}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Arena (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3906,7 +3909,10 @@ MonoBehaviour:
   Dead: 0
   canGo: 0
   batasKiri: 0
+  hadapKiri: 0
   batasKanan: 0
+  hadapKanan: 0
+  _hadap: 0
   canMove: 1
   WinLayer: 0
   animator: {fileID: 95538262561805427}
@@ -9987,13 +9993,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8940725263410851157}
-  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
-  m_LocalPosition: {x: -0.01, y: -0, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0.08, z: 0}
   m_LocalScale: {x: 0.08, y: 0.13630724, z: 0.5}
   m_Children: []
   m_Father: {fileID: 1093299020}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!212 &1572459815739049057
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10215,7 +10221,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &3369198064398268944
 GameObject:
   m_ObjectHideFlags: 0
@@ -10373,13 +10379,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3019270335930386136}
-  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
-  m_LocalPosition: {x: 0.07, y: -0, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: -0.08, z: 0}
   m_LocalScale: {x: 0.08, y: 0.13630724, z: 0.5}
   m_Children: []
   m_Father: {fileID: 1093299020}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!61 &5946425771797122447
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -11031,4 +11037,4 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
