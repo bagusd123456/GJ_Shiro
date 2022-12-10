@@ -24,8 +24,16 @@ public class RotateObject : MonoBehaviour
     public bool Dead = false;
 
     public bool canGo = false;
+
     public bool batasKiri = false;
+    public bool hadapKiri;
+
     public bool batasKanan = false;
+    public bool hadapKanan;
+
+
+    public enum hadap {KIRI , KANAN}
+    public hadap _hadap;
 
     public bool canMove = true;
 
@@ -35,6 +43,7 @@ public class RotateObject : MonoBehaviour
 
     public GameObject model;
     public float targetRotation;
+    RaycastHit2D hit;
 
     private void Awake()
     {
@@ -64,6 +73,11 @@ public class RotateObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        //Ray nabrak = new Ray(transform.position, transform.up);
+        //Physics2D.Raycast(nabrak, out hit, 2);
+        hit = Physics2D.Raycast(transform.position, transform.up, 2 , 6);
+
         //transform.localRotation = Quaternion.Euler(rotationTarget);
         if (!GetComponent<PlayerCharacter>().isDead)
         {
@@ -92,6 +106,8 @@ public class RotateObject : MonoBehaviour
             //SetCurrentLevel(currentLevelIndex);
             Move();
             LookAtTarget();
+
+            
         }
     }
 
@@ -104,6 +120,7 @@ public class RotateObject : MonoBehaviour
     {
         if (canMove)
         {
+            /*
             if (isMoving == 1 && !batasKanan)
             {
                 angle += movementSpeed * 2 * Time.deltaTime;
@@ -112,6 +129,17 @@ public class RotateObject : MonoBehaviour
             {
                 angle += movementSpeed * -2 * Time.deltaTime;
             }
+            */
+
+            if(isMoving == 1 && _hadap == hadap.KANAN && !hit.collider)
+            {
+                angle += movementSpeed * 2 * Time.deltaTime;
+            }
+            if (isMoving == 2 && _hadap == hadap.KIRI && !hit.collider)
+            {
+                angle += movementSpeed * -2 * Time.deltaTime;
+            }
+
             //float horizontal = Input.GetAxisRaw("Horizontal");
 
 
@@ -145,14 +173,18 @@ public class RotateObject : MonoBehaviour
     public void TurnLeft()
     {
         isMoving = 2;
-        
+        _hadap = hadap.KIRI;
 
         animator.SetBool("Running", true);
     }
     public void TurnRight()
     {
         isMoving = 1;
+        _hadap = hadap.KANAN;
+        
         animator.SetBool("Running", true);
+
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
