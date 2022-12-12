@@ -73,7 +73,6 @@ public class RotateObject : MonoBehaviour
     {
         //Debug.Log(transform.localPosition);
 
-        
         //animator = GetComponent<Animator>();
     }
 
@@ -82,14 +81,6 @@ public class RotateObject : MonoBehaviour
     {
         collide = Physics2D.Raycast(transform.position, transform.up, wallDistance, LayerMask.GetMask("Wall"));
 
-        /*
-         
-        Ray nabrak = new Ray(transform.position, transform.up);
-        Physics2D.Raycast(nabrak, out hit, 2);
-        hit = Physics2D.Raycast(transform.position, transform.up, 2 , 6);
-        transform.localRotation = Quaternion.Euler(rotationTarget);
-
-        */
         if (!GetComponent<PlayerCharacter>().isDead)
         {
             //float vertical = Input.GetAxisRaw("Vertical");
@@ -143,11 +134,11 @@ public class RotateObject : MonoBehaviour
             if (!collide)
             {
 
-                if (isMoving == 1 && _hadap == hadap.KANAN && !hit.collider)
+                if (isMoving == 1 )
                 {
                     angle += movementSpeed * 2 * Time.deltaTime;
                 }
-                if (isMoving == 2 && _hadap == hadap.KIRI && !hit.collider)
+                if (isMoving == 2 )
                 {
                     angle += movementSpeed * -2 * Time.deltaTime;
                 }
