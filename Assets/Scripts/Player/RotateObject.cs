@@ -23,8 +23,6 @@ public class RotateObject : MonoBehaviour
     public int isMoving = 0;
     public bool Dead = false;
 
-    public bool canGo = false;
-
     public bool batasKiri = false;
     public bool hadapKiri;
 
@@ -44,6 +42,15 @@ public class RotateObject : MonoBehaviour
     public GameObject model;
     public float targetRotation;
     RaycastHit2D hit;
+
+    //Wall Detect
+    bool collide;
+    public float wallDistance = 1f;
+
+    //Portal
+    public bool canGo = false;
+
+    public bool buswayPortal;
 
     private void Awake()
     {
@@ -73,12 +80,16 @@ public class RotateObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        collide = Physics2D.Raycast(transform.position, transform.up, wallDistance, LayerMask.GetMask("Wall"));
 
-        //Ray nabrak = new Ray(transform.position, transform.up);
-        //Physics2D.Raycast(nabrak, out hit, 2);
+        /*
+         
+        Ray nabrak = new Ray(transform.position, transform.up);
+        Physics2D.Raycast(nabrak, out hit, 2);
         hit = Physics2D.Raycast(transform.position, transform.up, 2 , 6);
+        transform.localRotation = Quaternion.Euler(rotationTarget);
 
-        //transform.localRotation = Quaternion.Euler(rotationTarget);
+        */
         if (!GetComponent<PlayerCharacter>().isDead)
         {
             //float vertical = Input.GetAxisRaw("Vertical");
@@ -86,7 +97,6 @@ public class RotateObject : MonoBehaviour
             {
 
                 TurnRight();
-
             }
             else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
             {
@@ -130,16 +140,18 @@ public class RotateObject : MonoBehaviour
                 angle += movementSpeed * -2 * Time.deltaTime;
             }
             */
-
-            if(isMoving == 1 && _hadap == hadap.KANAN && !hit.collider)
+            if (!collide)
             {
-                angle += movementSpeed * 2 * Time.deltaTime;
-            }
-            if (isMoving == 2 && _hadap == hadap.KIRI && !hit.collider)
-            {
-                angle += movementSpeed * -2 * Time.deltaTime;
-            }
 
+                if (isMoving == 1 && _hadap == hadap.KANAN && !hit.collider)
+                {
+                    angle += movementSpeed * 2 * Time.deltaTime;
+                }
+                if (isMoving == 2 && _hadap == hadap.KIRI && !hit.collider)
+                {
+                    angle += movementSpeed * -2 * Time.deltaTime;
+                }
+            }
             //float horizontal = Input.GetAxisRaw("Horizontal");
 
 
@@ -166,7 +178,12 @@ public class RotateObject : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Debug.DrawLine(transform.position, rotateAround.position);
+        //Debug.DrawLine(transform.position, rotateAround.position);
+
+        if (collide)
+            Debug.DrawRay(transform.position, transform.up * wallDistance, Color.red);
+        else
+            Debug.DrawRay(transform.position, transform.up * wallDistance, Color.white);
     }
     public void TurnLeft()
     {
@@ -215,6 +232,13 @@ public class RotateObject : MonoBehaviour
                 StartCoroutine(Win());
             }
             SetCurrentLevel(currentLevelIndex);
+        }
+
+        if (buswayPortal)
+        {
+            //Panel Active
+
+            Time.timeScale = 0f;
         }
     }
     IEnumerator Win()
