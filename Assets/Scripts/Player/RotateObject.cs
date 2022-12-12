@@ -23,15 +23,6 @@ public class RotateObject : MonoBehaviour
     public int isMoving = 0;
     public bool Dead = false;
 
-    public bool batasKiri = false;
-    public bool hadapKiri;
-
-    public bool batasKanan = false;
-    public bool hadapKanan;
-
-
-    public enum hadap {KIRI , KANAN}
-    public hadap _hadap;
 
     public bool canMove = true;
 
@@ -41,7 +32,6 @@ public class RotateObject : MonoBehaviour
 
     public GameObject model;
     public float targetRotation;
-    RaycastHit2D hit;
 
     //Wall Detect
     bool collide;
@@ -179,15 +169,13 @@ public class RotateObject : MonoBehaviour
     public void TurnLeft()
     {
         isMoving = 2;
-        _hadap = hadap.KIRI;
 
         animator.SetBool("Running", true);
     }
     public void TurnRight()
     {
         isMoving = 1;
-        _hadap = hadap.KANAN;
-        
+
         animator.SetBool("Running", true);
     }
 
@@ -204,6 +192,7 @@ public class RotateObject : MonoBehaviour
         if (collision.tag.Equals("Portal"))
         {
             canGo = false;
+            buswayPortal = false;
         }
     }
     public void GoUp()
@@ -227,7 +216,7 @@ public class RotateObject : MonoBehaviour
 
         if (buswayPortal)
         {
-            //Panel Active
+            SceneLoad.Instance.panelBusway.SetActive(true);
 
             Time.timeScale = 0f;
         }

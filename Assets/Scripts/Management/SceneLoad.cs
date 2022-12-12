@@ -16,6 +16,9 @@ public class SceneLoad : MonoBehaviour
     public GameObject panelMenang;
     public GameObject panelKalah;
 
+    public GameObject panelBusway;
+
+    public GameObject movBtn;
     public static SceneLoad Instance { get; private set; }
 
     private void Awake()
@@ -114,6 +117,14 @@ public class SceneLoad : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
         {
             Restart();
+        }
+        if(panelBusway == true)
+        {
+            movBtn.SetActive(false);
+        }
+        else
+        {
+            movBtn.SetActive(true);
         }
     }
 }
