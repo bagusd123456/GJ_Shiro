@@ -5,12 +5,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using PathCreation;
-using static UnityEditor.Searcher.SearcherWindow.Alignment;
-using static UnityEngine.Rendering.DebugUI;
 
 public class FollowPath : MonoBehaviour
 {
-    
+    public float wallDistance = 1f;
+    bool collide;
+
     public int targetPoint
     {
         get 
@@ -68,16 +68,18 @@ public class FollowPath : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //Check Collider Ray
+        collide = Physics2D.Raycast(transform.position, transform.up, wallDistance, LayerMask.GetMask("Wall"));
+
         //Check Move Input
         float horizontal = Input.GetAxisRaw("Horizontal");
         _state = horizontal > 0 || horizontal < 0 ? State.MOVING : State.IDLE;
         
         //Rotate Character to Mid
-        Vector2 lookDir = pathArray[pathIndex].transform.position - transform.position;
-        float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
+        //Vector2 lookDir = pathArray[pathIndex].transform.position - transform.position;
+        //float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
 
-        transform.rotation = Quaternion.Euler(0, 0, angle);
+        //transform.rotation = Quaternion.Euler(0, 0, angle);
         if (Input.GetKeyDown(KeyCode.W) && _state == 0 && canEnter)
         {
 #if FollowPathv1
@@ -109,14 +111,47 @@ public class FollowPath : MonoBehaviour
 
         }
 
-        if(!invertInput)
-            Move(input);
-        else
-            Move(-input);
-        direction = CheckDirection();
+        
+        if (!collide)
+        {
+            //Invert Input Controller
+            if (!invertInput)
+                Move(input);
+            else
+                Move(-input);
+            direction = CheckDirection();
+        }
 
+        LookAtTarget();
     }
 
+    public void LookAtTarget()
+    {
+        Vector2 lookDir = rotateAround.position - transform.position;
+        float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
+        Vector3 targetRotation = Vector3.zero;
+
+        if (invertInput)
+        {
+            if (input == 1)
+                targetRotation = new Vector3(0, 0, angle);
+            else if (input == -1)
+                targetRotation = new Vector3(0, 0, angle - 180);
+
+        }
+        else
+        {
+            if (input == -1)
+                targetRotation = new Vector3(0, 0, angle);
+            else if (input == 1)
+                targetRotation = new Vector3(0, 0, angle - 180);
+        }
+
+        transform.rotation = Quaternion.Euler(targetRotation);
+        
+    }
+
+    //Call Invert OnPointerUp
     public void InvertInput()
     {
         if (CheckDirection() < 0)
@@ -183,5 +218,13 @@ public class FollowPath : MonoBehaviour
         var angle = Vector3.Angle(relativePos, forward);
         var direction2 = Vector3.Cross(forward, relativePos).x;
         return direction2;
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (collide)
+            Debug.DrawRay(transform.position, transform.up * wallDistance, Color.red);
+        else
+            Debug.DrawRay(transform.position, transform.up * wallDistance, Color.white);
     }
 }

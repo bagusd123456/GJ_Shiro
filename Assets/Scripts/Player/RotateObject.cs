@@ -64,7 +64,7 @@ public class RotateObject : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log(transform.localPosition);
+        //Debug.Log(transform.localPosition);
 
         
         //animator = GetComponent<Animator>();
@@ -162,8 +162,6 @@ public class RotateObject : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, 0, Mathf.Lerp(0, angle,2f));
         else if( isMoving == 2)
             transform.rotation = Quaternion.Euler(0, 0, Mathf.Lerp(0, angle - 180, 2f));
-
-
     }
 
     private void OnDrawGizmos()
@@ -183,8 +181,6 @@ public class RotateObject : MonoBehaviour
         _hadap = hadap.KANAN;
         
         animator.SetBool("Running", true);
-
-        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
