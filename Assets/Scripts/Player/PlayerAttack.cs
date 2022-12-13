@@ -10,6 +10,10 @@ public class PlayerAttack : MonoBehaviour
     public State _state = State.IDLE;
 
     [Space]
+    [Header("Attack Parameter")]
+    public Projectiles prj;
+    public Transform spawnTarget;
+    public Transform center;
     float currentAttackTime;
     public float timeBetweenAttack = .5f;
 
@@ -17,7 +21,10 @@ public class PlayerAttack : MonoBehaviour
     public float cdCombo = 1.5f;
     int comboIndex = 0;
 
+    [Header("Defend Parameter")]
     public float cdDef = 1f;
+
+    public float currentAngle;
     private void Awake()
     {
         _char = GetComponent<CharacterBase>();
@@ -47,6 +54,8 @@ public class PlayerAttack : MonoBehaviour
         {
             comboIndex = 0;
         }
+
+        currentAngle = GetAngle();
     }
 
     public void BasicAttack()
@@ -55,19 +64,20 @@ public class PlayerAttack : MonoBehaviour
         {
             currentAttackTime = 0;
             currentComboTime = 0;
-
+            var GO = Instantiate(prj, spawnTarget.position, Quaternion.identity);
+            GO.currentAngle = currentAngle + 15;
             switch (comboIndex)
             {
                 case 0:
-                    Debug.Log("Attack 1");
+                    //Debug.Log("Attack 1");
                     comboIndex++;
                     break;
                 case 1:
-                    Debug.Log("Attack 2");
+                    //Debug.Log("Attack 2");
                     comboIndex++;
                     break;
                 case 2:
-                    Debug.Log("Attack 3");
+                    //Debug.Log("Attack 3");
                     comboIndex++;
                     break;
                 default:
@@ -87,5 +97,12 @@ public class PlayerAttack : MonoBehaviour
 
             _state = State.IDLE;
         }
+    }
+
+    float GetAngle()
+    {
+        Vector3 dir = center.position - transform.position;
+        float angle = Mathf.Atan2(dir.x, dir.y) * Mathf.Rad2Deg + 180f;
+        return angle;
     }
 }
