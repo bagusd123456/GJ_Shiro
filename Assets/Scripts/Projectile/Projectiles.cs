@@ -4,38 +4,25 @@ using UnityEngine;
 
 public class Projectiles : MonoBehaviour
 {
-    public float _currentAngle;
-    public float currentAngle 
-    { 
-        get 
-        {
-            return _currentAngle;
-        }
-        set 
-        {
-            if (_currentAngle > 360)
-                _currentAngle = 0;
-            else if (_currentAngle < -360)
-                _currentAngle = 0;
-            else
-                _currentAngle = value;
-        }
-    }
-    public RotateObject rotateObject;
+    public float currentAngle;
+    
+    public PlayerMovement player;
     public Transform pivot;
     public float targetDistance;
 
     public Vector3 offset;
     public float moveSpeed = 1f;
     public bool inverseRotation = false;
+    [Space]
+    public int damageAmount;
     
     private void Awake()
     {
-        if (pivot == null)
+        if(pivot == null)
             pivot = GameObject.Find("Target").transform;
 
-        if(rotateObject == null)
-            rotateObject = GameObject.FindGameObjectWithTag("Player").GetComponent<RotateObject>();
+        if(player == null)
+            player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
     }
 
     // Update is called once per frame
@@ -44,6 +31,7 @@ public class Projectiles : MonoBehaviour
         RotationSet();
     }
 
+    //Get Next Position Based on Angle & Distance
     Vector3 GetPosition(float degrees, float dist)
     {
         float a = degrees * Mathf.PI / 180f;
@@ -62,4 +50,21 @@ public class Projectiles : MonoBehaviour
         transform.position = pivot.position + targetPos + offset;
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        //Damage every Character Collide
+        if(other.GetComponent<CharacterBase>() != null)
+        {
+            if(other.GetComponent<PlayerCondition>() != null)
+            {
+                if (other.GetComponent<PlayerCondition>()._state != PlayerCondition.State.DEFENDING)
+                    other.GetComponent<PlayerCondition>().TakeDamage(damageAmount);
+            }
+            else
+                other.GetComponent<CharacterBase>().TakeDamage(damageAmount);
+            
+                
+            Destroy(this.gameObject);
+        }
+    }
 }

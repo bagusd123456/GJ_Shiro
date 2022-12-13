@@ -1,13 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static PlayerMovement;
+using static PlayerCondition;
 
 [RequireComponent(typeof(PlayerCondition))]
 public class PlayerAttack : MonoBehaviour
 {
-    CharacterBase _char;
-    public enum State { IDLE, ATTACKING, BUSY};
-    public State _state = State.IDLE;
+    PlayerCondition _char;
 
     [Header("Attack Parameter")]
     public Projectiles prj;
@@ -23,10 +23,9 @@ public class PlayerAttack : MonoBehaviour
     [Header("Defend Parameter")]
     public float cdDef = 1f;
 
-    public float currentAngle;
     private void Awake()
     {
-        _char = GetComponent<CharacterBase>();
+        _char = GetComponent<PlayerCondition>();
     }
 
     // Start is called before the first frame update
@@ -38,13 +37,13 @@ public class PlayerAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(currentAttackTime > timeBetweenAttack / _char.attackSpeed)
-            _state = State.IDLE;
-        else
+        if (currentAttackTime < timeBetweenAttack / _char.attackSpeed)
         {
             currentAttackTime += Time.deltaTime;
-            _state = State.BUSY;
+            _char._state = State.BUSY;
         }
+        else if(currentAttackTime > timeBetweenAttack / _char.attackSpeed && _char._state != State.DEFENDING)
+            _char._state = State.IDLE;
 
         //Combo Attack Time
         if (currentComboTime < cdCombo + timeBetweenAttack)
@@ -53,28 +52,27 @@ public class PlayerAttack : MonoBehaviour
         {
             comboIndex = 0;
         }
-
-        currentAngle = GetAngle();
     }
 
     public void BasicAttack()
     {
-        if(_state == State.IDLE)
+        if(_char._state == State.IDLE && !_char.isDead)
         {
             currentAttackTime = 0;
             currentComboTime = 0;
             var GO = Instantiate(prj);
-            if (gameObject.GetComponent<RotateObject>()._rotateDir == RotateObject.rotateDir.RIGHT)
+            if (gameObject.GetComponent<PlayerMovement>()._rotateDir == rotateDir.RIGHT)
             {
-                GO.currentAngle = currentAngle + distanceFromPlayer;
+                GO.currentAngle = CurrentAngle() + distanceFromPlayer;
                 GO.inverseRotation = false;
-
             }
+
             else
             {
-                GO.currentAngle = currentAngle - distanceFromPlayer;
+                GO.currentAngle = CurrentAngle() - distanceFromPlayer;
                 GO.inverseRotation = true;
             }
+
             switch (comboIndex)
             {
                 case 0:
@@ -97,21 +95,26 @@ public class PlayerAttack : MonoBehaviour
 
     public IEnumerator Defend()
     {
-        if(_state == State.IDLE)
+        if(_char._state == State.IDLE && !_char.isDead)
         {
-            _state = State.BUSY;
+            _char._state = State.DEFENDING;
             comboIndex = 0;
             Debug.Log("Defense");
             yield return new WaitForSeconds(cdDef);
 
-            _state = State.IDLE;
+            _char._state = State.IDLE;
         }
     }
 
-    float GetAngle()
+    float CurrentAngle()
     {
         Vector3 dir = center.position - transform.position;
         float angle = Mathf.Atan2(dir.x, dir.y) * Mathf.Rad2Deg + 180f;
         return angle;
+    }
+
+    private void OnDrawGizmos()
+    {
+        //Gizmos.DrawWireSphere(transform.forward + Vector3.left * distanceFromPlayer,0.2f);
     }
 }

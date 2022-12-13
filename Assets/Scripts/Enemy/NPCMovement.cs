@@ -42,7 +42,7 @@ public class NPCMovement : MonoBehaviour
         {
             offset = new Vector3(Mathf.Sin(angle) * targetDistance, Mathf.Cos(angle) * targetDistance, 0) * targetDistance;
         }
-        rb.MovePosition(offset); //rigidbody
+        rb.MovePosition(offset);
     }
 
     public void LookAtTarget()
@@ -68,7 +68,7 @@ public class NPCMovement : MonoBehaviour
                 Flip();
             }
         }
-        if(collision.CompareTag("Player") && RotateObject.Instance.currentLevelIndex == 7)
+        if(collision.CompareTag("Player") && PlayerMovement.Instance.currentLevelIndex == 7)
         {
             collision.gameObject.SetActive(false);
             StartCoroutine(Kalah());
@@ -80,6 +80,7 @@ public class NPCMovement : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
         SceneLoad.Instance.panelKalah.SetActive(true);
     }
+
     void Flip()
     {
         Vector3 theScale = transform.localScale;

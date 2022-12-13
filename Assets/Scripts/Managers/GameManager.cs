@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        activeIndex = RotateObject.Instance.currentLevelIndex;
+        activeIndex = PlayerMovement.Instance.currentLevelIndex;
         //enemyActiveIndex = (RotateObject.Instance.currentLevelIndex) - 2;
         CheckList();
     }

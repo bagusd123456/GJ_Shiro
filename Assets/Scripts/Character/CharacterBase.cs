@@ -19,15 +19,28 @@ public class CharacterBase : MonoBehaviour
     public bool isDead;
 
     Animator _animator;
-    private void Awake()
+    public void Awake()
     {
         _animator = GetComponent<Animator>();
+        if (loadStatsOnStart)
+            SetupStats();
     }
 
     // Update is called once per frame
     public void Update()
     {
         OnDead();
+    }
+
+    public void SetupStats()
+    {
+        currentHP = statsData.HP;
+        currentMP = statsData.MP;
+
+        moveSpeed = statsData.moveSpeed;
+        attackDamage = statsData.attackDamage;
+        attackSpeed = statsData.attackSpeed;
+        armor = statsData.armor;
     }
 
     void OnDead()
@@ -43,5 +56,11 @@ public class CharacterBase : MonoBehaviour
     {
         if (_animator != null)
             _animator.SetBool("isWalking",true);
+    }
+
+    public void TakeDamage(int damage)
+    {
+        if(!isDead)
+        currentHP -= damage;
     }
 }

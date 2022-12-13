@@ -11,7 +11,7 @@ public class Portal : MonoBehaviour
     {
         if(_portal == PortalType.Busway && collision.tag.Equals("Player"))
         {
-            RotateObject.Instance.buswayPortal = true;
+            PlayerMovement.Instance.buswayPortal = true;
         }
     }
 }

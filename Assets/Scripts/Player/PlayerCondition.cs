@@ -4,21 +4,12 @@ using UnityEngine;
 
 public class PlayerCondition : CharacterBase
 {
-    public void SetupStats()
-    {
-        currentHP = statsData.HP;
-        currentMP = statsData.MP;
-
-        moveSpeed = statsData.moveSpeed;
-        attackDamage = statsData.attackDamage;
-        attackSpeed = statsData.attackSpeed;
-        armor = statsData.armor;
-    }
+    public enum State { IDLE, DEFENDING, BUSY };
+    public State _state = State.IDLE;
 
     private void Awake()
     {
-        if(loadStatsOnStart)
-            SetupStats();
+        base.Awake();
     }
 
     // Start is called before the first frame update
