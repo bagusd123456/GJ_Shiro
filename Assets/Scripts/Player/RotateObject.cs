@@ -5,65 +5,48 @@ using DG.Tweening;
 
 public class RotateObject : MonoBehaviour
 {
+    public static RotateObject Instance { get; private set; }
+    public Rigidbody2D rb;
+    public Animator animator;
+    public GameObject model;
     public Transform rotateAround;
+    
     public float movementSpeed = 1f;
     public float targetDistance = 3f;
     public float angle;
-    Vector3 offset;
+    public enum rotateDir { LEFT, RIGHT }
+    public rotateDir _rotateDir = rotateDir.RIGHT;
 
-    public Rigidbody2D rb;
     public List<Transform> levelList = new List<Transform>();
     public int currentLevelIndex = 0;
-    public Transform player;
-
-    public Vector3 currentPos;
-    public static RotateObject Instance { get; private set; }
 
     //Mobile
-    public int isMoving = 0;
-    public bool Dead = false;
-
-
     public bool canMove = true;
+    public int isMoving = 0;
 
     public int WinLayer;
-
-    public Animator animator;
-
-    public GameObject model;
-    public float targetRotation;
 
     //Wall Detect
     bool collide;
     public float wallDistance = 1f;
 
     //Portal
-    public bool canGo = false;
-
+    bool canGo = false;
     public bool buswayPortal;
 
     private void Awake()
     {
         // If there is an instance, and it's not me, delete myself.
-
         if (Instance != null && Instance != this)
-        {
             Destroy(this);
-        }
         else
-        {
             Instance = this;
-        }
-
-        currentPos = transform.position;
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        //Debug.Log(transform.localPosition);
-
-        //animator = GetComponent<Animator>();
+        
     }
 
     // Update is called once per frame
@@ -76,14 +59,11 @@ public class RotateObject : MonoBehaviour
             //float vertical = Input.GetAxisRaw("Vertical");
             if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
             {
-
                 TurnRight();
             }
             else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
             {
-
                 TurnLeft();
-
             }
             if (Input.GetKeyUp(KeyCode.RightArrow) || Input.GetKeyUp(KeyCode.D) ||
                 Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.A))
@@ -94,11 +74,9 @@ public class RotateObject : MonoBehaviour
             {
                 GoUp();
             }
-            //SetCurrentLevel(currentLevelIndex);
+
             Move();
             LookAtTarget();
-
-            
         }
     }
 
@@ -111,19 +89,8 @@ public class RotateObject : MonoBehaviour
     {
         if (canMove)
         {
-            /*
-            if (isMoving == 1 && !batasKanan)
-            {
-                angle += movementSpeed * 2 * Time.deltaTime;
-            }
-            if (isMoving == 2 && !batasKiri)
-            {
-                angle += movementSpeed * -2 * Time.deltaTime;
-            }
-            */
             if (!collide)
             {
-
                 if (isMoving == 1 )
                 {
                     angle += movementSpeed * 2 * Time.deltaTime;
@@ -133,16 +100,9 @@ public class RotateObject : MonoBehaviour
                     angle += movementSpeed * -2 * Time.deltaTime;
                 }
             }
-            //float horizontal = Input.GetAxisRaw("Horizontal");
 
-
-            //targetDistance += -vertical * Time.deltaTime;
-            if (offset != null)
-            {
-                offset = new Vector3(Mathf.Sin(angle) * targetDistance, Mathf.Cos(angle) * targetDistance, 0) * targetDistance;
-            }
-            rb.MovePosition(offset); //rigidbody
-                                     //transform.position = rotateAround.position + offset; //transform position
+            Vector3 offset = new Vector3(Mathf.Sin(angle) * targetDistance, Mathf.Cos(angle) * targetDistance, 0) * targetDistance;
+            rb.MovePosition(offset);
         }
     }
 
@@ -159,8 +119,6 @@ public class RotateObject : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        //Debug.DrawLine(transform.position, rotateAround.position);
-
         if (collide)
             Debug.DrawRay(transform.position, transform.up * wallDistance, Color.red);
         else
@@ -169,12 +127,13 @@ public class RotateObject : MonoBehaviour
     public void TurnLeft()
     {
         isMoving = 2;
-
+        _rotateDir = rotateDir.LEFT;
         animator.SetBool("Running", true);
     }
     public void TurnRight()
     {
         isMoving = 1;
+        _rotateDir = rotateDir.RIGHT;
 
         animator.SetBool("Running", true);
     }
@@ -238,7 +197,4 @@ public class RotateObject : MonoBehaviour
 
         animator.SetBool("Running", false);
     }
-
-    
-
 }

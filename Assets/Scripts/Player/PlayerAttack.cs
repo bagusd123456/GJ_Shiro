@@ -9,10 +9,9 @@ public class PlayerAttack : MonoBehaviour
     public enum State { IDLE, ATTACKING, BUSY};
     public State _state = State.IDLE;
 
-    [Space]
     [Header("Attack Parameter")]
     public Projectiles prj;
-    public Transform spawnTarget;
+    public float distanceFromPlayer = 15f;
     public Transform center;
     float currentAttackTime;
     public float timeBetweenAttack = .5f;
@@ -64,8 +63,18 @@ public class PlayerAttack : MonoBehaviour
         {
             currentAttackTime = 0;
             currentComboTime = 0;
-            var GO = Instantiate(prj, spawnTarget.position, Quaternion.identity);
-            GO.currentAngle = currentAngle + 15;
+            var GO = Instantiate(prj);
+            if (gameObject.GetComponent<RotateObject>()._rotateDir == RotateObject.rotateDir.RIGHT)
+            {
+                GO.currentAngle = currentAngle + distanceFromPlayer;
+                GO.inverseRotation = false;
+
+            }
+            else
+            {
+                GO.currentAngle = currentAngle - distanceFromPlayer;
+                GO.inverseRotation = true;
+            }
             switch (comboIndex)
             {
                 case 0:
