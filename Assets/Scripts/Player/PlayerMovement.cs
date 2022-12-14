@@ -30,7 +30,9 @@ public class PlayerMovement : MonoBehaviour
 
     //Portal
     public bool canGo = false;
-    public bool buswayPortal;
+    public Portal currentPortal;
+
+    public float currentAngle;
 
     private void Awake()
     {
@@ -44,7 +46,8 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        //Calculate Angle
+        currentAngle = CalculateAngle();
     }
 
     // Update is called once per frame
@@ -64,6 +67,7 @@ public class PlayerMovement : MonoBehaviour
                 animator.SetBool("Running", false);
 
             LookAtTarget();
+            SetCurrentLevel(currentLevelIndex);
         }
     }
 
@@ -73,24 +77,33 @@ public class PlayerMovement : MonoBehaviour
         {
             if (!collide)
             {
-                angle += movementSpeed * index * Time.deltaTime;
+                currentAngle += + movementSpeed * Mathf.Rad2Deg * index * Time.deltaTime;
+                //angle += movementSpeed * index * Time.deltaTime;
             }
 
-            Vector3 offset = new Vector3(Mathf.Sin(angle) * targetDistance, Mathf.Cos(angle) * targetDistance, 0) * targetDistance;
+            Vector3 targetPos = GetPosition(currentAngle, targetDistance);
+            transform.position = center.position + targetPos + posOffset;
+
+            //Vector3 offset = new Vector3(Mathf.Sin(angle) * targetDistance, Mathf.Cos(angle) * targetDistance, 0) * targetDistance;
             //transform.position = offset + posOffset;
-            rb.MovePosition(offset + posOffset);
+            //rb.MovePosition(offset + posOffset);
         }
+    }
+
+    //Get Next Position Based on Angle & Distance
+    Vector3 GetPosition(float degrees, float dist)
+    {
+        float a = degrees * Mathf.PI / 180f;
+        return new Vector3(Mathf.Sin(a) * dist, Mathf.Cos(a) * dist, 0);
     }
 
     public void NextPlatform()
     {
         if (currentLevelIndex < levelList.Count - 1)
         {
-            if (canGo)
+            if (canGo && currentPortal != null)
             {
-                Vector3 lastPos = transform.localPosition;
-                currentLevelIndex++;
-                transform.DOLocalMove(new Vector3(lastPos.x, 0.15f, lastPos.z), 1.5f);
+                currentPortal.TriggerPortal();
                 StartCoroutine(CanMove());
             }
 
@@ -99,15 +112,9 @@ public class PlayerMovement : MonoBehaviour
                 StartCoroutine(Win());
             }
 
-            SetCurrentLevel(currentLevelIndex);
+            
         }
-
-        if (buswayPortal)
-        {
-            SceneLoad.Instance.panelBusway.SetActive(true);
-
-            Time.timeScale = 0f;
-        }
+        currentPortal = null;
     }
 
     public void SetCurrentLevel(int index)
@@ -115,6 +122,7 @@ public class PlayerMovement : MonoBehaviour
         var lastArena = GetComponentInParent<ArenaController>().active = false;
         transform.SetParent(levelList[index]);
         var currentArena = GetComponentInParent<ArenaController>().active = true;
+        center = transform.parent;
     }
 
     public void LookAtTarget()
@@ -152,11 +160,19 @@ public class PlayerMovement : MonoBehaviour
         return direction2;
     }
 
+    public float CalculateAngle()
+    {
+        Vector2 dir = new Vector3(0, transform.position.y, 0) - transform.position;
+        float result = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        return result;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Portal")
         {
             canGo = true;
+            currentPortal = collision.GetComponent<Portal>();
         }
     }
 
@@ -165,7 +181,7 @@ public class PlayerMovement : MonoBehaviour
         if (collision.tag == "Portal")
         {
             canGo = false;
-            buswayPortal = false;
+            currentPortal = null;
         }
     }
 

@@ -16,8 +16,12 @@ public class InputHandler : MonoBehaviour
 
     public bool canMove = true;
 
-
     public float direction;
+
+    public enum state { IDLE, CHOOSE, BUSY}
+    [Space]
+    public state _state = state.IDLE;
+    public Transform selectedPortal;
     private void Awake()
     {
         if(player == null)
@@ -64,7 +68,10 @@ public class InputHandler : MonoBehaviour
 
         direction = player.CheckDirection();
         
-        
+        if(_state == state.CHOOSE)
+        {
+            ArenaManager.Instance.controllerList[1].ToggleSelectablePortal(true);
+        }
     }
     #region MobileInput
 
@@ -119,9 +126,17 @@ public class InputHandler : MonoBehaviour
     {
         if (player.CheckDirection() > 0)
             invertInput = false;
-        else if (player.CheckDirection() > 0.2f && player.CheckDirection() < 0.2f)
+        else if (player.CheckDirection() > 0.1f && player.CheckDirection() < 0.1f)
             invertInput = true;
         else
             invertInput = true;
+    }
+
+    public Transform GetSelectedPortal()
+    {
+        if(selectedPortal != null)
+            return selectedPortal;
+        else
+            return null;
     }
 }

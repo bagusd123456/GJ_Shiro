@@ -27,7 +27,7 @@ public class PlayerAttack : MonoBehaviour
     {
         _char = GetComponent<PlayerCondition>();
         if (center == null)
-            center = GetComponent<PlayerMovement>().center;
+            center = FindObjectOfType<PlayerMovement>().center;
     }
 
     // Start is called before the first frame update

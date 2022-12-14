@@ -22,8 +22,9 @@ public class ArenaController : MonoBehaviour
         {
             if (colliderList[i].GetComponent<PlayerCondition>() != null)
                 colliderList.Remove(colliderList[i]);
+            else if (colliderList[i].GetComponent<NPCMovement>() != null)
+                colliderList.Remove(colliderList[i]);
         }
-        //enemyColliderList = GetComponentsInChildren<CapsuleCollider2D>().ToList();
         
     }
 
@@ -32,16 +33,26 @@ public class ArenaController : MonoBehaviour
     {
         if (polygonCollider != null)
             polygonCollider.enabled = active;
-        
+
         for (int i = 0; i < colliderList.Count; i++)
         {
-            colliderList[i].enabled = active;
+            if (colliderList[i].GetComponent<CapsuleCollider2D>() == null && InputHandler.Instance._state != InputHandler.state.CHOOSE)
+                colliderList[i].enabled = active;
         }
-        /*
-        for (int i = 0; i < enemyColliderList.Count; i++)
-        {
-            enemyColliderList[i].enabled = active;
-        }
-        */
+    }
+
+    public void ToggleSelectablePortal(bool T)
+    {
+        active = T;
+        /*if(T == true)
+            for (int a = 0; a < colliderList.Count; a++)
+            {
+                colliderList[a].GetComponent<Collider2D>().enabled = true;
+            }
+        else
+            for (int b = 0; b < colliderList.Count; b++)
+            {
+                colliderList[b].GetComponent<Collider2D>().enabled = false;
+            }*/
     }
 }
