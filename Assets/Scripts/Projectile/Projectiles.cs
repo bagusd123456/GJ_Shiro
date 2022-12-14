@@ -7,7 +7,7 @@ public class Projectiles : MonoBehaviour
     public float currentAngle;
     
     public PlayerMovement player;
-    public Transform pivot;
+    public Transform center;
     public float targetDistance;
 
     public Vector3 offset;
@@ -18,9 +18,6 @@ public class Projectiles : MonoBehaviour
     
     private void Awake()
     {
-        if(pivot == null)
-            pivot = GameObject.Find("Target").transform;
-
         if(player == null)
             player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
     }
@@ -47,10 +44,10 @@ public class Projectiles : MonoBehaviour
             currentAngle += -moveSpeed * Mathf.Rad2Deg * 2f * Time.deltaTime;
 
         Vector3 targetPos = GetPosition(currentAngle, targetDistance);
-        transform.position = pivot.position + targetPos + offset;
+        transform.position = center.position + targetPos + offset;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         //Damage every Character Collide
         if(other.GetComponent<CharacterBase>() != null)

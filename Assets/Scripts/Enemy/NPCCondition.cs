@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class NPCCondition : CharacterBase
 {
-    private void Awake()
+    new void Awake()
     {
         base.Awake();
     }
@@ -16,7 +16,7 @@ public class NPCCondition : CharacterBase
     }
 
     // Update is called once per frame
-    void Update()
+    new void Update()
     {
         base.Update();
     }

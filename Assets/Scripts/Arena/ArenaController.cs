@@ -6,21 +6,23 @@ using UnityEngine;
 public class ArenaController : MonoBehaviour
 {
     public bool active;
-    //public bool enemyActive;
-    //public CircleCollider2D collider;
-    public List<CircleCollider2D> colliderList = new List<CircleCollider2D>();
+    
+    public List<Collider2D> colliderList = new List<Collider2D>();
     
     public PolygonCollider2D polygonCollider;
-    //public List<CapsuleCollider2D> enemyColliderList = new List<CapsuleCollider2D>();
 
     // Start is called before the first frame update
     void Start()
     {
         //if(collider == null)
         polygonCollider = GetComponentInChildren<PolygonCollider2D>();
+        colliderList = GetComponentsInChildren<Collider2D>().ToList();
 
-        colliderList = GetComponentsInChildren<CircleCollider2D>().ToList();
-
+        for (int i = 0; i < colliderList.Count; i++)
+        {
+            if (colliderList[i].GetComponent<PlayerCondition>() != null)
+                colliderList.Remove(colliderList[i]);
+        }
         //enemyColliderList = GetComponentsInChildren<CapsuleCollider2D>().ToList();
         
     }

@@ -26,6 +26,8 @@ public class PlayerAttack : MonoBehaviour
     private void Awake()
     {
         _char = GetComponent<PlayerCondition>();
+        if (center == null)
+            center = GetComponent<PlayerMovement>().center;
     }
 
     // Start is called before the first frame update
@@ -61,6 +63,8 @@ public class PlayerAttack : MonoBehaviour
             currentAttackTime = 0;
             currentComboTime = 0;
             var GO = Instantiate(prj);
+            GO.center = center;
+            GO.player = PlayerMovement.Instance;
             if (gameObject.GetComponent<PlayerMovement>()._rotateDir == rotateDir.RIGHT)
             {
                 GO.currentAngle = CurrentAngle() + distanceFromPlayer;

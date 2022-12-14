@@ -6,9 +6,9 @@ using DG.Tweening;
 public class PlayerMovement : MonoBehaviour
 {
     public static PlayerMovement Instance { get; private set; }
-    public Rigidbody rb;
+    public Rigidbody2D rb;
     public Animator animator;
-    public Transform rotateAround;
+    public Transform center;
     public Vector3 posOffset;
 
     [Header("Movement Parameter")]
@@ -76,7 +76,7 @@ public class PlayerMovement : MonoBehaviour
                 angle += movementSpeed * index * Time.deltaTime;
             }
 
-            Vector3 offset = new Vector3(Mathf.Sin(angle) * targetDistance, Mathf.Cos(angle) * targetDistance, transform.position.z) * targetDistance;
+            Vector3 offset = new Vector3(Mathf.Sin(angle) * targetDistance, Mathf.Cos(angle) * targetDistance, 0) * targetDistance;
             //transform.position = offset + posOffset;
             rb.MovePosition(offset + posOffset);
         }
@@ -112,12 +112,14 @@ public class PlayerMovement : MonoBehaviour
 
     public void SetCurrentLevel(int index)
     {
+        var lastArena = GetComponentInParent<ArenaController>().active = false;
         transform.SetParent(levelList[index]);
+        var currentArena = GetComponentInParent<ArenaController>().active = true;
     }
 
     public void LookAtTarget()
     {
-        Vector2 lookDir = rotateAround.position - transform.position;
+        Vector2 lookDir = center.position - transform.position;
         float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
 
         if(InputHandler.Instance.isMoving == 1)
@@ -141,7 +143,7 @@ public class PlayerMovement : MonoBehaviour
 
     public float CheckDirection()
     {
-        var relativePos = rotateAround.transform.position - transform.position;
+        var relativePos = center.transform.position - transform.position;
 
         //Determine Angle
         var forward = transform.forward;

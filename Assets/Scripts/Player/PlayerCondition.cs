@@ -7,7 +7,7 @@ public class PlayerCondition : CharacterBase
     public enum State { IDLE, DEFENDING, BUSY };
     public State _state = State.IDLE;
 
-    private void Awake()
+    new void Awake()
     {
         base.Awake();
     }
