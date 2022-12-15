@@ -169,9 +169,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Portal")
+        if (collision.GetComponent<Portal>() != null)
         {
-            canGo = true;
+            //canGo = true;
             currentPortal = collision.GetComponent<Portal>();
         }
     }
@@ -180,7 +180,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.tag == "Portal")
         {
-            canGo = false;
+            //canGo = false;
             currentPortal = null;
         }
     }

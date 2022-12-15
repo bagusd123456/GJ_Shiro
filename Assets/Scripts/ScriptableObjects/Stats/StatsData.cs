@@ -15,4 +15,16 @@ public class StatsData : ScriptableObject
     public int attackDamage;
     public float attackSpeed;
     public int armor;
+
+    public void Reset()
+    {
+        characterName = "Player";
+
+        HP = 100;
+        MP = 100;
+        moveSpeed = 2;
+        attackDamage = 5;
+        attackSpeed = 2;
+        armor = 10;
+    }
 }

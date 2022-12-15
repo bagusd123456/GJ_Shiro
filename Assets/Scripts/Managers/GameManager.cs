@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour
     {
         activeIndex = PlayerMovement.Instance.currentLevelIndex;
         //enemyActiveIndex = (RotateObject.Instance.currentLevelIndex) - 2;
+        if(InputHandler.Instance._state != InputHandler.state.CHOOSE)
         CheckList();
     }
 

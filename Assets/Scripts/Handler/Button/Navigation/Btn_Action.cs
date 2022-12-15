@@ -17,7 +17,8 @@ public class Btn_Action : MonoBehaviour,IPointerClickHandler, IPointerDownHandle
     {
         clickTimer = timeBetweenClick;
         clickCount++;
-        Debug.Log("Click Count: " + clickCount);
+        if (clickCount == 2)
+            InputHandler.Instance.GoUp();
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -27,21 +28,30 @@ public class Btn_Action : MonoBehaviour,IPointerClickHandler, IPointerDownHandle
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        if(btnSlider.value == 1)
+        if (InputHandler.Instance.canMove)
         {
-            btnSlider.value = 0;
+            if (btnSlider.value == 1)
+            {
+                btnSlider.value = 0;
 
-            if (player != null)
-                player.BasicAttack();
+                if (player != null)
+                    player.BasicAttack();
+                //Debug.Log("Attack");
+            }
+
+            else if (btnSlider.value == -1)
+            {
+                btnSlider.value = 0;
+                StartCoroutine(player.Defend());
+            }
+
             else
-                Debug.LogWarning("PlayerAttack Script Not Found");
-            //Debug.Log("Attack");
+            {
+                btnSlider.value = 0;
+                //Debug.Log("Do Nothing");
+            }
         }
-        else if(btnSlider.value == -1)
-        {
-            btnSlider.value = 0;
-            StartCoroutine(player.Defend());
-        }
+
         else
         {
             btnSlider.value = 0;

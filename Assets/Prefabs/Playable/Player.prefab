@@ -2373,7 +2373,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   animator: {fileID: 3888432998797850688}
-  rotateAround: {fileID: 0}
+  center: {fileID: 0}
   posOffset: {x: 0, y: 0, z: 2.75}
   movementSpeed: 1
   targetDistance: 1.77
@@ -2396,7 +2396,8 @@ MonoBehaviour:
   collide: 0
   wallDistance: 1
   canGo: 0
-  buswayPortal: 0
+  currentPortal: {fileID: 0}
+  currentAngle: 0
 --- !u!114 &474540945
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2410,8 +2411,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prj: {fileID: 2707637908052337801, guid: 3b082c0cc0a54ef41b1e8f85497f03b1, type: 3}
+  spawnTarget: {fileID: 1759092392}
   distanceFromPlayer: 15
-  center: {fileID: 0}
   timeBetweenAttack: 0.5
   cdCombo: 1.5
   cdDef: 1

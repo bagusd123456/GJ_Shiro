@@ -525,6 +525,7 @@ GameObject:
   - component: {fileID: 134505470}
   - component: {fileID: 134505472}
   - component: {fileID: 134505471}
+  - component: {fileID: 134505473}
   m_Layer: 0
   m_Name: Circle (1)
   m_TagString: Portal
@@ -613,6 +614,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &134505473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 134505469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c4690395c5af7a4aa4c8feb794c4b1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  center: {x: 0, y: 0, z: 0}
+  _portalType: 0
+  target: {fileID: 0}
 --- !u!1 &176872858
 GameObject:
   m_ObjectHideFlags: 0
@@ -857,6 +873,7 @@ GameObject:
   - component: {fileID: 225381063}
   - component: {fileID: 225381065}
   - component: {fileID: 225381064}
+  - component: {fileID: 225381066}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Portal
@@ -945,6 +962,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &225381066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 225381062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c4690395c5af7a4aa4c8feb794c4b1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  center: {x: 0, y: 0, z: 0}
+  _portalType: 0
+  target: {fileID: 0}
 --- !u!1 &229039856
 GameObject:
   m_ObjectHideFlags: 0
@@ -1040,7 +1072,7 @@ GameObject:
   - component: {fileID: 275565909}
   - component: {fileID: 275565908}
   m_Layer: 0
-  m_Name: Circle (4)
+  m_Name: Portal_BusWay
   m_TagString: Portal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1072,11 +1104,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c4690395c5af7a4aa4c8feb794c4b1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clicked: 0
-  _portal: 1
-  target: {fileID: 0}
-  angle: 0
   center: {x: 0, y: 0, z: 0}
+  _portalType: 1
+  target: {fileID: 0}
 --- !u!58 &275565909
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1374,11 +1404,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c4690395c5af7a4aa4c8feb794c4b1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clicked: 0
-  _portal: 2
-  target: {fileID: 0}
-  angle: 0
   center: {x: 0, y: 0, z: 0}
+  _portalType: 2
+  target: {fileID: 0}
 --- !u!58 &306591733
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1457,6 +1485,7 @@ GameObject:
   - component: {fileID: 313388597}
   - component: {fileID: 313388599}
   - component: {fileID: 313388598}
+  - component: {fileID: 313388600}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Portal
@@ -1545,6 +1574,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &313388600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 313388596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c4690395c5af7a4aa4c8feb794c4b1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  center: {x: 0, y: 0, z: 0}
+  _portalType: 0
+  target: {fileID: 0}
 --- !u!1 &366624463
 GameObject:
   m_ObjectHideFlags: 0
@@ -1943,6 +1987,7 @@ GameObject:
   - component: {fileID: 489763923}
   - component: {fileID: 489763925}
   - component: {fileID: 489763924}
+  - component: {fileID: 489763926}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Portal
@@ -2031,6 +2076,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &489763926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 489763922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c4690395c5af7a4aa4c8feb794c4b1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  center: {x: 0, y: 0, z: 0}
+  _portalType: 0
+  target: {fileID: 0}
 --- !u!1 &530740236
 GameObject:
   m_ObjectHideFlags: 0
@@ -2042,6 +2102,7 @@ GameObject:
   - component: {fileID: 530740237}
   - component: {fileID: 530740239}
   - component: {fileID: 530740238}
+  - component: {fileID: 530740240}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Portal
@@ -2130,6 +2191,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &530740240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 530740236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c4690395c5af7a4aa4c8feb794c4b1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  center: {x: 0, y: 0, z: 0}
+  _portalType: 0
+  target: {fileID: 0}
 --- !u!1 &532364039
 GameObject:
   m_ObjectHideFlags: 0
@@ -2463,6 +2539,7 @@ GameObject:
   - component: {fileID: 599139891}
   - component: {fileID: 599139893}
   - component: {fileID: 599139892}
+  - component: {fileID: 599139894}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Portal
@@ -2551,6 +2628,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &599139894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 599139890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c4690395c5af7a4aa4c8feb794c4b1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  center: {x: 0, y: 0, z: 0}
+  _portalType: 0
+  target: {fileID: 0}
 --- !u!1 &618174391
 GameObject:
   m_ObjectHideFlags: 0
@@ -2694,11 +2786,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c4690395c5af7a4aa4c8feb794c4b1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clicked: 0
-  _portal: 0
-  target: {fileID: 0}
-  angle: 0
   center: {x: 0, y: 0, z: 0}
+  _portalType: 0
+  target: {fileID: 0}
 --- !u!1 &642728605
 GameObject:
   m_ObjectHideFlags: 0
@@ -2710,6 +2800,7 @@ GameObject:
   - component: {fileID: 642728606}
   - component: {fileID: 642728608}
   - component: {fileID: 642728607}
+  - component: {fileID: 642728609}
   m_Layer: 0
   m_Name: Circle (1)
   m_TagString: Portal
@@ -2798,6 +2889,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &642728609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 642728605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c4690395c5af7a4aa4c8feb794c4b1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  center: {x: 0, y: 0, z: 0}
+  _portalType: 0
+  target: {fileID: 0}
 --- !u!1 &674633782
 GameObject:
   m_ObjectHideFlags: 0
@@ -2809,6 +2915,7 @@ GameObject:
   - component: {fileID: 674633783}
   - component: {fileID: 674633785}
   - component: {fileID: 674633784}
+  - component: {fileID: 674633786}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Portal
@@ -2897,6 +3004,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &674633786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 674633782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c4690395c5af7a4aa4c8feb794c4b1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  center: {x: 0, y: 0, z: 0}
+  _portalType: 0
+  target: {fileID: 0}
 --- !u!1 &674709622
 GameObject:
   m_ObjectHideFlags: 0
@@ -3660,6 +3782,7 @@ GameObject:
   - component: {fileID: 871735484}
   - component: {fileID: 871735486}
   - component: {fileID: 871735485}
+  - component: {fileID: 871735487}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Portal
@@ -3739,6 +3862,136 @@ SpriteRenderer:
   m_SortingOrder: 3
   m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!114 &871735487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 871735483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c4690395c5af7a4aa4c8feb794c4b1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  center: {x: 0, y: 0, z: 0}
+  _portalType: 0
+  target: {fileID: 0}
+--- !u!1 &885225396
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 885225397}
+  - component: {fileID: 885225400}
+  - component: {fileID: 885225399}
+  - component: {fileID: 885225398}
+  m_Layer: 0
+  m_Name: Portal_PowerUp
+  m_TagString: Portal
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &885225397
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 885225396}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -0.969, y: -0, z: 0.006}
+  m_LocalScale: {x: 0.1789155, y: 0.1789155, z: 0.1789155}
+  m_Children: []
+  m_Father: {fileID: 1443863229}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!114 &885225398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 885225396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c4690395c5af7a4aa4c8feb794c4b1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  center: {x: 0, y: 0, z: 0}
+  _portalType: 0
+  target: {fileID: 0}
+--- !u!58 &885225399
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 885225396}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.0000009536743}
+  serializedVersion: 2
+  m_Radius: 0.5000001
+--- !u!212 &885225400
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 885225396}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 3
+  m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
+  m_Color: {r: 0.47050577, g: 0.84400004, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -3843,11 +4096,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c4690395c5af7a4aa4c8feb794c4b1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clicked: 0
-  _portal: 2
-  target: {fileID: 0}
-  angle: 0
   center: {x: 0, y: 0, z: 0}
+  _portalType: 2
+  target: {fileID: 0}
 --- !u!58 &967025112
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3926,6 +4177,7 @@ GameObject:
   - component: {fileID: 982810855}
   - component: {fileID: 982810857}
   - component: {fileID: 982810856}
+  - component: {fileID: 982810858}
   m_Layer: 0
   m_Name: Circle (2)
   m_TagString: Portal
@@ -4014,6 +4266,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &982810858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 982810854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c4690395c5af7a4aa4c8feb794c4b1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  center: {x: 0, y: 0, z: 0}
+  _portalType: 0
+  target: {fileID: 0}
 --- !u!1 &1027680940
 GameObject:
   m_ObjectHideFlags: 0
@@ -4145,6 +4412,7 @@ GameObject:
   - component: {fileID: 1063509831}
   - component: {fileID: 1063509833}
   - component: {fileID: 1063509832}
+  - component: {fileID: 1063509834}
   m_Layer: 0
   m_Name: Circle (6)
   m_TagString: Portal
@@ -4233,6 +4501,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1063509834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1063509830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c4690395c5af7a4aa4c8feb794c4b1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  center: {x: 0, y: 0, z: 0}
+  _portalType: 0
+  target: {fileID: 0}
 --- !u!1 &1079636040
 GameObject:
   m_ObjectHideFlags: 0
@@ -4571,6 +4854,7 @@ GameObject:
   - component: {fileID: 1185904294}
   - component: {fileID: 1185904296}
   - component: {fileID: 1185904295}
+  - component: {fileID: 1185904297}
   m_Layer: 0
   m_Name: Circle (1)
   m_TagString: Portal
@@ -4659,6 +4943,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1185904297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1185904293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c4690395c5af7a4aa4c8feb794c4b1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  center: {x: 0, y: 0, z: 0}
+  _portalType: 0
+  target: {fileID: 0}
 --- !u!1 &1194996193
 GameObject:
   m_ObjectHideFlags: 0
@@ -4744,11 +5043,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c4690395c5af7a4aa4c8feb794c4b1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clicked: 0
-  _portal: 2
-  target: {fileID: 0}
-  angle: 0
   center: {x: 0, y: 0, z: 0}
+  _portalType: 2
+  target: {fileID: 0}
 --- !u!58 &1240353125
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -4973,6 +5270,7 @@ GameObject:
   - component: {fileID: 1311232654}
   - component: {fileID: 1311232656}
   - component: {fileID: 1311232655}
+  - component: {fileID: 1311232657}
   m_Layer: 0
   m_Name: Circle (2)
   m_TagString: Portal
@@ -5061,6 +5359,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1311232657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1311232653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c4690395c5af7a4aa4c8feb794c4b1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  center: {x: 0, y: 0, z: 0}
+  _portalType: 0
+  target: {fileID: 0}
 --- !u!1 &1333902969
 GameObject:
   m_ObjectHideFlags: 0
@@ -5072,6 +5385,7 @@ GameObject:
   - component: {fileID: 1333902970}
   - component: {fileID: 1333902972}
   - component: {fileID: 1333902971}
+  - component: {fileID: 1333902973}
   m_Layer: 0
   m_Name: Circle (1)
   m_TagString: Portal
@@ -5160,6 +5474,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1333902973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1333902969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c4690395c5af7a4aa4c8feb794c4b1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  center: {x: 0, y: 0, z: 0}
+  _portalType: 0
+  target: {fileID: 0}
 --- !u!1 &1403626120
 GameObject:
   m_ObjectHideFlags: 0
@@ -5430,6 +5759,7 @@ GameObject:
   - component: {fileID: 1434582309}
   - component: {fileID: 1434582311}
   - component: {fileID: 1434582310}
+  - component: {fileID: 1434582312}
   m_Layer: 0
   m_Name: Circle (2)
   m_TagString: Portal
@@ -5518,6 +5848,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1434582312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1434582308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c4690395c5af7a4aa4c8feb794c4b1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  center: {x: 0, y: 0, z: 0}
+  _portalType: 0
+  target: {fileID: 0}
 --- !u!1 &1443863228
 GameObject:
   m_ObjectHideFlags: 0
@@ -5550,6 +5895,7 @@ Transform:
   - {fileID: 1904786889}
   - {fileID: 629526794}
   - {fileID: 275565907}
+  - {fileID: 885225397}
   m_Father: {fileID: 543450652719231812}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5782,11 +6128,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c4690395c5af7a4aa4c8feb794c4b1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clicked: 0
-  _portal: 0
-  target: {fileID: 0}
-  angle: 0
   center: {x: 0, y: 0, z: 0}
+  _portalType: 0
+  target: {fileID: 0}
 --- !u!1 &1572715612
 GameObject:
   m_ObjectHideFlags: 0
@@ -5930,6 +6274,7 @@ GameObject:
   - component: {fileID: 1623858047}
   - component: {fileID: 1623858049}
   - component: {fileID: 1623858048}
+  - component: {fileID: 1623858050}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Portal
@@ -6018,6 +6363,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1623858050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1623858046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c4690395c5af7a4aa4c8feb794c4b1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  center: {x: 0, y: 0, z: 0}
+  _portalType: 0
+  target: {fileID: 0}
 --- !u!1 &1652502290
 GameObject:
   m_ObjectHideFlags: 0
@@ -6247,11 +6607,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c4690395c5af7a4aa4c8feb794c4b1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clicked: 0
-  _portal: 0
-  target: {fileID: 0}
-  angle: 0
   center: {x: 0, y: 0, z: 0}
+  _portalType: 0
+  target: {fileID: 0}
 --- !u!1 &1678634121 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6607640672333632480, guid: ae4391211f69f264fae37231ba01e9ba, type: 3}
@@ -6836,11 +7194,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c4690395c5af7a4aa4c8feb794c4b1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clicked: 0
-  _portal: 0
-  target: {fileID: 0}
-  angle: 0
   center: {x: 0, y: 0, z: 0}
+  _portalType: 0
+  target: {fileID: 0}
 --- !u!1 &1782615425
 GameObject:
   m_ObjectHideFlags: 0
@@ -7151,11 +7507,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c4690395c5af7a4aa4c8feb794c4b1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clicked: 0
-  _portal: 2
-  target: {fileID: 0}
-  angle: 0
   center: {x: 0, y: 0, z: 0}
+  _portalType: 2
+  target: {fileID: 0}
 --- !u!58 &1897014934
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -7418,11 +7772,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c4690395c5af7a4aa4c8feb794c4b1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clicked: 0
-  _portal: 0
-  target: {fileID: 0}
-  angle: 0
   center: {x: 0, y: 0, z: 0}
+  _portalType: 0
+  target: {fileID: 0}
 --- !u!1 &1907142151
 GameObject:
   m_ObjectHideFlags: 0
@@ -7582,6 +7934,7 @@ GameObject:
   - component: {fileID: 1969349381}
   - component: {fileID: 1969349383}
   - component: {fileID: 1969349382}
+  - component: {fileID: 1969349384}
   m_Layer: 0
   m_Name: Circle (3)
   m_TagString: Portal
@@ -7670,6 +8023,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1969349384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1969349380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c4690395c5af7a4aa4c8feb794c4b1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  center: {x: 0, y: 0, z: 0}
+  _portalType: 0
+  target: {fileID: 0}
 --- !u!1 &1974883358
 GameObject:
   m_ObjectHideFlags: 0
@@ -7751,11 +8119,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c4690395c5af7a4aa4c8feb794c4b1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clicked: 0
-  _portal: 0
-  target: {fileID: 0}
-  angle: 0
   center: {x: 0, y: 0, z: 0}
+  _portalType: 0
+  target: {fileID: 0}
 --- !u!50 &2014921919 stripped
 Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: 8528911401350604716, guid: 1c263f758fe35f048a62553503c55dfa, type: 3}
@@ -8400,9 +8766,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2956463950998048781, guid: ae4391211f69f264fae37231ba01e9ba, type: 3}
-      propertyPath: selectedPortal
-      value: 
+    - target: {fileID: 3163865033159066391, guid: ae4391211f69f264fae37231ba01e9ba, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3163865033159066391, guid: ae4391211f69f264fae37231ba01e9ba, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3163865033159066391, guid: ae4391211f69f264fae37231ba01e9ba, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6607640671468570493, guid: ae4391211f69f264fae37231ba01e9ba, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -8461,8 +8835,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 750557340}
     - target: {fileID: 6607640672344422894, guid: ae4391211f69f264fae37231ba01e9ba, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6607640672344422894, guid: ae4391211f69f264fae37231ba01e9ba, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -161.3003
+      value: -161.30005
       objectReference: {fileID: 0}
     - target: {fileID: 6607640672683671468, guid: ae4391211f69f264fae37231ba01e9ba, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -8571,6 +8949,14 @@ PrefabInstance:
     - target: {fileID: 6607640672961568455, guid: ae4391211f69f264fae37231ba01e9ba, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6607640672987162698, guid: ae4391211f69f264fae37231ba01e9ba, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6607640672987162703, guid: ae4391211f69f264fae37231ba01e9ba, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6607640673004517969, guid: ae4391211f69f264fae37231ba01e9ba, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target

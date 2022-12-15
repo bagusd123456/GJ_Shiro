@@ -11,8 +11,8 @@ public class PlayerAttack : MonoBehaviour
 
     [Header("Attack Parameter")]
     public Projectiles prj;
+    public Transform spawnTarget;
     public float distanceFromPlayer = 15f;
-    public Transform center;
     float currentAttackTime;
     public float timeBetweenAttack = .5f;
 
@@ -26,8 +26,6 @@ public class PlayerAttack : MonoBehaviour
     private void Awake()
     {
         _char = GetComponent<PlayerCondition>();
-        if (center == null)
-            center = FindObjectOfType<PlayerMovement>().center;
     }
 
     // Start is called before the first frame update
@@ -62,9 +60,9 @@ public class PlayerAttack : MonoBehaviour
         {
             currentAttackTime = 0;
             currentComboTime = 0;
-            var GO = Instantiate(prj);
-            GO.center = center;
+            var GO = Instantiate(prj, spawnTarget.forward * distanceFromPlayer, Quaternion.identity, transform.parent);
             GO.player = PlayerMovement.Instance;
+            GO.center = PlayerMovement.Instance.center;
             if (gameObject.GetComponent<PlayerMovement>()._rotateDir == rotateDir.RIGHT)
             {
                 GO.currentAngle = CurrentAngle() + distanceFromPlayer;
@@ -112,7 +110,7 @@ public class PlayerAttack : MonoBehaviour
 
     float CurrentAngle()
     {
-        Vector3 dir = center.position - transform.position;
+        Vector3 dir = PlayerMovement.Instance.center.position - transform.position;
         float angle = Mathf.Atan2(dir.x, dir.y) * Mathf.Rad2Deg + 180f;
         return angle;
     }

@@ -36,7 +36,7 @@ public class ArenaController : MonoBehaviour
 
         for (int i = 0; i < colliderList.Count; i++)
         {
-            if (colliderList[i].GetComponent<CapsuleCollider2D>() == null && InputHandler.Instance._state != InputHandler.state.CHOOSE)
+            if (colliderList[i].GetComponent<CapsuleCollider2D>() == null)
                 colliderList[i].enabled = active;
         }
     }

@@ -120,11 +120,11 @@ public class SceneLoad : MonoBehaviour
         }
         if(panelBusway == true)
         {
-            movBtn.SetActive(false);
+            //movBtn.SetActive(false);
         }
         else
         {
-            movBtn.SetActive(true);
+            //movBtn.SetActive(true);
         }
     }
 }

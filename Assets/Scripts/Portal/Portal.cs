@@ -5,28 +5,33 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Portal : MonoBehaviour, IPointerClickHandler
+public class Portal : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
-    public bool clicked;
-
+    
     public enum PortalType { STANDARD, BUSWAY, BUSWAY_EXIT, POWERUP }
-    public PortalType _portal;
+    public Vector3 center = Vector3.zero;
+
+    [Space]
+    public PortalType _portalType;
     PlayerMovement player;
 
     [HideInInspector]
     public Transform target;
 
-    public float angle;
-    public Vector3 center = Vector3.zero;
+    float angle;
+
+    Color defaultColor;
+
     private void Awake()
     {
         player = FindObjectOfType<PlayerMovement>();
         angle = CalculateAngle();
+        defaultColor = GetComponent<SpriteRenderer>().color;
     }
     
     public void TriggerPortal()
     {
-        switch (_portal)
+        switch (_portalType)
         {
             case PortalType.STANDARD:
                 DescendLevel();
@@ -38,15 +43,27 @@ public class Portal : MonoBehaviour, IPointerClickHandler
                 StartCoroutine(ChoosePortal());
                 break;
 
-            case PortalType.BUSWAY_EXIT:
-                break;
-
             case PortalType.POWERUP:
+                DescendLevel();
+                TriggerPowerUp();
                 break;
 
             default:
                 break;
         }
+    }
+
+    public void TriggerPowerUp()
+    {
+        Debug.Log("Power Up Get!");
+    }
+    
+    public void DescendLevel()
+    {
+        //Get to Lower Ground
+        Vector3 lastPos = player.transform.localPosition;
+        player.currentLevelIndex++;
+        player.transform.DOLocalMove(new Vector3(lastPos.x, 0, lastPos.z), 1.5f);
     }
 
     IEnumerator ChoosePortal()
@@ -55,22 +72,14 @@ public class Portal : MonoBehaviour, IPointerClickHandler
         InputHandler.Instance._state = InputHandler.state.CHOOSE;
         Time.timeScale = 0f;
 
-        yield return new WaitUntil(()=> InputHandler.Instance.selectedPortal != null);
-
+        yield return new WaitUntil(() => InputHandler.Instance.selectedPortal != null);
+        InputHandler.Instance._state = InputHandler.state.IDLE;
         target = InputHandler.Instance.GetSelectedPortal();
         Debug.Log("Selected");
 
         Time.timeScale = 1f;
         DescendToPosition(target.localPosition);
         player.currentAngle = target.GetComponent<Portal>().angle;
-    }
-
-    public void DescendLevel()
-    {
-        //Get to Lower Ground
-        Vector3 lastPos = player.transform.localPosition;
-        player.currentLevelIndex++;
-        player.transform.DOLocalMove(new Vector3(lastPos.x, 0, lastPos.z), 1.5f);
     }
 
     public void DescendToPosition(Vector3 target)
@@ -90,26 +99,44 @@ public class Portal : MonoBehaviour, IPointerClickHandler
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag.Equals("Player"))
+        if(collision.tag.Equals("Player") && _portalType != PortalType.BUSWAY_EXIT)
         {
-            
+            collision.GetComponent<PlayerMovement>().canGo = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag.Equals("Player") && _portalType != PortalType.BUSWAY_EXIT)
+        {
+            collision.GetComponent<PlayerMovement>().canGo = false;
         }
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        Debug.Log("Clicked: " + eventData.pointerClick.transform);
-        
-        if (_portal == PortalType.BUSWAY_EXIT)
+        if (_portalType == PortalType.BUSWAY_EXIT)
         {
             InputHandler.Instance.selectedPortal = eventData.pointerClick.transform;
         }
     }
 
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if(_portalType == PortalType.BUSWAY_EXIT)
+            gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        if (_portalType == PortalType.BUSWAY_EXIT)
+            gameObject.GetComponent<SpriteRenderer>().color = defaultColor;
+    }
 }
 
 #if UNITY_EDITOR
 [CustomEditor(typeof(Portal), true)]
+[CanEditMultipleObjects]
 public class PortalEditor : Editor
 {
     public override void OnInspectorGUI()
@@ -118,7 +145,7 @@ public class PortalEditor : Editor
 
         base.OnInspectorGUI();
 
-        if (script._portal == Portal.PortalType.BUSWAY)
+        if (script._portalType == Portal.PortalType.BUSWAY)
         {
             script.target = (Transform)EditorGUILayout.ObjectField("Target", script.target, typeof(Transform), true);
         }

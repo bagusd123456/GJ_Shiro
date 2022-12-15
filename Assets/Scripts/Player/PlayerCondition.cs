@@ -4,11 +4,18 @@ using UnityEngine;
 
 public class PlayerCondition : CharacterBase
 {
+    public static PlayerCondition Instance { get; private set; }
     public enum State { IDLE, DEFENDING, BUSY };
     public State _state = State.IDLE;
 
     new void Awake()
     {
+        // If there is an instance, and it's not me, delete myself.
+        if (Instance != null && Instance != this)
+            Destroy(this);
+        else
+            Instance = this;
+
         base.Awake();
     }
 
