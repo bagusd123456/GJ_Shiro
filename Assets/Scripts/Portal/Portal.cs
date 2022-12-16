@@ -128,6 +128,11 @@ public class Portal : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler,
         return result;
     }
 
+    public void SelectThis()
+    {
+        InputHandler.Instance.selectedPortal = this.transform;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.tag.Equals("Player") && _portalType != PortalType.BUSWAY_EXIT)
@@ -148,7 +153,7 @@ public class Portal : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler,
     {
         if (_portalType == PortalType.BUSWAY_EXIT)
         {
-            InputHandler.Instance.selectedPortal = eventData.pointerClick.transform;
+            SelectThis();
         }
     }
 
