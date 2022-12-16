@@ -70,9 +70,10 @@ public class InputHandler : MonoBehaviour
         
         if(_state == state.CHOOSE)
         {
-            ArenaManager.Instance.controllerList[1].ToggleSelectablePortal(true);
+            ArenaManager.Instance.controllerList[+1].ToggleSelectablePortal(true);
         }
     }
+
     #region MobileInput
 
     public void MoveHandler()

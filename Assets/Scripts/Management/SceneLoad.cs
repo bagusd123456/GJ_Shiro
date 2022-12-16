@@ -9,7 +9,6 @@ public class SceneLoad : MonoBehaviour
     public GameObject tutorPanel;
     public GameObject settingPanel;
     public GameObject creditPanel;
-    public GameObject LosePanel;
 
     //Game Level
     public GameObject pausePanel;
@@ -18,6 +17,7 @@ public class SceneLoad : MonoBehaviour
 
     public GameObject panelBusway;
 
+    public GameObject powerNotif;
     public GameObject movBtn;
     public static SceneLoad Instance { get; private set; }
 
@@ -126,5 +126,16 @@ public class SceneLoad : MonoBehaviour
         {
             //movBtn.SetActive(true);
         }
+    }
+
+    public void GetPower()
+    {
+        StartCoroutine(PowerTime());
+    }
+    IEnumerator PowerTime()
+    {
+        powerNotif.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        powerNotif.SetActive(false);
     }
 }

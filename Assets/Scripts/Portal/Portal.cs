@@ -55,7 +55,27 @@ public class Portal : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler,
 
     public void TriggerPowerUp()
     {
-        Debug.Log("Power Up Get!");
+        SceneLoad.Instance.GetPower();
+        int Power = Random.Range(0, 2);
+
+        if(Power == 0)
+        {
+            //Speed Up
+            Debug.Log("Speed Up !");
+        }
+        if (Power == 1)
+        {
+            //Healt Up
+            Debug.Log("Health Up !");
+        }
+        if (Power == 2)
+        {
+            //Attack Up
+            Debug.Log("Attack Up !");
+        }
+
+
+
     }
     
     public void DescendLevel()

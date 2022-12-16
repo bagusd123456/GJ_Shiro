@@ -44,6 +44,7 @@ public class ArenaController : MonoBehaviour
     public void ToggleSelectablePortal(bool T)
     {
         active = T;
+
         /*if(T == true)
             for (int a = 0; a < colliderList.Count; a++)
             {
