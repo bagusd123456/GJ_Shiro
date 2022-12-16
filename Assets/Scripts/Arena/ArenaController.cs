@@ -15,13 +15,23 @@ public class ArenaController : MonoBehaviour
 
     public List<Portal> portalList = new List<Portal>();
 
+    private void Awake()
+    {
+        List<Portal> portal = GetComponentsInChildren<Portal>().ToList();
+
+        for (int i = 0; i < portal.Count; i++)
+        {
+            if (portal[i].GetComponent<Portal>()._portalType == Portal.PortalType.BUSWAY_EXIT)
+                portalList.Add(portal[i]);
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         //if(collider == null)
         polygonCollider = GetComponentInChildren<PolygonCollider2D>();
         colliderList = GetComponentsInChildren<Collider2D>().ToList();
-        portalList = GetComponentsInChildren<Portal>().ToList();
 
         for (int i = 0; i < colliderList.Count; i++)
         {
@@ -30,8 +40,6 @@ public class ArenaController : MonoBehaviour
             else if (colliderList[i].GetComponent<NPCMovement>() != null)
                 colliderList.Remove(colliderList[i]);
         }
-
-
     }
 
     // Update is called once per frame
@@ -47,11 +55,7 @@ public class ArenaController : MonoBehaviour
                 colliderList[i].enabled = active;
         }
 
-        for (int i = 0; i < portalList.Count; i++)
-        {
-            if (portalList[i].GetComponent<Portal>()._portalType != Portal.PortalType.BUSWAY_EXIT)
-                portalList.Remove(portalList[i]);
-        }
+        
 
     }
 

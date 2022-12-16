@@ -38,12 +38,7 @@ public class Portal : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler,
                 break;
 
             case PortalType.BUSWAY:
-
-                //testBusway();
                 
-                
-                
-
                 StartCoroutine(ChoosePortal());
                 break;
 

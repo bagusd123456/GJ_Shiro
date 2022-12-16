@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using UnityEngine.UI;
+using TMPro;
 
 public class BtnPortal : MonoBehaviour
 {
@@ -10,10 +11,10 @@ public class BtnPortal : MonoBehaviour
     public List<Button> BtnList = new List<Button>();
     public GameObject btnPrefabs;
     public ArenaController nextArena;
+    int index;
     private void Awake()
     {
-        nextArena = ArenaManager.Instance.controllerList[ArenaManager.Instance.currentArenaIndex++];
-
+        GetNextArena();
     }
     private void Start()
     {
@@ -22,20 +23,24 @@ public class BtnPortal : MonoBehaviour
 
     private void Update()
     {
-  
         BtnList = GetComponentsInChildren<Button>().ToList();
 
-        if(nextArena == null)
-        {
-            return;
-        }
         for (int i = 0; i < nextArena.portalList.Count; i++)
         {
-            var button = Instantiate(btnPrefabs, transform);
-
-            button.name = nextArena.portalList[i].name;
-
-            button.GetComponent<Button>().onClick.AddListener(nextArena.portalList[i].TriggerPortal);
+            if (BtnList.Count < nextArena.portalList.Count)
+            {
+                var button = Instantiate(btnPrefabs, transform);
+                button.GetComponentInChildren<Text>().text = (i + 1).ToString();
+                button.name = nextArena.portalList[i].name;
+                button.GetComponent<Button>().onClick.AddListener(nextArena.portalList[i].SelectThis);
+                BtnList.Add(button.GetComponent<Button>());
+            }
         }
+    }
+
+    public void GetNextArena()
+    {
+        index = ArenaManager.Instance.currentArenaIndex;
+        nextArena = ArenaManager.Instance.controllerList[index += 1];
     }
 }
