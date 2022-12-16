@@ -17,7 +17,13 @@ public class SceneLoad : MonoBehaviour
 
     public GameObject panelBusway;
 
+    //Power
     public GameObject powerNotif;
+    public GameObject speedUp;
+    public GameObject armorUp;
+    public GameObject attackUp;
+
+
     public GameObject movBtn;
     public static SceneLoad Instance { get; private set; }
 
@@ -128,14 +134,33 @@ public class SceneLoad : MonoBehaviour
         }
     }
 
-    public void GetPower()
+    public void GetPower(int type)
     {
-        StartCoroutine(PowerTime());
+        StartCoroutine(PowerTime(type));
     }
-    IEnumerator PowerTime()
+    IEnumerator PowerTime(int type)
     {
         powerNotif.SetActive(true);
+        switch (type)
+        {
+            case 0:
+                speedUp.SetActive(true);
+                break;
+
+            case 1:
+                armorUp.SetActive(true);
+                break;
+            case 2:
+                attackUp.SetActive(true);
+                break;
+
+            default:
+                break;
+        }
         yield return new WaitForSeconds(1f);
         powerNotif.SetActive(false);
+        speedUp.SetActive(false);
+        armorUp.SetActive(false);
+        attackUp.SetActive(false);
     }
 }

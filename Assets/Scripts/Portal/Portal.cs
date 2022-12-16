@@ -21,6 +21,7 @@ public class Portal : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler,
     float angle;
 
     Color defaultColor;
+    int Power;
 
     private void Awake()
     {
@@ -61,21 +62,24 @@ public class Portal : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler,
 
     public void TriggerPowerUp()
     {
-        SceneLoad.Instance.GetPower();
-        int Power = Random.Range(0, 2);
+        
+        Power = Random.Range(0, 3);
 
         if(Power == 0)
         {
+            SceneLoad.Instance.GetPower(0);
             //Speed Up
             Debug.Log("Speed Up !");
         }
         if (Power == 1)
         {
-            //Healt Up
-            Debug.Log("Health Up !");
+            SceneLoad.Instance.GetPower(1);
+            //Armor Up
+            Debug.Log("Armor Up !");
         }
         if (Power == 2)
         {
+            SceneLoad.Instance.GetPower(2);
             //Attack Up
             Debug.Log("Attack Up !");
         }
