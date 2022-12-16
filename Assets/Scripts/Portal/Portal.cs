@@ -38,7 +38,11 @@ public class Portal : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler,
                 break;
 
             case PortalType.BUSWAY:
-                //SceneLoad.Instance.panelBusway.SetActive(true);
+
+                //testBusway();
+                
+                
+                
 
                 StartCoroutine(ChoosePortal());
                 break;
@@ -51,6 +55,13 @@ public class Portal : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler,
             default:
                 break;
         }
+    }
+
+    public void testBusway()
+    {
+        SceneLoad.Instance.panelBusway.SetActive(true);
+
+        
     }
 
     public void TriggerPowerUp()

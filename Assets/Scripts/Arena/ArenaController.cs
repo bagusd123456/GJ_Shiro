@@ -5,11 +5,15 @@ using UnityEngine;
 
 public class ArenaController : MonoBehaviour
 {
+    public static ArenaController Instance { get; private set; }
+
     public bool active;
     
     public List<Collider2D> colliderList = new List<Collider2D>();
     
     public PolygonCollider2D polygonCollider;
+
+    public List<Portal> portalList = new List<Portal>();
 
     // Start is called before the first frame update
     void Start()
@@ -17,6 +21,7 @@ public class ArenaController : MonoBehaviour
         //if(collider == null)
         polygonCollider = GetComponentInChildren<PolygonCollider2D>();
         colliderList = GetComponentsInChildren<Collider2D>().ToList();
+        portalList = GetComponentsInChildren<Portal>().ToList();
 
         for (int i = 0; i < colliderList.Count; i++)
         {
@@ -25,12 +30,14 @@ public class ArenaController : MonoBehaviour
             else if (colliderList[i].GetComponent<NPCMovement>() != null)
                 colliderList.Remove(colliderList[i]);
         }
-        
+
+
     }
 
     // Update is called once per frame
     void Update()
     {
+
         if (polygonCollider != null)
             polygonCollider.enabled = active;
 
@@ -39,6 +46,13 @@ public class ArenaController : MonoBehaviour
             if (colliderList[i].GetComponent<CapsuleCollider2D>() == null)
                 colliderList[i].enabled = active;
         }
+
+        for (int i = 0; i < portalList.Count; i++)
+        {
+            if (portalList[i].GetComponent<Portal>()._portalType != Portal.PortalType.BUSWAY_EXIT)
+                portalList.Remove(portalList[i]);
+        }
+
     }
 
     public void ToggleSelectablePortal(bool T)
