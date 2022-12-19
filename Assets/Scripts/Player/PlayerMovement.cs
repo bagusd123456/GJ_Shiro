@@ -5,34 +5,35 @@ using DG.Tweening;
 
 public class PlayerMovement : MonoBehaviour
 {
+    Rigidbody2D rb;
+    Animator animator;
+
     public static PlayerMovement Instance { get; private set; }
-    public Rigidbody2D rb;
-    public Animator animator;
     public Transform center;
     public Vector3 posOffset;
 
     [Header("Movement Parameter")]
     public float movementSpeed = 1f;
     public float targetDistance = 3f;
-    public float angle;
+    public float currentAngle;
 
     public enum rotateDir { LEFT, RIGHT }
     public rotateDir _rotateDir = rotateDir.RIGHT;
+    [Space]
+    //Wall Detect
+    public bool collide;
+    public float wallDistance = 1f;
 
+    [Header("Level Parameter")]
     public List<Transform> levelList = new List<Transform>();
     public int currentLevelIndex = 0;
 
     public int WinLayer;
 
-    //Wall Detect
-    public bool collide;
-    public float wallDistance = 1f;
-
+    [Header("Portal Parameter")]
     //Portal
     public bool canGo = false;
     public Portal currentPortal;
-
-    public float currentAngle;
 
     private void Awake()
     {
@@ -41,6 +42,10 @@ public class PlayerMovement : MonoBehaviour
             Destroy(this);
         else
             Instance = this;
+
+        rb = GetComponent<Rigidbody2D>();
+        animator = gameObject.GetComponentInChildren<Animator>();
+
     }
 
     // Start is called before the first frame update
@@ -94,7 +99,7 @@ public class PlayerMovement : MonoBehaviour
     Vector3 GetPosition(float degrees, float dist)
     {
         float a = degrees * Mathf.PI / 180f;
-        return new Vector3(Mathf.Sin(a) * dist, Mathf.Cos(a) * dist, 0);
+        return new Vector3(Mathf.Sin(a) * dist, 0, Mathf.Cos(a) * dist);
     }
 
     public void NextPlatform()
@@ -127,13 +132,14 @@ public class PlayerMovement : MonoBehaviour
 
     public void LookAtTarget()
     {
-        Vector2 lookDir = center.position - transform.position;
-        float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
+        Vector3 lookDir = center.position - transform.position;
+        float angle = Mathf.Atan2(lookDir.z, lookDir.x) * Mathf.Rad2Deg;
+        Debug.Log(angle);
 
         if(InputHandler.Instance.isMoving == 1)
-            transform.rotation = Quaternion.Euler(0, 0, Mathf.Lerp(0, angle,2f));
+            transform.rotation = Quaternion.Euler(90, 0, angle);
         else if(InputHandler.Instance.isMoving == 2)
-            transform.rotation = Quaternion.Euler(0, 0, Mathf.Lerp(0, angle - 180, 2f));
+            transform.rotation = Quaternion.Euler(90, 0, angle - 180);
     }
     
     public IEnumerator Win()

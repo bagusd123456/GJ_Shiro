@@ -40,17 +40,18 @@ public class NPCMovement : MonoBehaviour
         
         if (offset != null)
         {
-            offset = new Vector3(Mathf.Sin(angle) * targetDistance, Mathf.Cos(angle) * targetDistance, 0) * targetDistance;
+            offset = new Vector3(Mathf.Sin(angle) * targetDistance, 0, Mathf.Cos(angle) * targetDistance) * targetDistance;
         }
-        rb.MovePosition(offset);
+        offset.y = transform.parent.position.y;
+        transform.position = offset;
     }
 
     public void LookAtTarget()
     {
-        Vector2 lookDir = rotateAround.position - transform.position;
-        float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
+        Vector3 lookDir = rotateAround.position - transform.position;
+        float angle = Mathf.Atan2(lookDir.z, lookDir.x) * Mathf.Rad2Deg - 90f;
 
-        transform.rotation = Quaternion.Euler(0, 0, angle);
+        transform.rotation = Quaternion.Euler(90, 0, angle);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
