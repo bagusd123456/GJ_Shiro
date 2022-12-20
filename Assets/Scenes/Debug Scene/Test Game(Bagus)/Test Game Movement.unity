@@ -1628,7 +1628,6 @@ MonoBehaviour:
   _rotateDir: 1
   levelList: []
   currentLevelIndex: 0
-  WinLayer: 0
   collide: 0
   wallDistance: 1
   canGo: 0
@@ -8143,6 +8142,10 @@ PrefabInstance:
       propertyPath: center
       value: 
       objectReference: {fileID: 543450652719231812}
+    - target: {fileID: 1965271478657266886, guid: 5e80f7052939e7b49ae3ac5a310dd8ee, type: 3}
+      propertyPath: levelList.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1965271478657266886, guid: 5e80f7052939e7b49ae3ac5a310dd8ee, type: 3}
       propertyPath: levelList.Array.data[0]
       value: 

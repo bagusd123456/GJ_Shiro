@@ -7,7 +7,6 @@ using UnityEngine.EventSystems;
 
 public class Portal : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
-    
     public enum PortalType { STANDARD, BUSWAY, BUSWAY_EXIT, POWERUP }
     public Vector3 center = Vector3.zero;
 
@@ -56,13 +55,10 @@ public class Portal : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler,
     public void testBusway()
     {
         SceneLoad.Instance.panelBusway.SetActive(true);
-
-        
     }
 
     public void TriggerPowerUp()
     {
-        
         Power = Random.Range(0, 3);
 
         if(Power == 0)
@@ -83,9 +79,6 @@ public class Portal : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler,
             //Attack Up
             Debug.Log("Attack Up !");
         }
-
-
-
     }
     
     public void DescendLevel()
@@ -106,10 +99,12 @@ public class Portal : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler,
         InputHandler.Instance._state = InputHandler.state.IDLE;
         target = InputHandler.Instance.GetSelectedPortal();
         Debug.Log("Selected");
+        InputHandler.Instance.selectedPortal = null;
 
         Time.timeScale = 1f;
         DescendToPosition(target.localPosition);
         player.currentAngle = target.GetComponent<Portal>().angle;
+        target = null;
     }
 
     public void DescendToPosition(Vector3 target)

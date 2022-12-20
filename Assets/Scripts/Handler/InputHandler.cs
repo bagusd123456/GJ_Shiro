@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SocialPlatforms;
 using static PlayerMovement;
+using static SceneLoad;
 
 public class InputHandler : MonoBehaviour
 {
@@ -18,13 +19,13 @@ public class InputHandler : MonoBehaviour
 
     public float direction;
 
-    public enum state { IDLE, CHOOSE, BUSY}
+    public enum state { IDLE, CHOOSE, BUSY }
     [Space]
     public state _state = state.IDLE;
     public Transform selectedPortal;
     private void Awake()
     {
-        if(player == null)
+        if (player == null)
             player = FindObjectOfType<PlayerMovement>();
         // If there is an instance, and it's not me, delete myself.
         if (Instance != null && Instance != this)
@@ -35,7 +36,7 @@ public class InputHandler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -67,8 +68,8 @@ public class InputHandler : MonoBehaviour
         }
 
         direction = player.CheckDirection();
-        
-        if(_state == state.CHOOSE)
+
+        if (_state == state.CHOOSE)
         {
             //ArenaManager.Instance.controllerList[+1].ToggleSelectablePortal(true);
         }
@@ -127,15 +128,21 @@ public class InputHandler : MonoBehaviour
     {
         if (player.CheckDirection() > 0)
             invertInput = false;
-        else if (player.CheckDirection() > 0.1f && player.CheckDirection() < 0.1f)
-            invertInput = true;
+        else if (player.CheckDirection() > 0f && player.CheckDirection() < 1.2f)
+        {
+
+        }
+        else if (player.CheckDirection() > -1.2f && player.CheckDirection() < 0f)
+        {
+
+        }
         else
             invertInput = true;
     }
 
     public Transform GetSelectedPortal()
     {
-        if(selectedPortal != null)
+        if (selectedPortal != null)
             return selectedPortal;
         else
             return null;

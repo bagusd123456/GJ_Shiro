@@ -2,27 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using System.Linq;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public static PlayerMovement Instance { get; private set; }
-    public Rigidbody2D rb;
-    public Animator animator;
+    Rigidbody2D rb;
+    Animator animator;
     public Transform center;
-    public Vector3 posOffset;
+    Vector3 posOffset;
+    public static PlayerMovement Instance { get; private set; }
 
     [Header("Movement Parameter")]
     public float movementSpeed = 1f;
-    public float targetDistance = 3f;
-    public float angle;
+    public float targetDistance = 2.8f;
+    float angle;
 
     public enum rotateDir { LEFT, RIGHT }
     public rotateDir _rotateDir = rotateDir.RIGHT;
 
-    public List<Transform> levelList = new List<Transform>();
+    List<ArenaController> levelList = new List<ArenaController>();
     public int currentLevelIndex = 0;
-
-    public int WinLayer;
 
     //Wall Detect
     public bool collide;
@@ -41,6 +40,10 @@ public class PlayerMovement : MonoBehaviour
             Destroy(this);
         else
             Instance = this;
+
+        levelList = FindObjectsOfType<ArenaController>().OrderBy(x=> x.transform.GetSiblingIndex()).ToList();
+        rb = gameObject.GetComponent<Rigidbody2D>();
+        animator = gameObject.GetComponentInChildren<Animator>();
     }
 
     // Start is called before the first frame update
@@ -107,12 +110,10 @@ public class PlayerMovement : MonoBehaviour
                 StartCoroutine(CanMove());
             }
 
-            if (currentLevelIndex == WinLayer)
+            if (currentLevelIndex == levelList.Count - 1)
             {
                 StartCoroutine(Win());
             }
-
-            
         }
         currentPortal = null;
     }
@@ -120,7 +121,7 @@ public class PlayerMovement : MonoBehaviour
     public void SetCurrentLevel(int index)
     {
         var lastArena = GetComponentInParent<ArenaController>().active = false;
-        transform.SetParent(levelList[index]);
+        transform.SetParent(levelList[index].transform);
         var currentArena = GetComponentInParent<ArenaController>().active = true;
         center = transform.parent;
     }
@@ -155,7 +156,6 @@ public class PlayerMovement : MonoBehaviour
 
         //Determine Angle
         var forward = transform.forward;
-        var angle = Vector3.Angle(relativePos, forward);
         var direction2 = Vector3.Cross(forward, relativePos).x;
         return direction2;
     }
