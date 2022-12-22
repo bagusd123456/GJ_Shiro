@@ -9,6 +9,15 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu Scene/MainMenu.unity
     guid: 75ffd19b1487ce346ac3b4f02674f642
   - enabled: 1
-    path: Assets/Scenes/InGame Scene/GameSupersuusususususuFIX.unity
-    guid: e305cb89304f033428e02d63136c0842
+    path: Assets/Scenes/InGame Scene/Level/Level 1.unity
+    guid: 769dfe3cd57609f498f43621dcad3d94
+  - enabled: 1
+    path: Assets/Scenes/InGame Scene/Level/Level 2.unity
+    guid: 875fc5d38e717ad48b87db76f0f7a174
+  - enabled: 1
+    path: Assets/Scenes/InGame Scene/Level/Level 3.unity
+    guid: 76ac037ade2b5ae40aba90fb59e5368a
+  - enabled: 1
+    path: Assets/Scenes/InGame Scene/Level/WIN.unity
+    guid: 7b7523ab479fe544996c0c0c2476dfc7
   m_configObjects: {}

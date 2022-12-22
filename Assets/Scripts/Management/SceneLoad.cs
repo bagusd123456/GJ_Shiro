@@ -118,6 +118,11 @@ public class SceneLoad : MonoBehaviour
 
     }
 
+    public void NextLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.R))

@@ -5,7 +5,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Portal : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
+public class Portal : MonoBehaviour
 {
     public enum PortalType { STANDARD, BUSWAY, BUSWAY_EXIT, POWERUP }
     public Vector3 center = Vector3.zero;
@@ -91,6 +91,7 @@ public class Portal : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler,
 
     IEnumerator ChoosePortal()
     {
+        SceneLoad.Instance.panelBusway.SetActive(true);
         Debug.Log("Please Select Portal");
         InputHandler.Instance._state = InputHandler.state.CHOOSE;
         Time.timeScale = 0f;
@@ -101,6 +102,7 @@ public class Portal : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler,
         Debug.Log("Selected");
         InputHandler.Instance.selectedPortal = null;
 
+        SceneLoad.Instance.panelBusway.SetActive(false);
         Time.timeScale = 1f;
         DescendToPosition(target.localPosition);
         player.currentAngle = target.GetComponent<Portal>().angle;
@@ -142,7 +144,7 @@ public class Portal : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler,
             collision.GetComponent<PlayerMovement>().canGo = false;
         }
     }
-
+    /*
     public void OnPointerClick(PointerEventData eventData)
     {
         if (_portalType == PortalType.BUSWAY_EXIT)
@@ -162,6 +164,7 @@ public class Portal : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler,
         if (_portalType == PortalType.BUSWAY_EXIT)
             gameObject.GetComponent<SpriteRenderer>().color = defaultColor;
     }
+    */
 }
 
 #if UNITY_EDITOR

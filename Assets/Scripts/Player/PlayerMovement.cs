@@ -56,7 +56,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        collide = Physics2D.Raycast(transform.position, transform.up, wallDistance, LayerMask.GetMask("Wall"));
+        collide = Physics.Raycast(transform.position, transform.up, wallDistance, LayerMask.GetMask("Wall"));
 
         if (!GetComponent<PlayerCondition>().isDead)
         {
@@ -139,7 +139,7 @@ public class PlayerMovement : MonoBehaviour
     
     public IEnumerator Win()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(3.5f);
         SceneLoad.Instance.panelMenang.SetActive(true);
     }
 
