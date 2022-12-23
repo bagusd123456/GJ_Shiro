@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using PathCreation;
-using static UnityEditor.Searcher.SearcherWindow.Alignment;
 
 public class PathDoor : MonoBehaviour
 {

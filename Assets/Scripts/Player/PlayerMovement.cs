@@ -20,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
     public enum rotateDir { LEFT, RIGHT }
     public rotateDir _rotateDir = rotateDir.RIGHT;
 
-    List<ArenaController> levelList = new List<ArenaController>();
+    public List<ArenaController> levelList = new List<ArenaController>();
     public int currentLevelIndex = 0;
 
     //Wall Detect
@@ -41,7 +41,7 @@ public class PlayerMovement : MonoBehaviour
         else
             Instance = this;
 
-        levelList = FindObjectsOfType<ArenaController>().OrderBy(x=> x.transform.GetSiblingIndex()).ToList();
+        //levelList = FindObjectsOfType<ArenaController>().OrderBy(x=> x.transform.GetSiblingIndex()).ToList();
         rb = gameObject.GetComponent<Rigidbody2D>();
         animator = gameObject.GetComponentInChildren<Animator>();
     }
