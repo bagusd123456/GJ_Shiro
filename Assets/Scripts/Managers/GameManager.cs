@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.AdaptivePerformance;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class GameManager : MonoBehaviour
     public List<ArenaController> arenaList = new List<ArenaController>();
     //public List<ArenaController> enemyArenaList = new List<ArenaController>();
     public static GameManager Instance { get; private set; }
+
+    private IAdaptivePerformance ap = null;
     private void Awake()
     {
         // If there is an instance, and it's not me, delete myself.
@@ -22,11 +25,24 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
         }
+
+        ap = Holder.Instance;
+        
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        if(ap != null)
+        {
+            if (!ap.Active)
+                return;
+            QualitySettings.lodBias = 1.0f;
+            OnBenchmark();
+
+        }
+        Application.targetFrameRate = 60;
+
         //arenaList = FindObjectsOfType<ArenaController>().OrderBy(x => x.name).ToList();
     }
 
@@ -60,5 +76,15 @@ public class GameManager : MonoBehaviour
         */
         //var GO = arenaList.Find(x => x.GetComponentInChildren<SpriteRenderer>() != null);
         //GO.enabled = false;
+    }
+
+    public void OnBenchmark()
+    {
+        var ctrl = ap.DevicePerformanceControl;
+        ctrl.CpuPerformanceBoost = true;
+        ctrl.GpuPerformanceBoost = true;
+        // Set higher CPU and GPU level when benchmarking a level
+        ctrl.CpuLevel = ctrl.MaxCpuPerformanceLevel;
+        ctrl.GpuLevel = ctrl.MaxGpuPerformanceLevel;
     }
 }

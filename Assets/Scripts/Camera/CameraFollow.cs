@@ -19,6 +19,9 @@ public class CameraFollow : MonoBehaviour
         {
             Instance = this;
         }
+
+        if (target == null)
+            target = GameObject.FindGameObjectWithTag("Player").transform;
     }
     // Start is called before the first frame update
     void Start()
