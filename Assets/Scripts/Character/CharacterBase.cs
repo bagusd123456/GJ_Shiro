@@ -8,7 +8,9 @@ public class CharacterBase : MonoBehaviour
     public StatsData statsData;
 
     [Header("Character Status")]
+    private int MaxHP;
     public int currentHP;
+    private int MaxMP;
     public int currentMP;
     [Space]
     public float moveSpeed;
@@ -17,6 +19,7 @@ public class CharacterBase : MonoBehaviour
     public int armor;
 
     public bool isDead;
+    public bool isTired;
 
     Animator _animator;
     public void Awake()
@@ -30,12 +33,16 @@ public class CharacterBase : MonoBehaviour
     public void Update()
     {
         OnDead();
+        OnTired();
     }
 
     public void SetupStats()
     {
-        currentHP = statsData.HP;
-        currentMP = statsData.MP;
+        MaxHP = statsData.HP;
+        currentHP = MaxHP;
+        
+        MaxMP = statsData.MP;
+        currentMP = MaxMP;
 
         moveSpeed = statsData.moveSpeed;
         attackDamage = statsData.attackDamage;
@@ -62,5 +69,42 @@ public class CharacterBase : MonoBehaviour
     {
         if(!isDead)
         currentHP -= damage;
+    }
+
+    public void GetHealth(int health)
+    {
+        if(currentHP != MaxHP)
+        {
+            currentHP += health;
+        }
+    }
+
+    public void GetMp(int Mana)
+    {
+        if (currentMP != MaxMP)
+        {
+            currentMP += Mana;
+        }
+    }
+
+    public void UseMana(int ManaLos)
+    {
+        if(currentMP !>= 0)
+        {
+            currentMP -= ManaLos;
+        }
+        
+    }
+    void OnTired()
+    {
+        if (currentMP <= 0)
+        {
+            this.isTired = true;
+            currentMP = 0;
+        }
+        else
+        {
+            this.isTired = false;
+        }
     }
 }

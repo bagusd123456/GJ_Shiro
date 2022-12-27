@@ -56,8 +56,9 @@ public class PlayerAttack : MonoBehaviour
 
     public void BasicAttack()
     {
-        if(_char._state == State.IDLE && !_char.isDead)
+        if(_char._state == State.IDLE && !_char.isDead && !_char.isTired)
         {
+            PlayerCondition.Instance.UseMana(10);
             currentAttackTime = 0;
             currentComboTime = 0;
             var GO = Instantiate(prj, spawnTarget.forward * distanceFromPlayer, Quaternion.identity, transform.parent);

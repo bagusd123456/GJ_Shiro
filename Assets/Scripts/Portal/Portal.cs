@@ -64,14 +64,17 @@ public class Portal : MonoBehaviour
         if(Power == 0)
         {
             SceneLoad.Instance.GetPower(0);
-            //Speed Up
-            Debug.Log("Speed Up !");
+            //Get Health
+
+            PlayerCondition.Instance.GetHealth(10);
+            Debug.Log("Get Health !");
         }
         if (Power == 1)
         {
             SceneLoad.Instance.GetPower(1);
-            //Armor Up
-            Debug.Log("Armor Up !");
+            //Get MP
+            PlayerCondition.Instance.GetMp(10);
+            Debug.Log("Get Mana !");
         }
         if (Power == 2)
         {
