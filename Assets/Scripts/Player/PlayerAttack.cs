@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using static PlayerMovement;
 using static PlayerCondition;
+using System.Linq;
 
 [RequireComponent(typeof(PlayerCondition))]
 public class PlayerAttack : MonoBehaviour
 {
     PlayerCondition _char;
+    ComboManager _comboManager;
 
     [Header("Attack Parameter")]
     public Projectiles prj;
@@ -16,9 +18,12 @@ public class PlayerAttack : MonoBehaviour
     float currentAttackTime;
     public float timeBetweenAttack = .5f;
 
-    float currentComboTime;
+    public float currentComboTime;
     public float cdCombo = 1.5f;
-    int comboIndex = 0;
+    [HideInInspector]
+    public int comboIndex = 0;
+
+    public List<int> comboInput = new List<int>(3);
 
     [Header("Defend Parameter")]
     public float cdDef = 1f;
@@ -26,6 +31,7 @@ public class PlayerAttack : MonoBehaviour
     private void Awake()
     {
         _char = GetComponent<PlayerCondition>();
+        _comboManager = GetComponent<ComboManager>();
     }
 
     // Start is called before the first frame update
@@ -51,6 +57,31 @@ public class PlayerAttack : MonoBehaviour
         else
         {
             comboIndex = 0;
+            for (int i = 0; i < comboInput.Count; i++)
+            {
+                comboInput[i] = 0;
+            }
+        }
+    }
+
+    public void RegisterCombo(int input)
+    {
+        if(comboIndex < 3)
+        {
+            currentComboTime = 0;
+            comboInput[comboIndex] = input;
+            comboIndex++;
+            CheckCombo(comboInput.ToList());
+        }
+        
+    }
+
+    public void CheckCombo(List<int> input)
+    {
+        for (int i = 0; i < _comboManager.comboMove.Count; i++)
+        {
+            if (ComboManager.CountMatches(_comboManager.comboMove[i].comboMove, comboInput) == comboInput.Count)
+                _comboManager.Attack(i);
         }
     }
 
@@ -59,46 +90,35 @@ public class PlayerAttack : MonoBehaviour
         if(_char._state == State.IDLE && !_char.isDead && !_char.isTired)
         {
             PlayerCondition.Instance.UseMana(10);
-            currentAttackTime = 0;
-            currentComboTime = 0;
-            var GO = Instantiate(prj, spawnTarget.forward * distanceFromPlayer, Quaternion.identity, transform.parent);
-            GO.player = PlayerMovement.Instance;
-            GO.center = PlayerMovement.Instance.center;
-            if (gameObject.GetComponent<PlayerMovement>()._rotateDir == rotateDir.RIGHT)
-            {
-                GO.currentAngle = CurrentAngle() + distanceFromPlayer;
-                GO.inverseRotation = false;
-            }
+            currentAttackTime = 0; //Time needed before next Attack
 
-            else
-            {
-                GO.currentAngle = CurrentAngle() - distanceFromPlayer;
-                GO.inverseRotation = true;
-            }
-
-            switch (comboIndex)
-            {
-                case 0:
-                    //Debug.Log("Attack 1");
-                    comboIndex++;
-                    break;
-                case 1:
-                    //Debug.Log("Attack 2");
-                    comboIndex++;
-                    break;
-                case 2:
-                    //Debug.Log("Attack 3");
-                    comboIndex++;
-                    break;
-                default:
-                    break;
-            }
+            SpawnProjectile();
         }
+    }
+
+    public Projectiles SpawnProjectile()
+    {
+        var GO = Instantiate(prj, spawnTarget.forward * distanceFromPlayer, Quaternion.identity, transform.parent);
+        GO.player = PlayerMovement.Instance;
+        GO.center = PlayerMovement.Instance.center;
+
+        if (gameObject.GetComponent<PlayerMovement>()._rotateDir == rotateDir.RIGHT)
+        {
+            GO.currentAngle = CurrentAngle() + distanceFromPlayer;
+            GO.inverseRotation = false;
+        }
+
+        else
+        {
+            GO.currentAngle = CurrentAngle() - distanceFromPlayer;
+            GO.inverseRotation = true;
+        }
+        return GO;
     }
 
     public IEnumerator Defend()
     {
-        if(_char._state == State.IDLE && !_char.isDead)
+        if(!_char.isDead)
         {
             _char._state = State.DEFENDING;
             comboIndex = 0;

@@ -5,7 +5,7 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class Btn_Action : MonoBehaviour,IPointerClickHandler, IPointerDownHandler, IPointerUpHandler
+public class Btn_Action : MonoBehaviour,IPointerClickHandler, IPointerUpHandler
 {
     Slider btnSlider;
     PlayerAttack player;
@@ -21,42 +21,41 @@ public class Btn_Action : MonoBehaviour,IPointerClickHandler, IPointerDownHandle
             InputHandler.Instance.GoUp();
     }
 
-    public void OnPointerDown(PointerEventData eventData)
-    {
-
-    }
-
     public void OnPointerUp(PointerEventData eventData)
     {
         if (InputHandler.Instance.canMove)
         {
             if (btnSlider.value == 1)
             {
+                //Reset Value to 0
                 btnSlider.value = 0;
 
                 if (player != null)
-                    player.BasicAttack();
-                //Debug.Log("Attack");
+                    player.RegisterCombo(1);
             }
 
             else if (btnSlider.value == -1)
             {
-                btnSlider.value = 0;
-                StartCoroutine(player.Defend());
+                if (player.currentComboTime >= 0)
+                {
+                    //Reset Value to 0
+                    btnSlider.value = 0;
+                    //Register Current Input to PlayerAttack
+                    player.RegisterCombo(-1);
+
+                    //Trigger Defend Mechanic on First Combo
+                    if (player.comboIndex == 1)
+                        StartCoroutine(player.Defend());
+
+                }
             }
 
             else
-            {
                 btnSlider.value = 0;
-                //Debug.Log("Do Nothing");
-            }
         }
 
         else
-        {
             btnSlider.value = 0;
-            //Debug.Log("Do Nothing");
-        }
     }
 
     private void Awake()
@@ -64,12 +63,6 @@ public class Btn_Action : MonoBehaviour,IPointerClickHandler, IPointerDownHandle
         if (btnSlider == null)
             btnSlider = GetComponent<Slider>();
         player = FindObjectOfType<PlayerAttack>();
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
     }
 
     // Update is called once per frame

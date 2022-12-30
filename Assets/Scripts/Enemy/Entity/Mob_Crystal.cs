@@ -9,9 +9,10 @@ public class Mob_Crystal : MonoBehaviour
     public Vector3 target;
     bool inRange;
     public float distance;
+    public bool collide;
     public float closeDistance;
 
-    public enum state { IDLE, PATROL, HOSTILE, ATTACKING, FALLBACK}
+    public enum state { IDLE, PATROL, HOSTILE, DASHING, ATTACKING}
     public state _state = state.IDLE;
 
     float time;
@@ -33,10 +34,16 @@ public class Mob_Crystal : MonoBehaviour
         if (time > 0)
             time -= Time.deltaTime;
 
-        inRange = Physics2D.Raycast(transform.position, -transform.right, distance, LayerMask.GetMask("Wall"));
-
-        if (inRange && _state == state.PATROL)
+        if(_state == state.DASHING || _state == state.ATTACKING)
         {
+            collide = Physics2D.OverlapCircle(transform.position, closeDistance, LayerMask.GetMask("Wall"));
+        }
+
+        else if (_state == state.PATROL)
+        {
+            inRange = Physics2D.Raycast(transform.position, -transform.right, distance, LayerMask.GetMask("Wall"));
+
+            if(inRange)
             StartCoroutine(FallbackBehavior());
         }
 
@@ -45,22 +52,23 @@ public class Mob_Crystal : MonoBehaviour
 
     public IEnumerator FallbackBehavior()
     {
+        inRange = false;
         _state = state.IDLE;
         yield return new WaitForSeconds(.5f);
         _state = state.HOSTILE;
         yield return new WaitForSeconds(.5f);
-        StartCoroutine(AttackBehavior());
+        StartCoroutine(DashAttack());
     }
 
-    public IEnumerator AttackBehavior()
+    public IEnumerator DashAttack()
     {
-        bool collide = Physics2D.Raycast(transform.position,-transform.right,3f, LayerMask.GetMask("Wall"));
-        _state = state.ATTACKING;
-        yield return new WaitUntil(()=> collide || inRange);
+        //bool collide = Physics2D.Raycast(transform.position,-transform.right,3f, LayerMask.GetMask("Wall")); Gak bisa raycast di Coroutine
+        _state = state.DASHING;
+        yield return new WaitUntil(() => collide);
+        collide = false;
         _state = state.IDLE;
         yield return new WaitForSeconds(1f);
-        _state = state.PATROL;
-
+        _state = state.ATTACKING;
     }
 
     public void Movement()
@@ -70,6 +78,7 @@ public class Mob_Crystal : MonoBehaviour
             case state.IDLE:
                 movement.moveDir = 0;
                 break;
+
             case state.PATROL:
                 movement.moveDir = 1;
                 movement.movementSpeed = 1f;
@@ -79,10 +88,32 @@ public class Mob_Crystal : MonoBehaviour
                 movement.moveDir = -1;
                 break;
 
-            case state.ATTACKING:
+            case state.DASHING:
                 movement.moveDir = 1;
                 movement.movementSpeed = 2f;
                 break;
+
+            case state.ATTACKING:
+                StartCoroutine(MeleeAttack());
+                break;
+        }
+    }
+
+    public IEnumerator MeleeAttack()
+    {
+        if (collide)
+        {
+            if (time <= 0)
+            {
+                Debug.Log("Attack Player");
+                time = timeCooldown;
+            }
+        }
+        else
+        {
+            _state = state.IDLE;
+            yield return new WaitForSeconds(0.5f);
+            _state = state.PATROL;
         }
     }
 
@@ -92,5 +123,17 @@ public class Mob_Crystal : MonoBehaviour
             Debug.DrawRay(transform.position, -transform.right * distance, Color.white);
         else
             Debug.DrawRay(transform.position, -transform.right * distance, Color.red);
+
+        if (!collide)
+        {
+            Gizmos.color = Color.white;
+            Gizmos.DrawWireSphere(transform.position, closeDistance);
+        }
+
+        else
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position, closeDistance);
+        }
     }
 }

@@ -19,5 +19,7 @@ public class NPCCondition : CharacterBase
     new void Update()
     {
         base.Update();
+        if(isDead)
+            Destroy(gameObject);
     }
 }
