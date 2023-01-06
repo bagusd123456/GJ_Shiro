@@ -29,7 +29,6 @@ public class ArenaController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //if(collider == null)
         polygonCollider = GetComponentInChildren<PolygonCollider2D>();
         colliderList = GetComponentsInChildren<Collider2D>().ToList();
 
@@ -51,27 +50,16 @@ public class ArenaController : MonoBehaviour
 
         for (int i = 0; i < colliderList.Count; i++)
         {
-            if (colliderList[i].GetComponent<CapsuleCollider2D>() == null)
-                colliderList[i].enabled = active;
+            if (colliderList[i] != null)
+            {
+                if (colliderList[i].GetComponent<CapsuleCollider2D>() == null)
+                    colliderList[i].enabled = active;
+            }
         }
-
-        
-
     }
 
     public void ToggleSelectablePortal(bool T)
     {
         active = T;
-
-        /*if(T == true)
-            for (int a = 0; a < colliderList.Count; a++)
-            {
-                colliderList[a].GetComponent<Collider2D>().enabled = true;
-            }
-        else
-            for (int b = 0; b < colliderList.Count; b++)
-            {
-                colliderList[b].GetComponent<Collider2D>().enabled = false;
-            }*/
     }
 }

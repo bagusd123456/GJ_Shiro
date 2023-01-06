@@ -5,8 +5,7 @@ using UnityEngine;
 public class Mob_Crystal : MonoBehaviour
 {
     NPCMovement movement;
-
-    public Vector3 target;
+    
     bool inRange;
     public float distance;
     public bool collide;
@@ -15,6 +14,7 @@ public class Mob_Crystal : MonoBehaviour
     public enum state { IDLE, PATROL, HOSTILE, DASHING, ATTACKING}
     public state _state = state.IDLE;
 
+    [Header("Attack Parameter")]
     float time;
     public float timeCooldown = 0.8f;
     private void Awake()
@@ -76,20 +76,18 @@ public class Mob_Crystal : MonoBehaviour
         switch (_state)
         {
             case state.IDLE:
-                movement.moveDir = 0;
+                movement.movementSpeed = 0f;
                 break;
 
             case state.PATROL:
-                movement.moveDir = 1;
                 movement.movementSpeed = 1f;
                 break;
 
             case state.HOSTILE:
-                movement.moveDir = -1;
+                movement.movementSpeed = -1f;
                 break;
 
             case state.DASHING:
-                movement.moveDir = 1;
                 movement.movementSpeed = 2f;
                 break;
 

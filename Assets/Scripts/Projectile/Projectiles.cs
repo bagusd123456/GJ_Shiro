@@ -29,7 +29,7 @@ public class Projectiles : MonoBehaviour
     }
 
     //Get Next Position Based on Angle & Distance
-    Vector3 GetPosition(float degrees, float dist)
+    public static Vector3 GetPosition(float degrees, float dist)
     {
         float a = degrees * Mathf.PI / 180f;
         return new Vector3(Mathf.Sin(a) * dist, Mathf.Cos(a) * dist, 0);

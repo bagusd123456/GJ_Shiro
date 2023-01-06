@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class NPCMovement : MonoBehaviour
 {
+    public enum rotateDir { LEFT, RIGHT }
+    public rotateDir _rotateDir = rotateDir.RIGHT;
+
     public Transform rotateAround;
     public float movementSpeed = 1f;
     public float targetDistance = 3f;
@@ -15,7 +18,14 @@ public class NPCMovement : MonoBehaviour
     float time;
     public float timeMovement;
     public int moveDir;
-    
+    private void Awake()
+    {
+        if (rotateAround == null)
+            rotateAround = transform.parent;
+
+        angle = CalculateAngle();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,12 +46,10 @@ public class NPCMovement : MonoBehaviour
     public void Move(int direction)
     {
         time = timeMovement;
-        angle += movementSpeed * direction * Time.deltaTime;
-        
-        if (offset != null)
-        {
-            offset = new Vector3(Mathf.Sin(angle) * targetDistance, Mathf.Cos(angle) * targetDistance, 0) * targetDistance;
-        }
+        angle += movementSpeed * Mathf.Rad2Deg * direction * Time.deltaTime;
+
+        Vector3 targetPos = GetPosition(angle, targetDistance);
+        transform.position = rotateAround.position + targetPos;
         rb.MovePosition(offset);
     }
 
@@ -50,7 +58,10 @@ public class NPCMovement : MonoBehaviour
         Vector2 lookDir = rotateAround.position - transform.position;
         float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
 
-        transform.rotation = Quaternion.Euler(0, 0, angle);
+        if(moveDir > 0)
+            transform.rotation = Quaternion.Euler(0, 0, angle);
+        else
+            transform.rotation = Quaternion.Euler(0, 0, angle + 180f);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -86,6 +97,24 @@ public class NPCMovement : MonoBehaviour
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;
-        isFacingRight = !isFacingRight;
+
+        if(_rotateDir == 0)
+            _rotateDir = rotateDir.RIGHT;
+        else
+            _rotateDir = rotateDir.LEFT;
+
+    }
+
+    Vector3 GetPosition(float degrees, float dist)
+    {
+        float a = degrees * Mathf.PI / 180f;
+        return new Vector3(Mathf.Sin(a) * dist, Mathf.Cos(a) * dist, 0);
+    }
+
+    float CalculateAngle()
+    {
+        Vector3 dir = rotateAround.position - transform.position;
+        float result = Mathf.Atan2(dir.x, dir.y) * Mathf.Rad2Deg + 180f;
+        return result;
     }
 }
