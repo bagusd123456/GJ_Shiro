@@ -7,6 +7,7 @@ using TMPro;
 
 public class BtnPortal : MonoBehaviour
 {
+    public static BtnPortal Instance { get; private set; }
 
     public List<Button> BtnList = new List<Button>();
     public GameObject btnPrefabs;
@@ -14,11 +15,27 @@ public class BtnPortal : MonoBehaviour
     int index;
     private void Awake()
     {
-        GetNextArena();
+        
+        //nextArena = null;
     }
     private void Start()
     {
         
+    }
+
+    private void OnEnable()
+    {
+        GetNextArena();
+    }
+
+    private void OnDisable()
+    {
+        nextArena = null;
+        BtnList = null;
+        foreach (Transform child in transform)
+        {
+            Destroy(child.gameObject);
+        }
     }
 
     private void Update()
@@ -35,6 +52,7 @@ public class BtnPortal : MonoBehaviour
                 button.GetComponent<Button>().onClick.AddListener(nextArena.portalList[i].SelectThis);
                 BtnList.Add(button.GetComponent<Button>());
             }
+            
         }
     }
 

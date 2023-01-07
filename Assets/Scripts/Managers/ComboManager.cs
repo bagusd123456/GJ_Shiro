@@ -23,7 +23,15 @@ public class ComboManager : MonoBehaviour
             case 2:
                 Combo3();
                 break;
+
+            case 3:
+                Combo4();
+                break;
+            case 4:
+                Combo5();
+                break;
         }
+
     }
 
     public void Combo1()
@@ -41,6 +49,18 @@ public class ComboManager : MonoBehaviour
     {
         Debug.Log("Attack 3");
     }
+
+    public void Combo4()
+    {
+        Debug.Log("Attack 4");
+    }
+
+    public void Combo5()
+    {
+        Debug.Log("Attack 5");
+    }
+
+
     public static int CountMatches(List<int> required, List<int> taken)
     {
         int numMatches = 0;

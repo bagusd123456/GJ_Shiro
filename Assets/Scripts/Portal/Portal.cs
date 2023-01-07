@@ -19,14 +19,14 @@ public class Portal : MonoBehaviour
 
     float angle;
 
-    Color defaultColor;
+    //Color defaultColor;
     int Power;
 
     private void Awake()
     {
         player = FindObjectOfType<PlayerMovement>();
         angle = CalculateAngle();
-        defaultColor = GetComponent<SpriteRenderer>().color;
+        //defaultColor = GetComponent<SpriteRenderer>().color;
     }
     
     public void TriggerPortal()
@@ -104,12 +104,14 @@ public class Portal : MonoBehaviour
         target = InputHandler.Instance.GetSelectedPortal();
         Debug.Log("Selected");
         InputHandler.Instance.selectedPortal = null;
-
-        SceneLoad.Instance.panelBusway.SetActive(false);
+        
+        
         Time.timeScale = 1f;
         DescendToPosition(target.localPosition);
         player.currentAngle = target.GetComponent<Portal>().angle;
         target = null;
+        SceneLoad.Instance.panelBusway.SetActive(false);
+
     }
 
     public void DescendToPosition(Vector3 target)

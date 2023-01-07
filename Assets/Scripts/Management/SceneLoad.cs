@@ -50,7 +50,9 @@ public class SceneLoad : MonoBehaviour
         {
             return;
         }
+
         
+
     }
     public void NewGame()
     {

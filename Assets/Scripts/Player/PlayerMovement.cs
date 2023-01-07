@@ -7,7 +7,7 @@ using System.Linq;
 public class PlayerMovement : MonoBehaviour
 {
     Rigidbody2D rb;
-    Animator animator;
+    [HideInInspector] public Animator animator;
     public Transform center;
     Vector3 posOffset;
     public static PlayerMovement Instance { get; private set; }
@@ -44,6 +44,7 @@ public class PlayerMovement : MonoBehaviour
         //levelList = FindObjectsOfType<ArenaController>().OrderBy(x=> x.transform.GetSiblingIndex()).ToList();
         rb = gameObject.GetComponent<Rigidbody2D>();
         animator = gameObject.GetComponentInChildren<Animator>();
+        DOTween.Clear(true);
     }
 
     // Start is called before the first frame update
@@ -140,7 +141,8 @@ public class PlayerMovement : MonoBehaviour
     public IEnumerator Win()
     {
         yield return new WaitForSeconds(3.5f);
-        SceneLoad.Instance.panelMenang.SetActive(true);
+        //SceneLoad.Instance.panelMenang.SetActive(true);
+        SceneLoad.Instance.NextLevel();
     }
 
     public IEnumerator CanMove()
