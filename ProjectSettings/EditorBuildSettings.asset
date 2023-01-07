@@ -18,6 +18,27 @@ EditorBuildSettings:
     path: Assets/Scenes/InGame Scene/Level/Level 3.unity
     guid: 76ac037ade2b5ae40aba90fb59e5368a
   - enabled: 1
+    path: Assets/Scenes/InGame Scene/Level/Level 4.unity
+    guid: efac4bae8f9910a40863fa884946c275
+  - enabled: 1
+    path: Assets/Scenes/InGame Scene/Level/Level 5.unity
+    guid: 79fb3a57c75470d41be66406d0b91636
+  - enabled: 1
+    path: Assets/Scenes/InGame Scene/Level/Level 6.unity
+    guid: 26598521893dda5448c525f67c96cbb1
+  - enabled: 1
+    path: Assets/Scenes/InGame Scene/Level/Level 7.unity
+    guid: 03279961111614d46b8bc45d1a064a59
+  - enabled: 1
+    path: Assets/Scenes/InGame Scene/Level/Level 8.unity
+    guid: 9b1f6cdc6a36e6b4cb73331cf5241962
+  - enabled: 1
+    path: Assets/Scenes/InGame Scene/Level/Level 9.unity
+    guid: f82079f7e4e0564498a60bde8306cc45
+  - enabled: 1
+    path: Assets/Scenes/InGame Scene/Level/Level 10.unity
+    guid: 41c02b97c4ddadf45bc80441ec5074fd
+  - enabled: 1
     path: Assets/Scenes/InGame Scene/Level/WIN.unity
     guid: 7b7523ab479fe544996c0c0c2476dfc7
   m_configObjects:
