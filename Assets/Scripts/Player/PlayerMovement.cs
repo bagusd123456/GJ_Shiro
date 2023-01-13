@@ -51,13 +51,13 @@ public class PlayerMovement : MonoBehaviour
     {
         //Calculate Angle
         currentAngle = CalculateAngle();
+
     }
 
     // Update is called once per frame
     void Update()
     {
         collide = Physics.Raycast(transform.position, transform.up, wallDistance, LayerMask.GetMask("Wall"));
-
         if (!GetComponent<PlayerCondition>().isDead)
         {
             //float vertical = Input.GetAxisRaw("Vertical");
@@ -80,7 +80,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if (!collide)
             {
-                currentAngle += + movementSpeed * Mathf.Rad2Deg * index * Time.deltaTime;
+                currentAngle += movementSpeed * Mathf.Rad2Deg * index * Time.deltaTime;
                 //angle += movementSpeed * index * Time.deltaTime;
             }
 
@@ -162,8 +162,10 @@ public class PlayerMovement : MonoBehaviour
 
     public float CalculateAngle()
     {
-        Vector2 dir = new Vector3(0, transform.position.y, 0) - transform.position;
-        float result = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        Vector3 dir = new Vector3(0, 0, transform.position.z) - transform.position;
+        float result = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg + 90f;
+        if (result < 0)
+            result = result * -1;
         return result;
     }
 

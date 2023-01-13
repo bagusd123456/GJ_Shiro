@@ -132,7 +132,7 @@ public class Portal : MonoBehaviour
         InputHandler.Instance.selectedPortal = this.transform;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter(Collider collision)
     {
         if(collision.tag.Equals("Player") && _portalType != PortalType.BUSWAY_EXIT)
         {
@@ -140,34 +140,13 @@ public class Portal : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnTriggerExit(Collider collision)
     {
         if (collision.tag.Equals("Player") && _portalType != PortalType.BUSWAY_EXIT)
         {
             collision.GetComponent<PlayerMovement>().canGo = false;
         }
     }
-    /*
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        if (_portalType == PortalType.BUSWAY_EXIT)
-        {
-            SelectThis();
-        }
-    }
-
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        if(_portalType == PortalType.BUSWAY_EXIT)
-            gameObject.GetComponent<SpriteRenderer>().color = Color.red;
-    }
-
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        if (_portalType == PortalType.BUSWAY_EXIT)
-            gameObject.GetComponent<SpriteRenderer>().color = defaultColor;
-    }
-    */
 }
 
 #if UNITY_EDITOR

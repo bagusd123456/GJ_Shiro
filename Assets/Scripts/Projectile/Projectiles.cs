@@ -47,7 +47,7 @@ public class Projectiles : MonoBehaviour
         transform.position = center.position + targetPos + offset;
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter(Collider other)
     {
         //Damage every Character Collide
         if(other.GetComponent<CharacterBase>() != null)

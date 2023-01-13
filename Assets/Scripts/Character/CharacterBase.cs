@@ -65,7 +65,7 @@ public class CharacterBase : MonoBehaviour
             _animator.SetBool("isWalking",true);
     }
 
-    public void TakeDamage(int damage)
+    public virtual void TakeDamage(int damage)
     {
         if(!isDead)
         currentHP -= damage;

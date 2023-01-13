@@ -3,13 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using static NPCMovement;
 
-[RequireComponent(typeof(NPCMovement))]
-public class Mob_Slime : MonoBehaviour
+public class Boss_Kuro : MonoBehaviour
 {
-    NPCMovement movement;
-    FieldOfView fov;
-
     bool inRange;
+    public PlayerCondition player;
     public float distance;
     public bool collide;
     public float closeDistance;
@@ -27,23 +24,12 @@ public class Mob_Slime : MonoBehaviour
 
     private void OnValidate()
     {
-        if(movement == null)
-            movement = GetComponent<NPCMovement>();
+        
     }
     private void Awake()
     {
-        movement = GetComponent<NPCMovement>();
-        fov = GetComponent<FieldOfView>();
-    }
-
-    private void OnDisable()
-    {
-        movement.enabled = false;
-    }
-
-    private void OnEnable()
-    {
-        movement.enabled = true;
+        //player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerCondition>();
+        player = FindObjectOfType<PlayerCondition>();
     }
 
     // Start is called before the first frame update
@@ -57,20 +43,6 @@ public class Mob_Slime : MonoBehaviour
     {
         if (time > 0)
             time -= Time.deltaTime;
-
-        if (!GameManager.Instance.player.isDead)
-        {
-            inRange = fov.canSeePlayer;
-            if (inRange)
-                _state = state.ATTACKING;
-            else
-                _state = state.PATROL;
-
-            Movement();
-        }
-            
-        else
-            _state = state.IDLE;
     }
 
     public void Movement()
@@ -78,23 +50,23 @@ public class Mob_Slime : MonoBehaviour
         switch (_state)
         {
             case state.IDLE:
-                movement.movementSpeed = 0f;
+                
                 break;
 
             case state.PATROL:
-                movement.movementSpeed = 1f;
+                
                 break;
 
             case state.HOSTILE:
-                movement.movementSpeed = -1f;
+                
                 break;
 
             case state.DASHING:
-                movement.movementSpeed = 2f;
+                
                 break;
 
             case state.ATTACKING:
-                movement.movementSpeed = 0f;
+                
                 BasicAttack();
                 break;
         }
@@ -145,6 +117,6 @@ public class Mob_Slime : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireSphere(GetPosition(CurrentAngle() + distanceFromUser, movement.targetDistance), 0.2f);
+        Debug.DrawRay(transform.position, transform.right * 2f);
     }
 }

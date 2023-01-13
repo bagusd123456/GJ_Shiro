@@ -14,7 +14,7 @@ public class NPCMovement : MonoBehaviour
     Vector3 offset;
     public bool isFacingRight = false;
 
-    public Rigidbody2D rb;
+    public Rigidbody rb;
     float time;
     public float timeMovement;
     public int moveDir;
@@ -64,7 +64,7 @@ public class NPCMovement : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, 0, angle + 180f);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter(Collider collision)
     {
         if (collision.CompareTag("NPCBorder"))
         {

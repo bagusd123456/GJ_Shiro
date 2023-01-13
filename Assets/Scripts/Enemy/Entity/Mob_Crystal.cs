@@ -5,6 +5,7 @@ using UnityEngine;
 public class Mob_Crystal : MonoBehaviour
 {
     NPCMovement movement;
+    FieldOfView fov;
     
     bool inRange;
     public float distance;
@@ -20,12 +21,17 @@ public class Mob_Crystal : MonoBehaviour
     private void Awake()
     {
         movement = GetComponent<NPCMovement>();
+        fov = GetComponent<FieldOfView>();
     }
 
-    // Start is called before the first frame update
-    void Start()
+    private void OnDisable()
     {
-        
+        movement.enabled = false;
+    }
+
+    private void OnEnable()
+    {
+        movement.enabled = true;
     }
 
     // Update is called once per frame
@@ -34,20 +40,27 @@ public class Mob_Crystal : MonoBehaviour
         if (time > 0)
             time -= Time.deltaTime;
 
-        if(_state == state.DASHING || _state == state.ATTACKING)
+        if (!GameManager.Instance.player.isDead)
         {
-            collide = Physics2D.OverlapCircle(transform.position, closeDistance, LayerMask.GetMask("Wall"));
+            if (_state == state.DASHING || _state == state.ATTACKING)
+            {
+                Collider[] hit = Physics.OverlapSphere(transform.position, closeDistance, LayerMask.GetMask("Wall"));
+                if (hit.Length > 0)
+                    collide = true;
+                else
+                    collide = false;
+            }
+
+            else if (_state == state.PATROL)
+            {
+                inRange = fov.canSeePlayer;
+
+                if (inRange)
+                    StartCoroutine(FallbackBehavior());
+            }
+
+            Movement();
         }
-
-        else if (_state == state.PATROL)
-        {
-            inRange = Physics2D.Raycast(transform.position, -transform.right, distance, LayerMask.GetMask("Wall"));
-
-            if(inRange)
-            StartCoroutine(FallbackBehavior());
-        }
-
-        Movement();
     }
 
     public IEnumerator FallbackBehavior()
