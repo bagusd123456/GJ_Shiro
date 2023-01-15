@@ -249,7 +249,7 @@ GameObject:
   - component: {fileID: 1688856950559181574}
   - component: {fileID: 1965271478657266886}
   - component: {fileID: 1512314575}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: FIXXX TO THE FIX PLAYER
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -350,6 +350,7 @@ MonoBehaviour:
   isDead: 0
   isTired: 0
   _state: 0
+  damageTakenCD: 0
 --- !u!114 &1965271478657266886
 MonoBehaviour:
   m_ObjectHideFlags: 0

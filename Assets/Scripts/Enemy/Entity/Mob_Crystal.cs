@@ -44,7 +44,7 @@ public class Mob_Crystal : MonoBehaviour
         {
             if (_state == state.DASHING || _state == state.ATTACKING)
             {
-                Collider[] hit = Physics.OverlapSphere(transform.position, closeDistance, LayerMask.GetMask("Wall"));
+                Collider[] hit = Physics.OverlapSphere(transform.position, closeDistance, fov.targetMask);
                 if (hit.Length > 0)
                     collide = true;
                 else
