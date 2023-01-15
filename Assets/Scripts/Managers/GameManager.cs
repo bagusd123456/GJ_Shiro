@@ -26,29 +26,39 @@ public class GameManager : MonoBehaviour
             Instance = this;
         }
 
-        ap = Holder.Instance;
         
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        if(ap != null)
+        ap = Holder.Instance;
+
+        Application.targetFrameRate = 120;
+        QualitySettings.lodBias = 1.0f;
+        QualitySettings.vSyncCount = 0;
+        Screen.SetResolution(Screen.width, Screen.height, true, 60);
+
+        if (ap != null)
         {
             if (!ap.Active)
                 return;
-            QualitySettings.lodBias = 1.0f;
-            OnBenchmark();
-
+            else
+                OnBenchmark();
         }
-        Application.targetFrameRate = 60;
 
         //arenaList = FindObjectsOfType<ArenaController>().OrderBy(x => x.name).ToList();
+    }
+
+    private void FixedUpdate()
+    {
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+
         activeIndex = PlayerMovement.Instance.currentLevelIndex;
         //enemyActiveIndex = (RotateObject.Instance.currentLevelIndex) - 2;
         if(InputHandler.Instance._state != InputHandler.state.CHOOSE)

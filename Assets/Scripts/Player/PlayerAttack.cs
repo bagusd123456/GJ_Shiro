@@ -117,12 +117,15 @@ public class PlayerAttack : MonoBehaviour
         if (gameObject.GetComponent<PlayerMovement>()._rotateDir == rotateDir.RIGHT)
         {
             GO.currentAngle = CurrentAngle() + distanceFromPlayer;
+            GO.RotationSet();
             GO.inverseRotation = false;
+
         }
 
         else
         {
             GO.currentAngle = CurrentAngle() - distanceFromPlayer;
+            GO.RotationSet();
             GO.inverseRotation = true;
         }
         return GO;

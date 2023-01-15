@@ -164,12 +164,12 @@ public class PlayerMovement : MonoBehaviour
 
     public float CalculateAngle()
     {
-        Vector2 dir = new Vector3(0, transform.position.y, 0) - transform.position;
-        float result = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        Vector2 dir = center.position - transform.position;
+        float result = Mathf.Atan2(dir.x, dir.y) * Mathf.Rad2Deg + 180f;
         return result;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter(Collider collision)
     {
         if (collision.GetComponent<Portal>() != null)
         {
@@ -178,7 +178,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnTriggerExit(Collider collision)
     {
         if (collision.tag == "Portal")
         {

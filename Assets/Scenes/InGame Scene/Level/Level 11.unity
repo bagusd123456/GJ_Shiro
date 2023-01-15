@@ -422,8 +422,8 @@ GameObject:
   m_Component:
   - component: {fileID: 151752592}
   - component: {fileID: 151752595}
-  - component: {fileID: 151752594}
   - component: {fileID: 151752593}
+  - component: {fileID: 151752594}
   m_Layer: 0
   m_Name: Circle (7)
   m_TagString: Portal
@@ -460,22 +460,19 @@ MonoBehaviour:
   center: {x: 0, y: 0, z: 0}
   _portalType: 0
   target: {fileID: 0}
---- !u!58 &151752594
-CircleCollider2D:
+--- !u!135 &151752594
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 151752591}
-  m_Enabled: 1
-  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.0000009536743}
+  m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5000001
+  m_Radius: 0.5000002
+  m_Center: {x: 0, y: -0.00000017881393, z: 0.0000009536743}
 --- !u!212 &151752595
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -617,8 +614,8 @@ GameObject:
   m_Component:
   - component: {fileID: 191468564}
   - component: {fileID: 191468567}
-  - component: {fileID: 191468566}
   - component: {fileID: 191468565}
+  - component: {fileID: 191468566}
   m_Layer: 0
   m_Name: Circle (4)
   m_TagString: Portal
@@ -655,22 +652,19 @@ MonoBehaviour:
   center: {x: 0, y: 0, z: 0}
   _portalType: 2
   target: {fileID: 0}
---- !u!58 &191468566
-CircleCollider2D:
+--- !u!135 &191468566
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 191468563}
-  m_Enabled: 1
-  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.0000009536743}
+  m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5000001
+  m_Radius: 0.5000002
+  m_Center: {x: 0, y: -0.00000023841858, z: 0}
 --- !u!212 &191468567
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -732,8 +726,8 @@ GameObject:
   m_Component:
   - component: {fileID: 225381063}
   - component: {fileID: 225381065}
-  - component: {fileID: 225381064}
   - component: {fileID: 225381066}
+  - component: {fileID: 225381064}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Portal
@@ -755,22 +749,19 @@ Transform:
   m_Father: {fileID: 2086251173}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!58 &225381064
-CircleCollider2D:
+--- !u!135 &225381064
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 225381062}
-  m_Enabled: 1
-  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.0000009536743}
+  m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5000001
+  m_Radius: 0.5000002
+  m_Center: {x: 0, y: -0.00000071525574, z: 0.0000076293945}
 --- !u!212 &225381065
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1064,8 +1055,8 @@ GameObject:
   m_Component:
   - component: {fileID: 313388597}
   - component: {fileID: 313388599}
-  - component: {fileID: 313388598}
   - component: {fileID: 313388600}
+  - component: {fileID: 313388598}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Portal
@@ -1087,22 +1078,19 @@ Transform:
   m_Father: {fileID: 445713150}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!58 &313388598
-CircleCollider2D:
+--- !u!135 &313388598
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 313388596}
-  m_Enabled: 1
-  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.0000009536743}
+  m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5000001
+  m_Radius: 0.5000002
+  m_Center: {x: 0, y: -0.000000044703484, z: 0.0000076293945}
 --- !u!212 &313388599
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1747,8 +1735,8 @@ GameObject:
   m_Component:
   - component: {fileID: 489763923}
   - component: {fileID: 489763925}
-  - component: {fileID: 489763924}
   - component: {fileID: 489763926}
+  - component: {fileID: 489763924}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Portal
@@ -1770,22 +1758,19 @@ Transform:
   m_Father: {fileID: 1466755971}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!58 &489763924
-CircleCollider2D:
+--- !u!135 &489763924
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 489763922}
-  m_Enabled: 1
-  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.0000009536743}
+  m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5000001
+  m_Radius: 0.5000002
+  m_Center: {x: 0, y: 0.0000009536743, z: 0.0000019073486}
 --- !u!212 &489763925
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2089,8 +2074,8 @@ GameObject:
   m_Component:
   - component: {fileID: 530740237}
   - component: {fileID: 530740239}
-  - component: {fileID: 530740238}
   - component: {fileID: 530740240}
+  - component: {fileID: 530740238}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Portal
@@ -2112,22 +2097,19 @@ Transform:
   m_Father: {fileID: 2099143649}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!58 &530740238
-CircleCollider2D:
+--- !u!135 &530740238
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 530740236}
-  m_Enabled: 1
-  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.0000009536743}
+  m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5000001
+  m_Radius: 0.5000002
+  m_Center: {x: -0.00000011920929, y: -0.0000009536743, z: 0}
 --- !u!212 &530740239
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2445,8 +2427,8 @@ GameObject:
   m_Component:
   - component: {fileID: 599139891}
   - component: {fileID: 599139893}
-  - component: {fileID: 599139892}
   - component: {fileID: 599139894}
+  - component: {fileID: 599139892}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Portal
@@ -2468,22 +2450,19 @@ Transform:
   m_Father: {fileID: 618174392}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!58 &599139892
-CircleCollider2D:
+--- !u!135 &599139892
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 599139890}
-  m_Enabled: 1
-  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.0000009536743}
+  m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5000001
+  m_Radius: 0.5000002
+  m_Center: {x: 0, y: -0.00000047683716, z: 0}
 --- !u!212 &599139893
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2593,8 +2572,8 @@ GameObject:
   m_Component:
   - component: {fileID: 674633783}
   - component: {fileID: 674633785}
-  - component: {fileID: 674633784}
   - component: {fileID: 674633786}
+  - component: {fileID: 674633784}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Portal
@@ -2616,22 +2595,19 @@ Transform:
   m_Father: {fileID: 1783842182}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!58 &674633784
-CircleCollider2D:
+--- !u!135 &674633784
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 674633782}
-  m_Enabled: 1
-  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.0000009536743}
+  m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5000001
+  m_Radius: 0.5000002
+  m_Center: {x: 0, y: 0.0000009536743, z: 0}
 --- !u!212 &674633785
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2988,8 +2964,8 @@ GameObject:
   m_Component:
   - component: {fileID: 704472645}
   - component: {fileID: 704472648}
-  - component: {fileID: 704472647}
   - component: {fileID: 704472646}
+  - component: {fileID: 704472647}
   m_Layer: 0
   m_Name: Circle (3)
   m_TagString: Portal
@@ -3026,22 +3002,19 @@ MonoBehaviour:
   center: {x: 0, y: 0, z: 0}
   _portalType: 2
   target: {fileID: 0}
---- !u!58 &704472647
-CircleCollider2D:
+--- !u!135 &704472647
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 704472644}
-  m_Enabled: 1
-  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.0000009536743}
+  m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5000001
+  m_Radius: 0.5000002
+  m_Center: {x: 0, y: -0.00000047683716, z: 0.0000076293945}
 --- !u!212 &704472648
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3190,8 +3163,8 @@ GameObject:
   m_Component:
   - component: {fileID: 747019372}
   - component: {fileID: 747019375}
-  - component: {fileID: 747019374}
   - component: {fileID: 747019373}
+  - component: {fileID: 747019374}
   m_Layer: 0
   m_Name: Circle (4)
   m_TagString: Portal
@@ -3228,22 +3201,19 @@ MonoBehaviour:
   center: {x: 0, y: 0, z: 0}
   _portalType: 0
   target: {fileID: 0}
---- !u!58 &747019374
-CircleCollider2D:
+--- !u!135 &747019374
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 747019371}
-  m_Enabled: 1
-  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.0000009536743}
+  m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5000001
+  m_Radius: 0.5000002
+  m_Center: {x: 0, y: -0.0000009536743, z: 0}
 --- !u!212 &747019375
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3655,8 +3625,8 @@ GameObject:
   m_Component:
   - component: {fileID: 803291690}
   - component: {fileID: 803291693}
-  - component: {fileID: 803291692}
   - component: {fileID: 803291691}
+  - component: {fileID: 803291692}
   m_Layer: 0
   m_Name: Circle (3)
   m_TagString: Portal
@@ -3693,22 +3663,19 @@ MonoBehaviour:
   center: {x: 0, y: 0, z: 0}
   _portalType: 2
   target: {fileID: 0}
---- !u!58 &803291692
-CircleCollider2D:
+--- !u!135 &803291692
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 803291689}
-  m_Enabled: 1
-  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.0000009536743}
+  m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5000001
+  m_Radius: 0.5000002
+  m_Center: {x: 0, y: 0.0000009536743, z: 0.0000019073486}
 --- !u!212 &803291693
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3770,8 +3737,8 @@ GameObject:
   m_Component:
   - component: {fileID: 810022938}
   - component: {fileID: 810022941}
-  - component: {fileID: 810022940}
   - component: {fileID: 810022939}
+  - component: {fileID: 810022940}
   m_Layer: 0
   m_Name: Circle (3)
   m_TagString: Portal
@@ -3808,22 +3775,19 @@ MonoBehaviour:
   center: {x: 0, y: 0, z: 0}
   _portalType: 0
   target: {fileID: 0}
---- !u!58 &810022940
-CircleCollider2D:
+--- !u!135 &810022940
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 810022937}
-  m_Enabled: 1
-  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.0000009536743}
+  m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5000001
+  m_Radius: 0.5000002
+  m_Center: {x: 0, y: 0.00000035762787, z: 0.0000038146973}
 --- !u!212 &810022941
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3997,8 +3961,8 @@ GameObject:
   m_Component:
   - component: {fileID: 837557472}
   - component: {fileID: 837557475}
-  - component: {fileID: 837557474}
   - component: {fileID: 837557473}
+  - component: {fileID: 837557474}
   m_Layer: 0
   m_Name: Circle (6)
   m_TagString: Portal
@@ -4035,22 +3999,19 @@ MonoBehaviour:
   center: {x: 0, y: 0, z: 0}
   _portalType: 0
   target: {fileID: 0}
---- !u!58 &837557474
-CircleCollider2D:
+--- !u!135 &837557474
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 837557471}
-  m_Enabled: 1
-  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.0000009536743}
+  m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5000001
+  m_Radius: 0.5000002
+  m_Center: {x: 0, y: -0.0000009536743, z: 0.0000009536743}
 --- !u!212 &837557475
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4112,8 +4073,8 @@ GameObject:
   m_Component:
   - component: {fileID: 871735484}
   - component: {fileID: 871735486}
-  - component: {fileID: 871735485}
   - component: {fileID: 871735487}
+  - component: {fileID: 871735485}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Portal
@@ -4135,22 +4096,19 @@ Transform:
   m_Father: {fileID: 1417375506}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!58 &871735485
-CircleCollider2D:
+--- !u!135 &871735485
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 871735483}
-  m_Enabled: 1
-  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.0000009536743}
+  m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5000001
+  m_Radius: 0.5000002
+  m_Center: {x: -0.00000011920929, y: 0.0000009536743, z: 0.0000038146973}
 --- !u!212 &871735486
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4340,8 +4298,8 @@ GameObject:
   m_Component:
   - component: {fileID: 909327931}
   - component: {fileID: 909327934}
-  - component: {fileID: 909327933}
   - component: {fileID: 909327932}
+  - component: {fileID: 909327933}
   m_Layer: 0
   m_Name: Circle (3)
   m_TagString: Portal
@@ -4378,22 +4336,19 @@ MonoBehaviour:
   center: {x: 0, y: 0, z: 0}
   _portalType: 0
   target: {fileID: 0}
---- !u!58 &909327933
-CircleCollider2D:
+--- !u!135 &909327933
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 909327930}
-  m_Enabled: 1
-  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.0000009536743}
+  m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5000001
+  m_Radius: 0.5000002
+  m_Center: {x: 0, y: -0.00000071525574, z: 0}
 --- !u!212 &909327934
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4517,8 +4472,8 @@ GameObject:
   m_Component:
   - component: {fileID: 941470882}
   - component: {fileID: 941470885}
-  - component: {fileID: 941470884}
   - component: {fileID: 941470883}
+  - component: {fileID: 941470884}
   m_Layer: 0
   m_Name: Circle (2)
   m_TagString: Portal
@@ -4555,22 +4510,19 @@ MonoBehaviour:
   center: {x: 0, y: 0, z: 0}
   _portalType: 0
   target: {fileID: 0}
---- !u!58 &941470884
-CircleCollider2D:
+--- !u!135 &941470884
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 941470881}
-  m_Enabled: 1
-  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.0000009536743}
+  m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5000001
+  m_Radius: 0.5000002
+  m_Center: {x: 0, y: -0.0000009536743, z: -0.0000076293945}
 --- !u!212 &941470885
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4747,6 +4699,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Global Volume
       objectReference: {fileID: 0}
+    - target: {fileID: 2276540715899198214, guid: 2306151ed0c3e3d44afe283cfd7bfacd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2306151ed0c3e3d44afe283cfd7bfacd, type: 3}
 --- !u!1001 &955840346
@@ -4825,8 +4781,8 @@ GameObject:
   m_Component:
   - component: {fileID: 982810855}
   - component: {fileID: 982810857}
-  - component: {fileID: 982810856}
   - component: {fileID: 982810858}
+  - component: {fileID: 982810856}
   m_Layer: 0
   m_Name: Circle (2)
   m_TagString: Portal
@@ -4848,22 +4804,19 @@ Transform:
   m_Father: {fileID: 1417375506}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!58 &982810856
-CircleCollider2D:
+--- !u!135 &982810856
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 982810854}
-  m_Enabled: 1
-  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.0000009536743}
+  m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5000001
+  m_Radius: 0.5000002
+  m_Center: {x: 0, y: 0.00000071525574, z: 0.0000038146973}
 --- !u!212 &982810857
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5205,8 +5158,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1126078100}
   - component: {fileID: 1126078103}
-  - component: {fileID: 1126078102}
   - component: {fileID: 1126078101}
+  - component: {fileID: 1126078102}
   m_Layer: 0
   m_Name: Circle (1)
   m_TagString: Portal
@@ -5243,22 +5196,19 @@ MonoBehaviour:
   center: {x: 0, y: 0, z: 0}
   _portalType: 0
   target: {fileID: 0}
---- !u!58 &1126078102
-CircleCollider2D:
+--- !u!135 &1126078102
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1126078099}
-  m_Enabled: 1
-  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.0000009536743}
+  m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5000001
+  m_Center: {x: 0.00000047683716, y: -0.00000023841858, z: 2.842171e-14}
 --- !u!212 &1126078103
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5402,8 +5352,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1157120756}
   - component: {fileID: 1157120759}
-  - component: {fileID: 1157120758}
   - component: {fileID: 1157120757}
+  - component: {fileID: 1157120758}
   m_Layer: 0
   m_Name: Circle (5)
   m_TagString: Portal
@@ -5440,22 +5390,19 @@ MonoBehaviour:
   center: {x: 0, y: 0, z: 0}
   _portalType: 0
   target: {fileID: 0}
---- !u!58 &1157120758
-CircleCollider2D:
+--- !u!135 &1157120758
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1157120755}
-  m_Enabled: 1
-  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.0000009536743}
+  m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5000001
+  m_Radius: 0.5000002
+  m_Center: {x: 0, y: 0.00000071525574, z: 0.0000009536743}
 --- !u!212 &1157120759
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5996,8 +5943,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1365069370}
   - component: {fileID: 1365069373}
-  - component: {fileID: 1365069372}
   - component: {fileID: 1365069371}
+  - component: {fileID: 1365069372}
   m_Layer: 0
   m_Name: Circle (1)
   m_TagString: Portal
@@ -6034,22 +5981,19 @@ MonoBehaviour:
   center: {x: 0, y: 0, z: 0}
   _portalType: 0
   target: {fileID: 0}
---- !u!58 &1365069372
-CircleCollider2D:
+--- !u!135 &1365069372
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1365069369}
-  m_Enabled: 1
-  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.0000009536743}
+  m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5000001
+  m_Radius: 0.5000002
+  m_Center: {x: 0, y: 0.0000009536743, z: -0.0000076293945}
 --- !u!212 &1365069373
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6340,8 +6284,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1434582309}
   - component: {fileID: 1434582311}
-  - component: {fileID: 1434582310}
   - component: {fileID: 1434582312}
+  - component: {fileID: 1434582310}
   m_Layer: 0
   m_Name: Circle (2)
   m_TagString: Portal
@@ -6363,22 +6307,19 @@ Transform:
   m_Father: {fileID: 2099143649}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!58 &1434582310
-CircleCollider2D:
+--- !u!135 &1434582310
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1434582308}
-  m_Enabled: 1
-  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.0000009536743}
+  m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5000001
+  m_Radius: 0.5000002
+  m_Center: {x: 0, y: -0.00000071525574, z: 0}
 --- !u!212 &1434582311
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6522,8 +6463,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1544313170}
   - component: {fileID: 1544313173}
-  - component: {fileID: 1544313172}
   - component: {fileID: 1544313171}
+  - component: {fileID: 1544313172}
   m_Layer: 0
   m_Name: Circle (1)
   m_TagString: Portal
@@ -6560,22 +6501,19 @@ MonoBehaviour:
   center: {x: 0, y: 0, z: 0}
   _portalType: 0
   target: {fileID: 0}
---- !u!58 &1544313172
-CircleCollider2D:
+--- !u!135 &1544313172
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1544313169}
-  m_Enabled: 1
-  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.0000009536743}
+  m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5000001
+  m_Radius: 0.5000002
+  m_Center: {x: 0, y: 0.00000047683716, z: 0}
 --- !u!212 &1544313173
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6892,8 +6830,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1623858047}
   - component: {fileID: 1623858049}
-  - component: {fileID: 1623858048}
   - component: {fileID: 1623858050}
+  - component: {fileID: 1623858048}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Portal
@@ -6915,22 +6853,19 @@ Transform:
   m_Father: {fileID: 1974883359}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!58 &1623858048
-CircleCollider2D:
+--- !u!135 &1623858048
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1623858046}
-  m_Enabled: 1
-  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.0000009536743}
+  m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5000001
+  m_Radius: 0.5000002
+  m_Center: {x: 0, y: 0.00000023841858, z: -0.0000076293945}
 --- !u!212 &1623858049
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7007,8 +6942,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1627393638}
   - component: {fileID: 1627393641}
-  - component: {fileID: 1627393640}
   - component: {fileID: 1627393639}
+  - component: {fileID: 1627393640}
   m_Layer: 0
   m_Name: Circle (2)
   m_TagString: Portal
@@ -7045,22 +6980,19 @@ MonoBehaviour:
   center: {x: 0, y: 0, z: 0}
   _portalType: 2
   target: {fileID: 0}
---- !u!58 &1627393640
-CircleCollider2D:
+--- !u!135 &1627393640
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1627393637}
-  m_Enabled: 1
-  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.0000009536743}
+  m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5000001
+  m_Radius: 0.5000002
+  m_Center: {x: 0.00000047683716, y: 0.000000059604645, z: 0.0000019073486}
 --- !u!212 &1627393641
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7231,8 +7163,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1658241217}
   - component: {fileID: 1658241220}
-  - component: {fileID: 1658241219}
   - component: {fileID: 1658241218}
+  - component: {fileID: 1658241219}
   m_Layer: 0
   m_Name: Circle (2)
   m_TagString: Portal
@@ -7269,22 +7201,19 @@ MonoBehaviour:
   center: {x: 0, y: 0, z: 0}
   _portalType: 0
   target: {fileID: 0}
---- !u!58 &1658241219
-CircleCollider2D:
+--- !u!135 &1658241219
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1658241216}
-  m_Enabled: 1
-  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.0000009536743}
+  m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5000001
+  m_Center: {x: 0, y: 0.0000009536743, z: -1.7053026e-13}
 --- !u!212 &1658241220
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7495,8 +7424,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1706190564}
   - component: {fileID: 1706190567}
-  - component: {fileID: 1706190566}
   - component: {fileID: 1706190565}
+  - component: {fileID: 1706190566}
   m_Layer: 0
   m_Name: Circle (1)
   m_TagString: Portal
@@ -7533,22 +7462,19 @@ MonoBehaviour:
   center: {x: 0, y: 0, z: 0}
   _portalType: 2
   target: {fileID: 0}
---- !u!58 &1706190566
-CircleCollider2D:
+--- !u!135 &1706190566
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1706190563}
-  m_Enabled: 1
-  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.0000009536743}
+  m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5000001
+  m_Radius: 0.5000002
+  m_Center: {x: 0.00000011920929, y: 0.0000009536743, z: 0.0000076293945}
 --- !u!212 &1706190567
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7808,8 +7734,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1777991721}
   - component: {fileID: 1777991723}
-  - component: {fileID: 1777991722}
   - component: {fileID: 1777991724}
+  - component: {fileID: 1777991722}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Portal
@@ -7831,22 +7757,19 @@ Transform:
   m_Father: {fileID: 1443863229}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0.77, z: 0}
---- !u!58 &1777991722
-CircleCollider2D:
+--- !u!135 &1777991722
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1777991720}
-  m_Enabled: 1
-  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.0000009536743}
+  m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5000001
+  m_Radius: 0.5
+  m_Center: {x: 0, y: -0.0000009536743, z: -8.526513e-14}
 --- !u!212 &1777991723
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8149,8 +8072,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1890827706}
   - component: {fileID: 1890827709}
-  - component: {fileID: 1890827708}
   - component: {fileID: 1890827707}
+  - component: {fileID: 1890827708}
   m_Layer: 0
   m_Name: Circle (2)
   m_TagString: Portal
@@ -8187,22 +8110,19 @@ MonoBehaviour:
   center: {x: 0, y: 0, z: 0}
   _portalType: 0
   target: {fileID: 0}
---- !u!58 &1890827708
-CircleCollider2D:
+--- !u!135 &1890827708
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1890827705}
-  m_Enabled: 1
-  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.0000009536743}
+  m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5000001
+  m_Radius: 0.5000002
+  m_Center: {x: 0, y: 0.00000071525574, z: 0.0000076293945}
 --- !u!212 &1890827709
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8264,8 +8184,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1899724841}
   - component: {fileID: 1899724843}
-  - component: {fileID: 1899724842}
   - component: {fileID: 1990364136}
+  - component: {fileID: 1899724842}
   m_Layer: 0
   m_Name: Circle (4)
   m_TagString: Portal
@@ -8287,22 +8207,19 @@ Transform:
   m_Father: {fileID: 1194996194}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!58 &1899724842
-CircleCollider2D:
+--- !u!135 &1899724842
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1899724840}
-  m_Enabled: 1
-  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.0000009536743}
+  m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5000001
+  m_Radius: 0.5000002
+  m_Center: {x: 0.00000047683716, y: -0.00000071525574, z: 0.0000009536743}
 --- !u!212 &1899724843
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8546,8 +8463,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1965266003}
   - component: {fileID: 1965266006}
-  - component: {fileID: 1965266005}
   - component: {fileID: 1965266004}
+  - component: {fileID: 1965266005}
   m_Layer: 0
   m_Name: Circle (1)
   m_TagString: Portal
@@ -8584,22 +8501,19 @@ MonoBehaviour:
   center: {x: 0, y: 0, z: 0}
   _portalType: 2
   target: {fileID: 0}
---- !u!58 &1965266005
-CircleCollider2D:
+--- !u!135 &1965266005
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1965266002}
-  m_Enabled: 1
-  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.0000009536743}
+  m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5000001
+  m_Radius: 0.5000002
+  m_Center: {x: 0, y: -0.0000009536743, z: 0.0000019073486}
 --- !u!212 &1965266006
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9185,8 +9099,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2144135313}
   - component: {fileID: 2144135316}
-  - component: {fileID: 2144135315}
   - component: {fileID: 2144135314}
+  - component: {fileID: 2144135315}
   m_Layer: 0
   m_Name: Circle (5)
   m_TagString: Portal
@@ -9223,22 +9137,19 @@ MonoBehaviour:
   center: {x: 0, y: 0, z: 0}
   _portalType: 2
   target: {fileID: 0}
---- !u!58 &2144135315
-CircleCollider2D:
+--- !u!135 &2144135315
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2144135312}
-  m_Enabled: 1
-  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.0000009536743}
+  m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5000001
+  m_Radius: 0.5000002
+  m_Center: {x: 0, y: 0.00000071525574, z: 0}
 --- !u!212 &2144135316
 SpriteRenderer:
   m_ObjectHideFlags: 0
