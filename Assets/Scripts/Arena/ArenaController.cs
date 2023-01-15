@@ -9,7 +9,7 @@ public class ArenaController : MonoBehaviour
 
     public bool active;
     
-    public List<Collider2D> colliderList = new List<Collider2D>();
+    public List<Collider> colliderList = new List<Collider>();
     
     public PolygonCollider2D polygonCollider;
 
@@ -30,7 +30,7 @@ public class ArenaController : MonoBehaviour
     void Start()
     {
         polygonCollider = GetComponentInChildren<PolygonCollider2D>();
-        colliderList = GetComponentsInChildren<Collider2D>().ToList();
+        colliderList = GetComponentsInChildren<Collider>().ToList();
 
         for (int i = 0; i < colliderList.Count; i++)
         {
@@ -52,7 +52,7 @@ public class ArenaController : MonoBehaviour
         {
             if (colliderList[i] != null)
             {
-                if (colliderList[i].GetComponent<CapsuleCollider2D>() == null)
+                if (colliderList[i].GetComponent<CapsuleCollider>() == null)
                     colliderList[i].enabled = active;
             }
         }

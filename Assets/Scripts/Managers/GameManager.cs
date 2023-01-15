@@ -6,6 +6,9 @@ using UnityEngine.AdaptivePerformance;
 
 public class GameManager : MonoBehaviour
 {
+    [HideInInspector]
+    public PlayerCondition player;
+
     public int activeIndex;
     public int enemyActiveIndex;
     public List<ArenaController> arenaList = new List<ArenaController>();
@@ -25,8 +28,8 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
         }
-
-        
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerCondition>();
+        ap = Holder.Instance;
     }
 
     // Start is called before the first frame update
@@ -75,17 +78,6 @@ public class GameManager : MonoBehaviour
             else
                 arenaList[activeIndex].active = true;
         }
-        /*
-        for (int i = 0; i < enemyArenaList.Count; i++)
-        {
-            if (enemyArenaList[i] != enemyArenaList[enemyActiveIndex + 3])
-                enemyArenaList[i].active = false;
-            else
-                enemyArenaList[activeIndex].active = true;
-        }
-        */
-        //var GO = arenaList.Find(x => x.GetComponentInChildren<SpriteRenderer>() != null);
-        //GO.enabled = false;
     }
 
     public void OnBenchmark()

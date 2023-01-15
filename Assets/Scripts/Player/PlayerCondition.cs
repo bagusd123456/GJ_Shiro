@@ -8,6 +8,9 @@ public class PlayerCondition : CharacterBase
     public enum State { IDLE, DEFENDING, BUSY };
     public State _state = State.IDLE;
 
+    public float damageTakenCD;
+    float damageTakenTime;
+
     new void Awake()
     {
         // If there is an instance, and it's not me, delete myself.
@@ -29,5 +32,21 @@ public class PlayerCondition : CharacterBase
     new void Update()
     {
         base.Update();
+
+        if (damageTakenTime > 0)
+        {
+            damageTakenTime -= Time.deltaTime;
+        }
+            
+    }
+
+    public override void TakeDamage(int damage)
+    {
+        if(_state != State.DEFENDING)
+            if(damageTakenTime < damageTakenCD)
+            {
+                base.TakeDamage(damage);
+                damageTakenTime = damageTakenCD;
+            }
     }
 }
