@@ -52,11 +52,6 @@ public class Portal : MonoBehaviour
         }
     }
 
-    public void testBusway()
-    {
-        SceneLoad.Instance.panelBusway.SetActive(true);
-    }
-
     public void TriggerPowerUp()
     {
         Power = Random.Range(0, 3);
@@ -95,6 +90,7 @@ public class Portal : MonoBehaviour
     IEnumerator ChoosePortal()
     {
         SceneLoad.Instance.panelBusway.SetActive(true);
+        SceneLoad.Instance.movBtn.SetActive(false);
         Debug.Log("Please Select Portal");
         InputHandler.Instance._state = InputHandler.state.CHOOSE;
         Time.timeScale = 0f;
@@ -111,6 +107,7 @@ public class Portal : MonoBehaviour
         player.currentAngle = target.GetComponent<Portal>().angle;
         target = null;
         SceneLoad.Instance.panelBusway.SetActive(false);
+        SceneLoad.Instance.movBtn.SetActive(true);
 
     }
 
