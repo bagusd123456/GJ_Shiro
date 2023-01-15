@@ -25,6 +25,7 @@ public class Mob_Slime : MonoBehaviour
     public float timeCooldown = 0.8f;
     public float distanceFromUser;
 
+    [SerializeField]Animator animator;
     private void OnValidate()
     {
         if(movement == null)
@@ -34,6 +35,7 @@ public class Mob_Slime : MonoBehaviour
     {
         movement = GetComponent<NPCMovement>();
         fov = GetComponent<FieldOfView>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     private void OnDisable()
@@ -78,23 +80,25 @@ public class Mob_Slime : MonoBehaviour
         switch (_state)
         {
             case state.IDLE:
-                movement.movementSpeed = 0f;
+                movement.currentMovementSpeed = 0f;
+                animator.SetBool("Running", false);
                 break;
 
             case state.PATROL:
-                movement.movementSpeed = 1f;
+                movement.currentMovementSpeed = movement.normalMovementSpeed;
+                animator.SetBool("Running", true);
                 break;
 
             case state.HOSTILE:
-                movement.movementSpeed = -1f;
+                movement.currentMovementSpeed = movement.hostileMovementSpeed ;
                 break;
 
             case state.DASHING:
-                movement.movementSpeed = 2f;
+                movement.currentMovementSpeed = movement.DashMovementSpeed;
                 break;
 
             case state.ATTACKING:
-                movement.movementSpeed = 0f;
+                movement.currentMovementSpeed = 0f;
                 BasicAttack();
                 break;
         }
@@ -132,9 +136,17 @@ public class Mob_Slime : MonoBehaviour
 
     float CurrentAngle()
     {
-        Vector3 dir = transform.parent.position - transform.position;
-        float angle = Mathf.Atan2(dir.x, dir.y) * Mathf.Rad2Deg + 180f;
-        return angle;
+        if (transform.parent != null)
+        {
+
+            Vector3 dir = transform.parent.position - transform.position;
+            float angle = Mathf.Atan2(dir.x, dir.y) * Mathf.Rad2Deg + 180f;
+            return angle;
+        }
+        else
+        {
+            return 0;
+        }
     }
 
     Vector3 GetPosition(float degrees, float dist)

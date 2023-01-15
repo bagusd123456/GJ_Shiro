@@ -89,19 +89,19 @@ public class Mob_Crystal : MonoBehaviour
         switch (_state)
         {
             case state.IDLE:
-                movement.movementSpeed = 0f;
+                movement.currentMovementSpeed = 0f;
                 break;
 
             case state.PATROL:
-                movement.movementSpeed = 1f;
+                movement.currentMovementSpeed = movement.normalMovementSpeed;
                 break;
 
             case state.HOSTILE:
-                movement.movementSpeed = -1f;
+                movement.currentMovementSpeed = movement.hostileMovementSpeed;
                 break;
 
             case state.DASHING:
-                movement.movementSpeed = 2f;
+                movement.currentMovementSpeed = movement.DashMovementSpeed;
                 break;
 
             case state.ATTACKING:

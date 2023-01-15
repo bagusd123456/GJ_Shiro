@@ -318,6 +318,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prj: {fileID: 2707637908052337801, guid: 3b082c0cc0a54ef41b1e8f85497f03b1, type: 3}
+  Deff: {fileID: 1696672928266267173, guid: 81c2344799a56884dab8442ca5f7160a, type: 3}
   spawnTarget: {fileID: 1688856949679390268}
   distanceFromPlayer: 20
   timeBetweenAttack: 0.5

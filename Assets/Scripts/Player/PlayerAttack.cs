@@ -13,6 +13,7 @@ public class PlayerAttack : MonoBehaviour
 
     [Header("Attack Parameter")]
     public Projectiles prj;
+    public GameObject Deff;
     public Transform spawnTarget;
     public float distanceFromPlayer = 15f;
     float currentAttackTime;
@@ -65,7 +66,7 @@ public class PlayerAttack : MonoBehaviour
             }
             
         }
-        if (currentComboTime >= 1f && canCombo)
+        if (currentComboTime >= 0.7f && canCombo)
         {
             CheckCombo(comboInput.ToList());
             canCombo = false;
@@ -138,7 +139,20 @@ public class PlayerAttack : MonoBehaviour
             _char._state = State.DEFENDING;
             comboIndex = 0;
             Debug.Log("Defense");
+            if (GameObject.FindGameObjectWithTag("Shield") == null)
+            Instantiate(Deff, transform.position + new Vector3(0,0,-0.5f), Quaternion.identity, transform);
+
             yield return new WaitForSeconds(cdDef);
+
+            for (var i = gameObject.transform.childCount - 1; i >= 0; i--)
+            {
+                // only destroy tagged object
+                if (gameObject.transform.GetChild(i).gameObject.tag == "Shield")
+                    Destroy(gameObject.transform.GetChild(i).gameObject);
+            }
+
+
+
 
             _char._state = State.IDLE;
         }

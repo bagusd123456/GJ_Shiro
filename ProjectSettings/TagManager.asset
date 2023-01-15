@@ -8,6 +8,7 @@ TagManager:
   - Portal
   - BatasKanan
   - BatasKiri
+  - Shield
   layers:
   - Default
   - TransparentFX

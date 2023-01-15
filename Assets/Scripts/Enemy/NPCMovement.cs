@@ -8,7 +8,10 @@ public class NPCMovement : MonoBehaviour
     public rotateDir _rotateDir = rotateDir.RIGHT;
 
     public Transform rotateAround;
-    public float movementSpeed = 1f;
+    [HideInInspector] public float currentMovementSpeed;
+    public float normalMovementSpeed ;
+    public float hostileMovementSpeed;
+    public float DashMovementSpeed;
     public float targetDistance = 3f;
     public float angle;
     Vector3 offset;
@@ -18,12 +21,18 @@ public class NPCMovement : MonoBehaviour
     float time;
     public float timeMovement;
     public int moveDir;
+
+   
+
     private void Awake()
     {
         if (rotateAround == null)
             rotateAround = transform.parent;
 
         angle = CalculateAngle();
+
+        
+        
     }
 
     // Start is called before the first frame update
@@ -31,6 +40,7 @@ public class NPCMovement : MonoBehaviour
     {
         Flip();
         time = timeMovement;
+        
     }
 
     // Update is called once per frame
@@ -46,11 +56,12 @@ public class NPCMovement : MonoBehaviour
     public void Move(int direction)
     {
         time = timeMovement;
-        angle += movementSpeed * Mathf.Rad2Deg * direction * Time.deltaTime;
+        angle += currentMovementSpeed * Mathf.Rad2Deg * direction * Time.deltaTime;
 
         Vector3 targetPos = GetPosition(angle, targetDistance);
         transform.position = rotateAround.position + targetPos;
         rb.MovePosition(offset);
+
     }
 
     public void LookAtTarget()
@@ -98,10 +109,14 @@ public class NPCMovement : MonoBehaviour
         theScale.x *= -1;
         transform.localScale = theScale;
 
-        if(_rotateDir == 0)
+        if (_rotateDir == 0)
+        {
             _rotateDir = rotateDir.RIGHT;
+        }
         else
+        {
             _rotateDir = rotateDir.LEFT;
+        }
 
     }
 
