@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2707637908052337803}
   - component: {fileID: 2707637908052337800}
   - component: {fileID: 2707637908052337801}
-  - component: {fileID: 8917839726626371149}
+  - component: {fileID: -6279688826280284640}
   m_Layer: 0
   m_Name: Projectiles_Test
   m_TagString: Untagged
@@ -104,8 +104,8 @@ MonoBehaviour:
   moveSpeed: 2
   inverseRotation: 0
   damageAmount: 10
---- !u!135 &8917839726626371149
-SphereCollider:
+--- !u!65 &-6279688826280284640
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -115,5 +115,5 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.12
+  m_Size: {x: 1, y: 1.0000002, z: 0.1}
   m_Center: {x: 0, y: 0, z: 0}

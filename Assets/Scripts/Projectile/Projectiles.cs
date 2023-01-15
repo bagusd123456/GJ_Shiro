@@ -15,6 +15,7 @@ public class Projectiles : MonoBehaviour
     public bool inverseRotation = false;
     [Space]
     public int damageAmount;
+    public bool canMove;
     
     private void Awake()
     {

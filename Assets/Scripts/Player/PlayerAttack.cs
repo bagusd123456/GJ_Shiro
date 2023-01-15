@@ -28,6 +28,8 @@ public class PlayerAttack : MonoBehaviour
     [Header("Defend Parameter")]
     public float cdDef = 1f;
 
+    public bool canCombo = true;
+
     private void Awake()
     {
         _char = GetComponent<PlayerCondition>();
@@ -61,17 +63,23 @@ public class PlayerAttack : MonoBehaviour
             {
                 comboInput[i] = 0;
             }
+            
+        }
+        if (currentComboTime >= 1f && canCombo)
+        {
+            CheckCombo(comboInput.ToList());
+            canCombo = false;
         }
     }
 
     public void RegisterCombo(int input)
     {
-        if(comboIndex < 3)
+        if(comboIndex < 3 )
         {
             currentComboTime = 0;
             comboInput[comboIndex] = input;
             comboIndex++;
-            CheckCombo(comboInput.ToList());
+            canCombo = true;
         }
         
     }
@@ -80,13 +88,15 @@ public class PlayerAttack : MonoBehaviour
     {
         for (int i = 0; i < _comboManager.comboMove.Count; i++)
         {
-            if (ComboManager.CountMatches(_comboManager.comboMove[i].comboMove, comboInput) == comboInput.Count)
+            if (ComboManager.CountMatches(_comboManager.comboMove[i].comboMove, comboInput) == comboInput.Count
+                )
                 _comboManager.Attack(i);
         }
     }
 
     public void BasicAttack()
     {
+
         if(_char._state == State.IDLE && !_char.isDead && !_char.isTired)
         {
             PlayerCondition.Instance.UseMana(10);
@@ -98,6 +108,8 @@ public class PlayerAttack : MonoBehaviour
 
     public Projectiles SpawnProjectile()
     {
+        PlayerMovement.Instance.animator.SetTrigger("Attack");
+
         var GO = Instantiate(prj, spawnTarget.forward * distanceFromPlayer, Quaternion.identity, transform.parent);
         GO.player = PlayerMovement.Instance;
         GO.center = PlayerMovement.Instance.center;
@@ -105,12 +117,15 @@ public class PlayerAttack : MonoBehaviour
         if (gameObject.GetComponent<PlayerMovement>()._rotateDir == rotateDir.RIGHT)
         {
             GO.currentAngle = CurrentAngle() + distanceFromPlayer;
+            GO.RotationSet();
             GO.inverseRotation = false;
+
         }
 
         else
         {
             GO.currentAngle = CurrentAngle() - distanceFromPlayer;
+            GO.RotationSet();
             GO.inverseRotation = true;
         }
         return GO;
