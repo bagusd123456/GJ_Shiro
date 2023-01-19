@@ -11,35 +11,25 @@ public class NPCMovement : MonoBehaviour
     [HideInInspector] public float currentMovementSpeed;
     public float normalMovementSpeed ;
     public float hostileMovementSpeed;
-    public float DashMovementSpeed;
+    public float dashMovementSpeed;
     public float targetDistance = 3f;
     public float angle;
-    Vector3 offset;
-    public bool isFacingRight = false;
 
-    public Rigidbody rb;
     float time;
     public float timeMovement;
     public int moveDir;
-
-   
-
+    public Transform charMesh;
     private void Awake()
     {
         if (rotateAround == null)
             rotateAround = transform.parent;
 
         angle = CalculateAngle();
-
-        
-        
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        Flip();
-        time = timeMovement;
         
     }
 
@@ -47,7 +37,7 @@ public class NPCMovement : MonoBehaviour
     void Update()
     {
         if(time > 0)
-        time -= Time.deltaTime;
+            time -= Time.deltaTime;
 
         Move(moveDir);
         LookAtTarget();
@@ -55,13 +45,10 @@ public class NPCMovement : MonoBehaviour
 
     public void Move(int direction)
     {
-        time = timeMovement;
         angle += currentMovementSpeed * Mathf.Rad2Deg * direction * Time.deltaTime;
 
         Vector3 targetPos = GetPosition(angle, targetDistance);
         transform.position = rotateAround.position + targetPos;
-        rb.MovePosition(offset);
-
     }
 
     public void LookAtTarget()
@@ -105,17 +92,15 @@ public class NPCMovement : MonoBehaviour
 
     void Flip()
     {
-        Vector3 theScale = transform.localScale;
-        theScale.x *= -1;
-        transform.localScale = theScale;
-
-        if (_rotateDir == 0)
+        if(_rotateDir == 0)
         {
             _rotateDir = rotateDir.RIGHT;
+            charMesh.transform.rotation = Quaternion.Euler(new Vector3(180, 0, charMesh.transform.rotation.z));
         }
-        else
+        else if(_rotateDir == (rotateDir)1)
         {
             _rotateDir = rotateDir.LEFT;
+            charMesh.transform.rotation = Quaternion.Euler(new Vector3(180, 0, charMesh.transform.rotation.z));
         }
 
     }

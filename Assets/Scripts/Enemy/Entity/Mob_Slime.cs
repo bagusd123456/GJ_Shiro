@@ -17,12 +17,15 @@ public class Mob_Slime : MonoBehaviour
     public enum state { IDLE, PATROL, HOSTILE, DASHING, ATTACKING}
     public state _state = state.IDLE;
 
+    [Header("Movement Parameter")]
+    public float moveInterval = 0.8f;
+
     [Header("Attack Parameter")]
     public Projectiles prj;
     public Transform spawnTarget;
 
-    float time;
-    public float timeCooldown = 0.8f;
+    float attackTime;
+    public float attackInterval = 0.8f;
     public float distanceFromUser;
 
     [SerializeField]Animator animator;
@@ -57,8 +60,8 @@ public class Mob_Slime : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (time > 0)
-            time -= Time.deltaTime;
+        if (attackTime > 0)
+            attackTime -= Time.deltaTime;
 
         if (!GameManager.Instance.player.isDead)
         {
@@ -90,11 +93,11 @@ public class Mob_Slime : MonoBehaviour
                 break;
 
             case state.HOSTILE:
-                movement.currentMovementSpeed = movement.hostileMovementSpeed ;
+                movement.currentMovementSpeed = movement.hostileMovementSpeed;
                 break;
 
             case state.DASHING:
-                movement.currentMovementSpeed = movement.DashMovementSpeed;
+                movement.currentMovementSpeed = movement.dashMovementSpeed;
                 break;
 
             case state.ATTACKING:
@@ -106,7 +109,7 @@ public class Mob_Slime : MonoBehaviour
 
     public void BasicAttack()
     {
-        if (time <= 0)
+        if (attackTime <= 0)
         {
             SpawnProjectile();
         }
@@ -115,7 +118,7 @@ public class Mob_Slime : MonoBehaviour
     [ContextMenu("Spawn")]
     public Projectiles SpawnProjectile()
     {
-        time = timeCooldown;
+        attackTime = attackInterval;
         var GO = Instantiate(prj, transform.position + -transform.right * distanceFromUser, Quaternion.identity, transform.parent);
         GO.center = transform.parent;
         GO.targetDistance = gameObject.GetComponent<NPCMovement>().targetDistance;
@@ -138,7 +141,6 @@ public class Mob_Slime : MonoBehaviour
     {
         if (transform.parent != null)
         {
-
             Vector3 dir = transform.parent.position - transform.position;
             float angle = Mathf.Atan2(dir.x, dir.y) * Mathf.Rad2Deg + 180f;
             return angle;

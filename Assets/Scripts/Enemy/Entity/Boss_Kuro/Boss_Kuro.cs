@@ -5,7 +5,6 @@ using static NPCMovement;
 
 public class Boss_Kuro : MonoBehaviour
 {
-    bool inRange;
     public PlayerCondition player;
     public float distance;
     public bool collide;
@@ -21,6 +20,10 @@ public class Boss_Kuro : MonoBehaviour
     float time;
     public float timeCooldown = 0.8f;
     public float distanceFromUser;
+
+    [Header("Attack Behavior")]
+    public int activeSkillIndex;
+    public List<MonoBehaviour> availableSkill = new List<MonoBehaviour>();
 
     private void OnValidate()
     {
@@ -43,6 +46,19 @@ public class Boss_Kuro : MonoBehaviour
     {
         if (time > 0)
             time -= Time.deltaTime;
+
+        ExecuteSkill();
+    }
+
+    public void ExecuteSkill()
+    {
+        for (int i = 0; i < availableSkill.Count; i++)
+        {
+            if (availableSkill[i] == availableSkill[activeSkillIndex])
+                availableSkill[i].enabled = true;
+            else
+                availableSkill[i].enabled = false;
+        }
     }
 
     public void Movement()
@@ -113,10 +129,5 @@ public class Boss_Kuro : MonoBehaviour
     {
         float a = degrees * Mathf.PI / 180f;
         return new Vector3(Mathf.Sin(a) * dist, Mathf.Cos(a) * dist, 0);
-    }
-
-    private void OnDrawGizmos()
-    {
-        Debug.DrawRay(transform.position, transform.right * 2f);
     }
 }

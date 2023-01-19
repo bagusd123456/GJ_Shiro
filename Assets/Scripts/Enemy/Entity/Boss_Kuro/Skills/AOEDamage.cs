@@ -28,14 +28,13 @@ public class AOEDamage : MonoBehaviour
         else
         {
             GetComponent<SpriteRenderer>().color = Color.red;
-            
-            Invoke("OnTimeout", 0.5f);
+            Invoke("OnTimeout", 0.005f);
         }
     }
 
     public void GiveDamage()
     {
-        Collider[] hit = Physics.OverlapSphere(transform.position, radius, LayerMask.GetMask("Wall"));
+        Collider[] hit = Physics.OverlapSphere(transform.position, radius, LayerMask.GetMask("Character"));
         if (hit.Length > 0)
             hit[0].GetComponent<PlayerCondition>().TakeDamage(damageAmount);
     }
@@ -57,6 +56,7 @@ public class AOEDamage : MonoBehaviour
 
     public void OnTimeout()
     {
+        GiveDamage();
         isDestroyed = true;
     }
 

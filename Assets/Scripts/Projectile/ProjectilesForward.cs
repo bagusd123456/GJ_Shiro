@@ -9,6 +9,7 @@ public class ProjectilesForward : MonoBehaviour
     public Transform center;
     Vector3 offset;
     public float targetDistance = 3;
+    [HideInInspector]
     public float angle;
     public float projectileSpeed = 1f;
     [Space]
@@ -21,6 +22,13 @@ public class ProjectilesForward : MonoBehaviour
         if(player == null)
             player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
         center = transform.parent;
+
+        StartCoroutine(EnableCollider());
+    }
+
+    private void Start()
+    {
+        LookAtTarget();
     }
 
     // Update is called once per frame
@@ -29,7 +37,11 @@ public class ProjectilesForward : MonoBehaviour
         if(canMove)
             transform.position += transform.right * projectileSpeed * Time.deltaTime;
 
-        LookAtTarget();
+    }
+
+    public void DisableGO()
+    {
+        gameObject.SetActive(false);
     }
 
     public void LookAtTarget()
@@ -45,14 +57,23 @@ public class ProjectilesForward : MonoBehaviour
         transform.position = center.position + offset;
     }
 
+    IEnumerator EnableCollider()
+    {
+        yield return new WaitForSeconds(0.05f);
+        GetComponent<SphereCollider>().enabled = true;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        //Damage every Character Collide
-        if(other.GetComponent<CharacterBase>() != null)
+        if(other.transform != transform.parent && other.GetComponent<ProjectilesForward>() == null)
         {
-            other.GetComponent<CharacterBase>().TakeDamage(damageAmount);
-            
+            //Damage every Character Collide
+            if (other.GetComponent<PlayerCondition>() != null)
+            {
+                other.GetComponent<PlayerCondition>().TakeDamage(damageAmount);
+            }
             Destroy(this.gameObject);
         }
+        
     }
 }

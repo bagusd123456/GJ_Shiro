@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 7233761895089317910}
   - component: {fileID: 7233761895089317897}
   - component: {fileID: 7233761895089317898}
+  - component: {fileID: 471395783876398267}
   m_Layer: 0
   m_Name: Enemy_Crystallite(Melee)
   m_TagString: Untagged
@@ -152,13 +153,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rotateDir: 1
   rotateAround: {fileID: 0}
-  movementSpeed: 1
+  currentMovementSpeed: 0
+  normalMovementSpeed: 1.5
+  hostileMovementSpeed: 2
+  dashMovementSpeed: 2
   targetDistance: 2.85
   angle: 0
-  isFacingRight: 0
-  rb: {fileID: 0}
   timeMovement: 0
   moveDir: -1
+  charMesh: {fileID: 0}
 --- !u!114 &7233761895089317898
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,3 +179,25 @@ MonoBehaviour:
   closeDistance: 0.5
   _state: 1
   timeCooldown: 0.8
+--- !u!114 &471395783876398267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7233761895089317907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b42ca6386854d74b8a14a21c170c001, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 1
+  angle: 100
+  playerRef: {fileID: 0}
+  targetMask:
+    serializedVersion: 2
+    m_Bits: 128
+  obstructionMask:
+    serializedVersion: 2
+    m_Bits: 64
+  canSeePlayer: 0

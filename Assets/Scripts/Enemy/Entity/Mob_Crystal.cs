@@ -97,11 +97,11 @@ public class Mob_Crystal : MonoBehaviour
                 break;
 
             case state.HOSTILE:
-                movement.currentMovementSpeed = movement.hostileMovementSpeed;
+                movement.currentMovementSpeed = -movement.hostileMovementSpeed;
                 break;
 
             case state.DASHING:
-                movement.currentMovementSpeed = movement.DashMovementSpeed;
+                movement.currentMovementSpeed = movement.dashMovementSpeed;
                 break;
 
             case state.ATTACKING:

@@ -1,27 +1,57 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
-public class ShootProjectiles : MonoBehaviour
+public class KuroRanged : MonoBehaviour
 {
+    public float spawnInterval;
+    float spawnTime;
+
     public ProjectilesForward projectile;
     public List<ProjectilesForward> projectiles = new List<ProjectilesForward>();
     public float projectileSpeed = 1f;
     public int maxOrb = 1;
-    public float targetDistance = 3;
-    public Vector3 offset;
+    public float targetDistance = 0.3f;
 
-    public int spawnCount;
+    public int spawnCount = 15;
+    public float circleLength = 6.29f;
+
+    public bool enableDebug = false;
+
+    ProjectilesForward[] movingprojectiles;
+    private void OnDisable()
+    {
+        movingprojectiles = GetComponentsInChildren<ProjectilesForward>();
+        foreach (var item in movingprojectiles)
+        {
+            if(item.transform.parent != null)
+                item.transform.parent = transform.parent;
+        }
+    }
     // Update is called once per frame
     void Update()
     {
-        foreach (var item in projectiles)
+        if (spawnTime > 0)
+            spawnTime -= Time.deltaTime;
+        else
         {
-            item.projectileSpeed = projectileSpeed;
-            item.targetDistance = targetDistance;
-            if (!item.GetComponent<ProjectilesForward>().canMove)
-                item.SetPosition();
-            //item.targetDistance = Mathf.Lerp(1f, targetDistance, Mathf.PingPong(Time.time, 1));
+            spawnTime = spawnInterval;
+            SpawnProjectile(spawnCount);
+        }
+
+        for (int i = 0; i < projectiles.Count; i++)
+        {
+            if (projectiles[i] != null)
+            {
+                projectiles[i].projectileSpeed = projectileSpeed;
+                projectiles[i].targetDistance = targetDistance;
+                if (!projectiles[i].GetComponent<ProjectilesForward>().canMove)
+                    projectiles[i].SetPosition();
+            }
+            else
+                projectiles.Remove(projectiles[i]);
+            
         }
     }
 
@@ -68,7 +98,7 @@ public class ShootProjectiles : MonoBehaviour
             var prj = Instantiate(projectile, transform);
             prj.center = transform;
             prj.transform.position = transform.position + Vector3.forward;
-            prj.angle = 6.29f / spawnCount * j;
+            prj.angle = circleLength / spawnCount * j;
             j++;
 
             projectiles.Add(prj);
@@ -85,7 +115,7 @@ public class ShootProjectiles : MonoBehaviour
         {
             var prj = Instantiate(projectile, transform);
             prj.center = transform;
-            prj.angle = 6.29f / spawnCount * j;
+            prj.angle = circleLength / spawnCount * j;
             j++;
 
             projectiles.Add(prj);
@@ -110,26 +140,16 @@ public class ShootProjectiles : MonoBehaviour
                 i++;
             }
         }
-
-        /*for (int i = projectiles.Count - 1; i >= 0; i--)
-        {
-            ProjectilesForward prj = projectiles[i].GetComponent<ProjectilesForward>();
-            yield return new WaitForSeconds(0.2f);
-            prj.canMove = true;
-            if (prj.canMove)
-            {
-                projectiles.RemoveAt(i);
-            }
-        }*/
     }
 
+    // Spawn Projectiles Simultaneously
     public void SpawnProjectile(int spawnCount)
     {
         for (int i = projectiles.Count; i < spawnCount; i++)
         {
-            var prj = Instantiate(projectile, transform);
+            Vector3 targetPos = transform.position + Vector3.forward;
+            var prj = Instantiate(projectile, targetPos, Quaternion.identity, transform);
             prj.center = transform;
-            prj.transform.position = transform.position + Vector3.forward;
             projectiles.Add(prj);
 
             if (projectiles.Count > 0)
@@ -138,7 +158,7 @@ public class ShootProjectiles : MonoBehaviour
                 foreach (var item in projectiles)
                 {
 
-                    item.angle = 6.29f / projectiles.Count * j;
+                    item.angle = circleLength / projectiles.Count * j;
                     j++;
                 }
             }
@@ -162,7 +182,7 @@ public class ShootProjectiles : MonoBehaviour
                 foreach (var item in projectiles)
                 {
                     
-                    item.angle = 6.29f / projectiles.Count * i;
+                    item.angle = circleLength / projectiles.Count * i;
                     i++;
                 }
             }
@@ -180,10 +200,38 @@ public class ShootProjectiles : MonoBehaviour
                 foreach (var item in projectiles)
                 {
 
-                    item.angle = 6.29f / projectiles.Count * i;
+                    item.angle = circleLength / projectiles.Count * i;
                     i++;
                 }
             }
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (enableDebug)
+        {
+            Debug.DrawRay(transform.position, transform.right * 2f);
+
+            for (int i = 0; i < spawnCount; i++)
+            {
+                float angle = circleLength / spawnCount * i;
+                Vector3 offset = new Vector3(Mathf.Sin(angle) * targetDistance, Mathf.Cos(angle) * targetDistance, 0) * targetDistance;
+                Vector3 targetPos = transform.position + offset;
+
+                Gizmos.DrawWireSphere(targetPos, 0.2f);
+            }
+
+            /* Recursive
+            for (int i = 0; i < spawnCount; i++)
+            {
+                float angle = circleLength / spawnCount * i;
+                Vector3 offset = new Vector3(Mathf.Sin(angle) * targetDistance, Mathf.Cos(angle) * targetDistance, 0) * targetDistance;
+                Vector3 targetPos = transform.position + offset * i;
+
+                Gizmos.DrawWireSphere(targetPos, 0.2f);
+            }*/
+        }
+
     }
 }
