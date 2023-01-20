@@ -47,7 +47,7 @@ public class ArenaController : MonoBehaviour
 
         if (polygonCollider != null)
             polygonCollider.enabled = active;
-
+        /*
         for (int i = 0; i < colliderList.Count; i++)
         {
             if (colliderList[i] != null)
@@ -56,6 +56,7 @@ public class ArenaController : MonoBehaviour
                     colliderList[i].enabled = active;
             }
         }
+        */
     }
 
     public void ToggleSelectablePortal(bool T)

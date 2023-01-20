@@ -18,10 +18,13 @@ public class Mob_Crystal : MonoBehaviour
     [Header("Attack Parameter")]
     float time;
     public float timeCooldown = 0.8f;
+
+    Animator animator;
     private void Awake()
     {
         movement = GetComponent<NPCMovement>();
         fov = GetComponent<FieldOfView>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     private void OnDisable()
@@ -90,10 +93,12 @@ public class Mob_Crystal : MonoBehaviour
         {
             case state.IDLE:
                 movement.currentMovementSpeed = 0f;
+                animator.SetBool("Running", false);
                 break;
 
             case state.PATROL:
                 movement.currentMovementSpeed = movement.normalMovementSpeed;
+                animator.SetBool("Running", true);
                 break;
 
             case state.HOSTILE:
@@ -106,6 +111,7 @@ public class Mob_Crystal : MonoBehaviour
 
             case state.ATTACKING:
                 StartCoroutine(MeleeAttack());
+                animator.SetTrigger("Attack");
                 break;
         }
     }

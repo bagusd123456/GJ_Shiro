@@ -32,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
     public Portal currentPortal;
 
     public float currentAngle;
+    public GameObject Shadow;
 
     private void Awake()
     {
@@ -58,7 +59,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        collide = Physics.Raycast(transform.position, transform.up, wallDistance, LayerMask.GetMask("Wall"));
+        collide = Physics.Raycast(transform.position, transform.up, wallDistance, LayerMask.GetMask("Character"));
         if (!GetComponent<PlayerCondition>().isDead)
         {
             //float vertical = Input.GetAxisRaw("Vertical");
@@ -113,6 +114,7 @@ public class PlayerMovement : MonoBehaviour
 
             if (currentLevelIndex == levelList.Count - 1)
             {
+                Shadow.SetActive(false);
                 StartCoroutine(Win());
             }
         }
@@ -147,9 +149,12 @@ public class PlayerMovement : MonoBehaviour
 
     public IEnumerator CanMove()
     {
+        Shadow.SetActive(false);
         InputHandler.Instance.canMove = false;
         yield return new WaitForSeconds(1.5f);
         InputHandler.Instance.canMove = true;
+        if (currentLevelIndex != levelList.Count - 1)
+            Shadow.SetActive(true);
     }
 
     public float CheckDirection()

@@ -27,6 +27,9 @@ public class SceneLoad : MonoBehaviour
     public GameObject movBtn;
     public static SceneLoad Instance { get; private set; }
 
+    private int currentSceneIndex;
+    private int sceneToContinue;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -94,9 +97,20 @@ public class SceneLoad : MonoBehaviour
 
     public void BackMainMenu()
     {
+        currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        PlayerPrefs.SetInt("SavedScene", currentSceneIndex);
         SceneManager.LoadScene(0);
     }
 
+    public void ContinueGame()
+    {
+        sceneToContinue = PlayerPrefs.GetInt("SavedScene");
+
+        if (sceneToContinue != 0)
+            SceneManager.LoadScene(sceneToContinue);
+        else
+            return;
+    }
     public void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);

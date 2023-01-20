@@ -25,7 +25,7 @@ public class Mob_Slime : MonoBehaviour
     public float timeCooldown = 0.8f;
     public float distanceFromUser;
 
-    [SerializeField]Animator animator;
+    Animator animator;
     private void OnValidate()
     {
         if(movement == null)

@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 8629312857844479068}
   - component: {fileID: 4753846024461041796}
   - component: {fileID: 3775725697576926294}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: SM_ENV_ObstacleWall1_LP
-  m_TagString: Untagged
+  m_TagString: NPCBorder
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 1

@@ -4411,6 +4411,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 627295321378160045, guid: ebf5c82bb2f232c4ca16020c59c07880, type: 3}
+      propertyPath: m_Text
+      value: LEVEL 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5070673298288993405, guid: ebf5c82bb2f232c4ca16020c59c07880, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -9839,7 +9843,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rotateDir: 1
   rotateAround: {fileID: 131749749}
-  movementSpeed: 1
+  currentMovementSpeed: 0
+  normalMovementSpeed: 0
+  hostileMovementSpeed: 0
+  DashMovementSpeed: 0
   targetDistance: 1.7
   angle: 0
   isFacingRight: 0
