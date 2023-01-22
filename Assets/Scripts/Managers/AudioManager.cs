@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System;
 
 public class AudioManager : MonoBehaviour
@@ -11,8 +12,10 @@ public class AudioManager : MonoBehaviour
     public Sound[] musicSounds, sfxSounds;
     public AudioSource musicSource, sfxSource;
 
+
     private void Awake()
     {
+
         if (Instance == null)
         {
             Instance = this;
@@ -25,7 +28,27 @@ public class AudioManager : MonoBehaviour
     }
     private void Start()
     {
-        //PlayMusic("Theme");
+        if (SceneManager.GetActiveScene().name == ("MainMenu") ||
+            SceneManager.GetActiveScene().name == ("Level 1") ||
+            SceneManager.GetActiveScene().name == ("Level 2") ||
+            SceneManager.GetActiveScene().name == ("Level 3") ||
+            SceneManager.GetActiveScene().name == ("Level 4") ||
+            SceneManager.GetActiveScene().name == ("Level 5"))
+            PlayMusic("Level 1");
+
+        if (SceneManager.GetActiveScene().name == ("Level 6") ||
+            SceneManager.GetActiveScene().name == ("Level 7") ||
+            SceneManager.GetActiveScene().name == ("Level 8") ||
+            SceneManager.GetActiveScene().name == ("Level 9") ||
+            SceneManager.GetActiveScene().name == ("Level 10"))
+            PlayMusic("Level 2");
+
+        if (SceneManager.GetActiveScene().name == ("Level 11") ||
+            SceneManager.GetActiveScene().name == ("Level 12") ||
+            SceneManager.GetActiveScene().name == ("Level 13") ||
+            SceneManager.GetActiveScene().name == ("Level 14") ||
+            SceneManager.GetActiveScene().name == ("Level 15"))
+            PlayMusic("Level 3");
     }
     public void PlayMusic(string name)
     {
@@ -33,7 +56,7 @@ public class AudioManager : MonoBehaviour
 
         if (s == null)
         {
-            Debug.Log("Sound not FOund");
+            Debug.Log("Sound not Fund");
         }
 
         else

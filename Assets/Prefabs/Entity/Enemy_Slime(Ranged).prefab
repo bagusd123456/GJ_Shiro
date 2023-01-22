@@ -184,7 +184,6 @@ MonoBehaviour:
   spawnTarget: {fileID: 2402018526773270592}
   timeCooldown: 0.8
   distanceFromUser: -26.7
-  animator: {fileID: 0}
 --- !u!114 &3801869305858301384
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197,8 +196,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b42ca6386854d74b8a14a21c170c001, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 1
-  angle: 100
+  radius: 4
+  angle: 94
   playerRef: {fileID: 0}
   targetMask:
     serializedVersion: 2

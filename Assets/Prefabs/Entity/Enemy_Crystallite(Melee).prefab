@@ -154,16 +154,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rotateDir: 1
   rotateAround: {fileID: 0}
-  currentMovementSpeed: 0
-  normalMovementSpeed: 0
-  hostileMovementSpeed: 0
-  DashMovementSpeed: 0
+  currentMovementSpeed: 0.7
+  normalMovementSpeed: 0.7
+  hostileMovementSpeed: -0.8
+  DashMovementSpeed: 1.5
   targetDistance: 2.85
   angle: 0
   isFacingRight: 0
   rb: {fileID: 5438306619953082550}
   timeMovement: 0
-  moveDir: -1
+  moveDir: 1
 --- !u!114 &7233761895089317898
 MonoBehaviour:
   m_ObjectHideFlags: 0

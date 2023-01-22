@@ -23,8 +23,13 @@ public class SceneLoad : MonoBehaviour
     public GameObject armorUp;
     public GameObject attackUp;
 
-
     public GameObject movBtn;
+
+    public GameObject Tutor1;
+    public GameObject Tutor2;
+    public GameObject Tutor3;
+
+    
     public static SceneLoad Instance { get; private set; }
 
     private int currentSceneIndex;
@@ -54,8 +59,29 @@ public class SceneLoad : MonoBehaviour
             return;
         }
 
+        if(Tutor1 == null && Tutor2 == null && Tutor3 == null)
+        {
+            return;
+        }
+
         
 
+    }
+
+    private void Start()
+    {
+        if (SceneManager.GetActiveScene().name == "Level 1")
+        {
+            Tutor1.SetActive(true);
+        }
+        if (SceneManager.GetActiveScene().name == "Level 3")
+        {
+            Tutor2.SetActive(true);
+        }
+        if (SceneManager.GetActiveScene().name == "Level 6")
+        {
+            Tutor3.SetActive(true);
+        }
     }
     public void NewGame()
     {
@@ -183,5 +209,13 @@ public class SceneLoad : MonoBehaviour
         speedUp.SetActive(false);
         armorUp.SetActive(false);
         attackUp.SetActive(false);
+    }
+
+    public void CloseTutor()
+    {
+        Tutor1.SetActive(false);
+        Tutor2.SetActive(false);
+        Tutor3.SetActive(false);
+
     }
 }
