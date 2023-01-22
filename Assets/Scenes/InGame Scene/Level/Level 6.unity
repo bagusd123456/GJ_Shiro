@@ -6454,6 +6454,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 543450652719231812}
     - target: {fileID: 1965271478657266886, guid: 5e80f7052939e7b49ae3ac5a310dd8ee, type: 3}
+      propertyPath: levelList.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1965271478657266886, guid: 5e80f7052939e7b49ae3ac5a310dd8ee, type: 3}
       propertyPath: levelList.Array.data[0]
       value: 
       objectReference: {fileID: 919132149070227967}

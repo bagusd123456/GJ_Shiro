@@ -4736,6 +4736,7 @@ MonoBehaviour:
   - {fileID: 1572715614}
   - {fileID: 1903089451}
   - {fileID: 186063174}
+  - {fileID: 639955988}
   - {fileID: 1878312365}
 --- !u!114 &750557341
 MonoBehaviour:
@@ -4776,6 +4777,7 @@ MonoBehaviour:
   - {fileID: 1572715614}
   - {fileID: 1903089451}
   - {fileID: 186063174}
+  - {fileID: 639955988}
   - {fileID: 1878312365}
   currentArenaIndex: 0
 --- !u!1 &753336533
@@ -13950,7 +13952,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1965271478657266886, guid: 5e80f7052939e7b49ae3ac5a310dd8ee, type: 3}
       propertyPath: levelList.Array.size
-      value: 11
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 1965271478657266886, guid: 5e80f7052939e7b49ae3ac5a310dd8ee, type: 3}
       propertyPath: levelList.Array.data[0]
@@ -13994,6 +13996,10 @@ PrefabInstance:
       objectReference: {fileID: 186063174}
     - target: {fileID: 1965271478657266886, guid: 5e80f7052939e7b49ae3ac5a310dd8ee, type: 3}
       propertyPath: levelList.Array.data[10]
+      value: 
+      objectReference: {fileID: 639955988}
+    - target: {fileID: 1965271478657266886, guid: 5e80f7052939e7b49ae3ac5a310dd8ee, type: 3}
+      propertyPath: levelList.Array.data[11]
       value: 
       objectReference: {fileID: 1878312365}
     - target: {fileID: 2580983725404948476, guid: 5e80f7052939e7b49ae3ac5a310dd8ee, type: 3}
