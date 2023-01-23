@@ -15,19 +15,13 @@ public class KuroRanged : MonoBehaviour
     public float targetDistance = 0.3f;
 
     public int spawnCount = 15;
-    public float circleLength = 6.29f;
+    public float spawnRotation = 6.29f;
 
     public bool enableDebug = false;
 
-    ProjectilesForward[] movingprojectiles;
     private void OnDisable()
     {
-        movingprojectiles = GetComponentsInChildren<ProjectilesForward>();
-        foreach (var item in movingprojectiles)
-        {
-            if(item.transform.parent != null)
-                item.transform.parent = transform.parent;
-        }
+        
     }
     // Update is called once per frame
     void Update()
@@ -55,8 +49,6 @@ public class KuroRanged : MonoBehaviour
         }
     }
 
-    [ContextMenu("Launch")]
-    //Launch Projectiles Simultaneously
     public void Launch()
     {
         for (int i = projectiles.Count - 1; i >= 0; i--)
@@ -70,85 +62,13 @@ public class KuroRanged : MonoBehaviour
         }
     }
 
-    [ContextMenu("Launch2")]
-    public void DebugLaunch2()
-    {
-        StartCoroutine(Launch2());
-    }
-
-    [ContextMenu("Spawn1")]
-    public void DebugSpawn1()
-    {
-        SpawnProjectile(spawnCount);
-    }
-
-    [ContextMenu("Spawn2")]
-    public void DebugSpawn2()
-    {
-        StartCoroutine(Spawn2());
-    }
-
-    //spawn Projectiles Recursively every 0.1f seconds
-    public IEnumerator Spawn2()
-    {
-        int j = 0;
-        for (int i = projectiles.Count; i < spawnCount; i++)
-        {
-            yield return new WaitForSeconds(0.1f);
-            var prj = Instantiate(projectile, transform);
-            prj.center = transform;
-            prj.transform.position = transform.position + Vector3.forward;
-            prj.angle = circleLength / spawnCount * j;
-            j++;
-
-            projectiles.Add(prj);
-        }
-        //Launch Projectiles
-        StartCoroutine(Launch2());
-    }
-
-    [ContextMenu("Spawn3")]
-    public void Spawn3()
-    {
-        int j = 0;
-        for (int i = projectiles.Count; i < spawnCount; i++)
-        {
-            var prj = Instantiate(projectile, transform);
-            prj.center = transform;
-            prj.angle = circleLength / spawnCount * j;
-            j++;
-
-            projectiles.Add(prj);
-        }
-        StartCoroutine(Launch2());
-    }
-
-    public IEnumerator Launch2()
-    {
-        for (int i = 0; i < projectiles.Count;)
-        {
-            var unit = projectiles[i].GetComponent<ProjectilesForward>();
-            yield return new WaitForSeconds(0.1f);
-            unit.canMove = true;
-
-            if (unit.canMove)
-            {
-                projectiles.RemoveAt(i);
-            }
-            else
-            {
-                i++;
-            }
-        }
-    }
-
     // Spawn Projectiles Simultaneously
     public void SpawnProjectile(int spawnCount)
     {
         for (int i = projectiles.Count; i < spawnCount; i++)
         {
             Vector3 targetPos = transform.position + Vector3.forward;
-            var prj = Instantiate(projectile, targetPos, Quaternion.identity, transform);
+            var prj = Instantiate(projectile, targetPos, Quaternion.identity, transform.parent);
             prj.center = transform;
             projectiles.Add(prj);
 
@@ -158,7 +78,7 @@ public class KuroRanged : MonoBehaviour
                 foreach (var item in projectiles)
                 {
 
-                    item.angle = circleLength / projectiles.Count * j;
+                    item.angle = 6.29f / projectiles.Count * j + spawnRotation;
                     j++;
                 }
             }
@@ -167,7 +87,114 @@ public class KuroRanged : MonoBehaviour
         Invoke("Launch",0.2f);
     }
 
-    public void ListChecker()
+    
+
+    private void OnDrawGizmos()
+    {
+        if (enableDebug)
+        {
+            Debug.DrawRay(transform.position, transform.right * 2f);
+
+            for (int i = 0; i < spawnCount; i++)
+            {
+                float angle = 6.29f / spawnCount * i + spawnRotation;
+                Vector3 offset = new Vector3(Mathf.Sin(angle) * targetDistance, Mathf.Cos(angle) * targetDistance, 0) * targetDistance;
+                Vector3 targetPos = transform.position + offset;
+
+                Gizmos.DrawWireSphere(targetPos, 0.2f);
+            }
+
+            /* Recursive
+            for (int i = 0; i < spawnCount; i++)
+            {
+                float angle = circleLength / spawnCount * i;
+                Vector3 offset = new Vector3(Mathf.Sin(angle) * targetDistance, Mathf.Cos(angle) * targetDistance, 0) * targetDistance;
+                Vector3 targetPos = transform.position + offset * i;
+
+                Gizmos.DrawWireSphere(targetPos, 0.2f);
+            }*/
+        }
+    }
+}
+
+#region Testing Code
+/* Testing Code
+  [ContextMenu("Launch")]
+//Launch Projectiles Simultaneously
+
+[ContextMenu("Launch2")]
+public void DebugLaunch2()
+{
+    StartCoroutine(Launch2());
+}
+
+[ContextMenu("Spawn1")]
+public void DebugSpawn1()
+{
+    SpawnProjectile(spawnCount);
+}
+
+[ContextMenu("Spawn2")]
+public void DebugSpawn2()
+{
+    StartCoroutine(Spawn2());
+}
+
+//spawn Projectiles Recursively every 0.1f seconds
+public IEnumerator Spawn2()
+{
+    int j = 0;
+    for (int i = projectiles.Count; i < spawnCount; i++)
+    {
+        yield return new WaitForSeconds(0.1f);
+        var prj = Instantiate(projectile, transform);
+        prj.center = transform;
+        prj.transform.position = transform.position + Vector3.forward;
+        prj.angle = circleLength / spawnCount * j;
+        j++;
+
+        projectiles.Add(prj);
+    }
+    //Launch Projectiles
+    StartCoroutine(Launch2());
+}
+
+[ContextMenu("Spawn3")]
+public void Spawn3()
+{
+    int j = 0;
+    for (int i = projectiles.Count; i < spawnCount; i++)
+    {
+        var prj = Instantiate(projectile, transform);
+        prj.center = transform;
+        prj.angle = circleLength / spawnCount * j;
+        j++;
+
+        projectiles.Add(prj);
+    }
+    StartCoroutine(Launch2());
+}
+
+public IEnumerator Launch2()
+{
+    for (int i = 0; i < projectiles.Count;)
+    {
+        var unit = projectiles[i].GetComponent<ProjectilesForward>();
+        yield return new WaitForSeconds(0.1f);
+        unit.canMove = true;
+
+        if (unit.canMove)
+        {
+            projectiles.RemoveAt(i);
+        }
+        else
+        {
+            i++;
+        }
+    }
+}
+
+public void ListChecker()
     {
         if (projectiles.Count < maxOrb)
         {
@@ -182,7 +209,7 @@ public class KuroRanged : MonoBehaviour
                 foreach (var item in projectiles)
                 {
                     
-                    item.angle = circleLength / projectiles.Count * i;
+                    item.angle = 6.29f / projectiles.Count * i;
                     i++;
                 }
             }
@@ -200,38 +227,11 @@ public class KuroRanged : MonoBehaviour
                 foreach (var item in projectiles)
                 {
 
-                    item.angle = circleLength / projectiles.Count * i;
+                    item.angle = 6.29f / projectiles.Count * i;
                     i++;
                 }
             }
         }
     }
-
-    private void OnDrawGizmos()
-    {
-        if (enableDebug)
-        {
-            Debug.DrawRay(transform.position, transform.right * 2f);
-
-            for (int i = 0; i < spawnCount; i++)
-            {
-                float angle = circleLength / spawnCount * i;
-                Vector3 offset = new Vector3(Mathf.Sin(angle) * targetDistance, Mathf.Cos(angle) * targetDistance, 0) * targetDistance;
-                Vector3 targetPos = transform.position + offset;
-
-                Gizmos.DrawWireSphere(targetPos, 0.2f);
-            }
-
-            /* Recursive
-            for (int i = 0; i < spawnCount; i++)
-            {
-                float angle = circleLength / spawnCount * i;
-                Vector3 offset = new Vector3(Mathf.Sin(angle) * targetDistance, Mathf.Cos(angle) * targetDistance, 0) * targetDistance;
-                Vector3 targetPos = transform.position + offset * i;
-
-                Gizmos.DrawWireSphere(targetPos, 0.2f);
-            }*/
-        }
-
-    }
-}
+*/
+#endregion

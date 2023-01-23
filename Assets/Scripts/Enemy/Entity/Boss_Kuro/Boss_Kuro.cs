@@ -1,25 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static NPCMovement;
 
 public class Boss_Kuro : MonoBehaviour
 {
     public PlayerCondition player;
-    public float distance;
-    public bool collide;
-    public float closeDistance;
 
     public enum state { IDLE, PATROL, HOSTILE, DASHING, ATTACKING}
     public state _state = state.IDLE;
 
-    [Header("Attack Parameter")]
-    public Projectiles prj;
-    public Transform spawnTarget;
-
-    float time;
-    public float timeCooldown = 0.8f;
-    public float distanceFromUser;
+    float attackTime;
+    public float attackCooldown = 0.8f;
 
     [Header("Attack Behavior")]
     public int activeSkillIndex;
@@ -44,8 +35,8 @@ public class Boss_Kuro : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (time > 0)
-            time -= Time.deltaTime;
+        if (attackTime > 0)
+            attackTime -= Time.deltaTime;
 
         ExecuteSkill();
     }
@@ -90,32 +81,10 @@ public class Boss_Kuro : MonoBehaviour
 
     public void BasicAttack()
     {
-        if (time <= 0)
+        if (attackTime <= 0)
         {
-            SpawnProjectile();
+            
         }
-    }
-
-    [ContextMenu("Spawn")]
-    public Projectiles SpawnProjectile()
-    {
-        time = timeCooldown;
-        var GO = Instantiate(prj, transform.position + -transform.right * distanceFromUser, Quaternion.identity, transform.parent);
-        GO.center = transform.parent;
-        GO.targetDistance = gameObject.GetComponent<NPCMovement>().targetDistance;
-
-        if (gameObject.GetComponent<NPCMovement>()._rotateDir == rotateDir.RIGHT)
-        {
-            GO.currentAngle = CurrentAngle() - distanceFromUser;
-            GO.inverseRotation = false;
-        }
-
-        else
-        {
-            GO.currentAngle = CurrentAngle() + distanceFromUser;
-            GO.inverseRotation = true;
-        }
-        return GO;
     }
 
     float CurrentAngle()

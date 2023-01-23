@@ -45,7 +45,7 @@ public class NPCMovement : MonoBehaviour
 
     public void Move(int direction)
     {
-        angle += currentMovementSpeed * Mathf.Rad2Deg * direction * Time.deltaTime;
+        angle -= currentMovementSpeed * Mathf.Rad2Deg * direction * Time.deltaTime;
 
         Vector3 targetPos = GetPosition(angle, targetDistance);
         transform.position = rotateAround.position + targetPos;
@@ -56,6 +56,7 @@ public class NPCMovement : MonoBehaviour
         Vector2 lookDir = rotateAround.position - transform.position;
         float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
 
+        //Flip Character
         if(moveDir > 0)
             transform.rotation = Quaternion.Euler(0, 0, angle);
         else
@@ -95,12 +96,10 @@ public class NPCMovement : MonoBehaviour
         if(_rotateDir == 0)
         {
             _rotateDir = rotateDir.RIGHT;
-            charMesh.transform.rotation = Quaternion.Euler(new Vector3(180, 0, charMesh.transform.rotation.z));
         }
         else if(_rotateDir == (rotateDir)1)
         {
             _rotateDir = rotateDir.LEFT;
-            charMesh.transform.rotation = Quaternion.Euler(new Vector3(180, 0, charMesh.transform.rotation.z));
         }
 
     }

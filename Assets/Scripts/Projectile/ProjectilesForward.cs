@@ -16,7 +16,8 @@ public class ProjectilesForward : MonoBehaviour
     public int damageAmount;
 
     public bool canMove = false;
-    
+
+    public Transform caster;
     private void Awake()
     {
         if(player == null)
@@ -65,7 +66,7 @@ public class ProjectilesForward : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.transform != transform.parent && other.GetComponent<ProjectilesForward>() == null)
+        if(other.transform != center && other.GetComponent<ProjectilesForward>() == null)
         {
             //Damage every Character Collide
             if (other.GetComponent<PlayerCondition>() != null)

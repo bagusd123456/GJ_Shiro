@@ -28,6 +28,8 @@ public class Mob_Slime : MonoBehaviour
     public float attackInterval = 0.8f;
     public float distanceFromUser;
 
+    public Vector3 offset;
+
     [SerializeField]Animator animator;
     private void OnValidate()
     {
@@ -62,6 +64,8 @@ public class Mob_Slime : MonoBehaviour
     {
         if (attackTime > 0)
             attackTime -= Time.deltaTime;
+
+        BasicAttack();
 
         if (!GameManager.Instance.player.isDead)
         {
@@ -119,20 +123,20 @@ public class Mob_Slime : MonoBehaviour
     public Projectiles SpawnProjectile()
     {
         attackTime = attackInterval;
-        var GO = Instantiate(prj, transform.position + -transform.right * distanceFromUser, Quaternion.identity, transform.parent);
+        var GO = Instantiate(prj, transform.position + transform.right * distanceFromUser, Quaternion.identity, transform.parent);
         GO.center = transform.parent;
         GO.targetDistance = gameObject.GetComponent<NPCMovement>().targetDistance;
 
         if (gameObject.GetComponent<NPCMovement>()._rotateDir == rotateDir.RIGHT)
         {
-            GO.currentAngle = CurrentAngle() - distanceFromUser;
-            GO.inverseRotation = false;
+            GO.currentAngle = CalculateAngle() - distanceFromUser;
+            GO.inverseRotation = true;
         }
 
         else
         {
-            GO.currentAngle = CurrentAngle() + distanceFromUser;
-            GO.inverseRotation = true;
+            GO.currentAngle = CalculateAngle() + distanceFromUser;
+            GO.inverseRotation = false;
         }
         return GO;
     }
@@ -151,6 +155,15 @@ public class Mob_Slime : MonoBehaviour
         }
     }
 
+    public float CalculateAngle()
+    {
+        Vector3 dir = new Vector3(0, 0, transform.position.z) - transform.position;
+        float result = Mathf.Atan2(dir.x, dir.y) * Mathf.Rad2Deg + 180f;
+        if (result < 0)
+            result = result * -1;
+        return result;
+    }
+
     Vector3 GetPosition(float degrees, float dist)
     {
         float a = degrees * Mathf.PI / 180f;
@@ -159,6 +172,9 @@ public class Mob_Slime : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireSphere(GetPosition(CurrentAngle() + distanceFromUser, movement.targetDistance), 0.2f);
+        if (gameObject.GetComponent<NPCMovement>()._rotateDir == rotateDir.RIGHT)
+            Gizmos.DrawWireSphere(GetPosition(CalculateAngle() - distanceFromUser, movement.targetDistance), 0.2f);
+        else
+            Gizmos.DrawWireSphere(GetPosition(CalculateAngle() + distanceFromUser, movement.targetDistance), 0.2f);
     }
 }

@@ -131,9 +131,9 @@ public class Mob_Crystal : MonoBehaviour
     private void OnDrawGizmos()
     {
         if(!inRange)
-            Debug.DrawRay(transform.position, -transform.right * distance, Color.white);
+            Debug.DrawRay(transform.position, transform.right * distance, Color.white);
         else
-            Debug.DrawRay(transform.position, -transform.right * distance, Color.red);
+            Debug.DrawRay(transform.position, transform.right * distance, Color.red);
 
         if (!collide)
         {

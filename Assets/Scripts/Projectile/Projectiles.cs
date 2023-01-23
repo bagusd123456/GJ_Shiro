@@ -27,6 +27,12 @@ public class Projectiles : MonoBehaviour
     void Update()
     {
         RotationSet();
+        Invoke("DestroyGO", 1f);
+    }
+
+    public void DestroyGO()
+    {
+        Destroy(gameObject);
     }
 
     //Get Next Position Based on Angle & Distance
