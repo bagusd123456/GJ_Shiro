@@ -25,6 +25,8 @@ public class Mob_Slime : MonoBehaviour
     public float timeCooldown = 0.8f;
     public float distanceFromUser;
 
+    public Vector3 offset;
+
     Animator animator;
     private void OnValidate()
     {
@@ -116,7 +118,7 @@ public class Mob_Slime : MonoBehaviour
     public Projectiles SpawnProjectile()
     {
         time = timeCooldown;
-        var GO = Instantiate(prj, transform.position + -transform.right * distanceFromUser, Quaternion.identity, transform.parent);
+        var GO = Instantiate(prj, transform.position + transform.right * distanceFromUser, Quaternion.identity, transform.parent);
         GO.center = transform.parent;
         GO.targetDistance = gameObject.GetComponent<NPCMovement>().targetDistance;
 
@@ -157,6 +159,13 @@ public class Mob_Slime : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireSphere(GetPosition(CurrentAngle() + distanceFromUser, movement.targetDistance), 0.2f);
+        Vector3 targetPos = Vector3.zero;
+        if(movement._rotateDir == 0)
+            targetPos = GetPosition(CurrentAngle() + distanceFromUser, movement.targetDistance);
+        else if(movement._rotateDir == (rotateDir)1)
+            targetPos = GetPosition(CurrentAngle() - distanceFromUser, movement.targetDistance);
+
+        targetPos.z = transform.position.z;
+        Gizmos.DrawWireSphere(targetPos, 0.2f);
     }
 }
