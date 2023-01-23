@@ -157,13 +157,12 @@ MonoBehaviour:
   currentMovementSpeed: 0.7
   normalMovementSpeed: 0.7
   hostileMovementSpeed: -0.8
-  DashMovementSpeed: 1.5
+  dashMovementSpeed: 0
   targetDistance: 2.85
   angle: 0
-  isFacingRight: 0
-  rb: {fileID: 5438306619953082550}
   timeMovement: 0
   moveDir: 1
+  charMesh: {fileID: 0}
 --- !u!114 &7233761895089317898
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -240,15 +239,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9cb6e8462a3dc29468e53d098a0b3236, type: 3}
       propertyPath: m_LocalScale.x
-      value: 7.0081735
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9cb6e8462a3dc29468e53d098a0b3236, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.4016348
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9cb6e8462a3dc29468e53d098a0b3236, type: 3}
       propertyPath: m_LocalScale.z
-      value: 7.008173
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9cb6e8462a3dc29468e53d098a0b3236, type: 3}
       propertyPath: m_LocalPosition.x

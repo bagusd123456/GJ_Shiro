@@ -94,7 +94,7 @@ public class Mob_Slime : MonoBehaviour
                 break;
 
             case state.DASHING:
-                movement.currentMovementSpeed = movement.DashMovementSpeed;
+                movement.currentMovementSpeed = movement.dashMovementSpeed;
                 break;
 
             case state.ATTACKING:
