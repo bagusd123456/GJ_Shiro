@@ -18,8 +18,10 @@ public class LaserDamage : MonoBehaviour
             other.GetComponent<PlayerCondition>().TakeDamage(5);
         }
     }
+
     public void DisableGO()
     {
+        transform.parent.GetComponent<KuroLaser>().scanTime = transform.parent.GetComponent<KuroLaser>().scanInterval;
         gameObject.SetActive(false);
     }
 }

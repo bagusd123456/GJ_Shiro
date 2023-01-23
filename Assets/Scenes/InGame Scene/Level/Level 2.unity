@@ -8607,13 +8607,12 @@ MonoBehaviour:
   currentMovementSpeed: 0
   normalMovementSpeed: 0
   hostileMovementSpeed: 0
-  DashMovementSpeed: 0
+  dashMovementSpeed: 0
   targetDistance: 1.7
   angle: 0
-  isFacingRight: 0
-  rb: {fileID: 2510946828259109264}
   timeMovement: 50
   moveDir: 1
+  charMesh: {fileID: 0}
 --- !u!212 &2510946828259109267
 SpriteRenderer:
   m_ObjectHideFlags: 0

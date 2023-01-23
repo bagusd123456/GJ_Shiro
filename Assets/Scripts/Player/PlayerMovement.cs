@@ -170,7 +170,7 @@ public class PlayerMovement : MonoBehaviour
     public float CalculateAngle()
     {
         Vector3 dir = new Vector3(0, 0, transform.position.z) - transform.position;
-        float result = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg + 90f;
+        float result = Mathf.Atan2(dir.x, dir.y) * Mathf.Rad2Deg + 180f;
         if (result < 0)
             result = result * -1;
         return result;

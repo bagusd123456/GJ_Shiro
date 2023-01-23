@@ -102,11 +102,11 @@ public class Mob_Crystal : MonoBehaviour
                 break;
 
             case state.HOSTILE:
-                movement.currentMovementSpeed = movement.hostileMovementSpeed;
+                movement.currentMovementSpeed = -movement.hostileMovementSpeed;
                 break;
 
             case state.DASHING:
-                movement.currentMovementSpeed = movement.DashMovementSpeed;
+                movement.currentMovementSpeed = movement.dashMovementSpeed;
                 break;
 
             case state.ATTACKING:
@@ -137,9 +137,9 @@ public class Mob_Crystal : MonoBehaviour
     private void OnDrawGizmos()
     {
         if(!inRange)
-            Debug.DrawRay(transform.position, -transform.right * distance, Color.white);
+            Debug.DrawRay(transform.position, transform.right * distance, Color.white);
         else
-            Debug.DrawRay(transform.position, -transform.right * distance, Color.red);
+            Debug.DrawRay(transform.position, transform.right * distance, Color.red);
 
         if (!collide)
         {

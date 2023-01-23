@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class KuroAOE : MonoBehaviour
 {
-    public float skillCD;
-    public float skillTime;
+    public float spawnInterval;
+    float spawnTime;
     public float damageCountdown;
-
 
     public float targetDistance = 3;
     public int spawnCount;
@@ -25,12 +24,11 @@ public class KuroAOE : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (skillTime > 0)
-            skillTime -= Time.deltaTime;
+        if (spawnTime > 0)
+            spawnTime -= Time.deltaTime;
         else
         {
-            skillTime = skillCD;
-            //SpawnOnPlayer();
+            spawnTime = spawnInterval;
             StartCoroutine(SpawnOnPlayer2());
         }
 
@@ -42,7 +40,6 @@ public class KuroAOE : MonoBehaviour
             {
                 item.enabled = false;
             }
-            //item.targetDistance = Mathf.Lerp(1f, targetDistance, Mathf.PingPong(Time.time, 1));
         }
 
         for (int i = 0; i < targetList.Count; i++)
@@ -78,7 +75,7 @@ public class KuroAOE : MonoBehaviour
         }
     }
 
-    [ContextMenu("SpawnOnPlayer")]
+    //Debug
     public void SpawnOnPlayer()
     {
         var prj = Instantiate(projectile, transform);
