@@ -161,8 +161,8 @@ MonoBehaviour:
   targetDistance: 2.85
   angle: 0
   timeMovement: 0
-  moveDir: -1
-  charMesh: {fileID: 0}
+  moveDir: 1
+  charMesh: {fileID: 543450653081712248}
 --- !u!114 &2402018526773270593
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -182,7 +182,9 @@ MonoBehaviour:
   prj: {fileID: 2707637908052337801, guid: 3b082c0cc0a54ef41b1e8f85497f03b1, type: 3}
   spawnTarget: {fileID: 2402018526773270592}
   timeCooldown: 0.8
-  distanceFromUser: -26.7
+  distanceFromUser: 20
+  offset: {x: 0, y: 0, z: 0}
+  angle: 0
 --- !u!114 &3801869305858301384
 MonoBehaviour:
   m_ObjectHideFlags: 0

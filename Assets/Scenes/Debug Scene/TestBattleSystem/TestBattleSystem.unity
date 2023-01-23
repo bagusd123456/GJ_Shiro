@@ -709,7 +709,7 @@ GameObject:
   - component: {fileID: 1271309456}
   - component: {fileID: 1271309455}
   - component: {fileID: 1271309454}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube (1)
   m_TagString: NPCBorder
   m_Icon: {fileID: 0}
@@ -1374,13 +1374,9 @@ PrefabInstance:
       propertyPath: offset.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2402018526773270593, guid: f1b881e94550f7641b4c3c8ff341e2a0, type: 3}
-      propertyPath: distanceFromUser
-      value: 47.5
-      objectReference: {fileID: 0}
     - target: {fileID: 2402018526773270594, guid: f1b881e94550f7641b4c3c8ff341e2a0, type: 3}
       propertyPath: moveDir
-      value: -1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2402018526773270594, guid: f1b881e94550f7641b4c3c8ff341e2a0, type: 3}
       propertyPath: charMesh
@@ -1388,7 +1384,7 @@ PrefabInstance:
       objectReference: {fileID: 140958021}
     - target: {fileID: 2402018526773270594, guid: f1b881e94550f7641b4c3c8ff341e2a0, type: 3}
       propertyPath: _rotateDir
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2402018526773270623, guid: f1b881e94550f7641b4c3c8ff341e2a0, type: 3}
       propertyPath: m_Name
@@ -1396,7 +1392,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2402018526773270623, guid: f1b881e94550f7641b4c3c8ff341e2a0, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f1b881e94550f7641b4c3c8ff341e2a0, type: 3}
@@ -1669,7 +1665,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7233761895089317907, guid: 6e803bf854eabfe429eb7c0544f63800, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7233761895089317908, guid: 6e803bf854eabfe429eb7c0544f63800, type: 3}
       propertyPath: m_RootOrder

@@ -68,5 +68,6 @@ public class FieldOfView : MonoBehaviour
     private void OnDrawGizmos()
     {
         Debug.DrawRay(transform.position, transform.right * 3f);
+        Gizmos.DrawWireSphere(transform.position, radius);
     }
 }

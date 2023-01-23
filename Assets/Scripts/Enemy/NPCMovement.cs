@@ -41,6 +41,7 @@ public class NPCMovement : MonoBehaviour
 
         Move(moveDir);
         LookAtTarget();
+        CheckWall();
     }
 
     public void Move(int direction)
@@ -63,9 +64,9 @@ public class NPCMovement : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, 0, angle + 180f);
     }
 
-    private void OnTriggerEnter(Collider collision)
+    public void CheckWall()
     {
-        if (collision.CompareTag("NPCBorder"))
+        if (Physics.Raycast(transform.position, transform.right, .5f, LayerMask.GetMask("Character")))
         {
             if (moveDir == 1)
             {
@@ -77,11 +78,6 @@ public class NPCMovement : MonoBehaviour
                 moveDir = 1;
                 Flip();
             }
-        }
-        if(collision.CompareTag("Player") && PlayerMovement.Instance.currentLevelIndex == 7)
-        {
-            collision.gameObject.SetActive(false);
-            StartCoroutine(Kalah());
         }
     }
 

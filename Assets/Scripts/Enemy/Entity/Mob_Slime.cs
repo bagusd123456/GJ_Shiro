@@ -26,6 +26,7 @@ public class Mob_Slime : MonoBehaviour
     public float distanceFromUser;
 
     public Vector3 offset;
+    public float angle;
 
     Animator animator;
     private void OnValidate()
@@ -124,31 +125,16 @@ public class Mob_Slime : MonoBehaviour
 
         if (gameObject.GetComponent<NPCMovement>()._rotateDir == rotateDir.RIGHT)
         {
-            GO.currentAngle = CurrentAngle() - distanceFromUser;
-            GO.inverseRotation = false;
-        }
-
-        else
-        {
-            GO.currentAngle = CurrentAngle() + distanceFromUser;
+            GO.currentAngle = movement.angle - distanceFromUser;
             GO.inverseRotation = true;
         }
-        return GO;
-    }
 
-    float CurrentAngle()
-    {
-        if (transform.parent != null)
-        {
-
-            Vector3 dir = transform.parent.position - transform.position;
-            float angle = Mathf.Atan2(dir.x, dir.y) * Mathf.Rad2Deg + 180f;
-            return angle;
-        }
         else
         {
-            return 0;
+            GO.currentAngle = movement.angle + distanceFromUser;
+            GO.inverseRotation = false;
         }
+        return GO;
     }
 
     Vector3 GetPosition(float degrees, float dist)
@@ -157,13 +143,20 @@ public class Mob_Slime : MonoBehaviour
         return new Vector3(Mathf.Sin(a) * dist, Mathf.Cos(a) * dist, 0);
     }
 
+    public float CalculateAngle()
+    {
+        Vector3 dir = transform.parent.position - transform.position;
+        float result = Mathf.Atan2(dir.x, dir.y) * Mathf.Rad2Deg + 180f;
+        return result;
+    }
+
     private void OnDrawGizmos()
     {
         Vector3 targetPos = Vector3.zero;
-        if(movement._rotateDir == 0)
-            targetPos = GetPosition(CurrentAngle() + distanceFromUser, movement.targetDistance);
-        else if(movement._rotateDir == (rotateDir)1)
-            targetPos = GetPosition(CurrentAngle() - distanceFromUser, movement.targetDistance);
+        if(movement._rotateDir == rotateDir.RIGHT)
+            targetPos = GetPosition(CalculateAngle() - distanceFromUser, movement.targetDistance);
+        else 
+            targetPos = GetPosition(CalculateAngle() + distanceFromUser, movement.targetDistance);
 
         targetPos.z = transform.position.z;
         Gizmos.DrawWireSphere(targetPos, 0.2f);
