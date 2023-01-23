@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class Projectiles : MonoBehaviour
 {
-    public float currentAngle;
-    
-    public PlayerMovement player;
-    public Transform center;
-    public float targetDistance;
+    [HideInInspector] public float currentAngle;
 
-    public Vector3 offset;
+    [HideInInspector] public PlayerMovement player;
+    [HideInInspector] public Transform center;
+    [HideInInspector] public float targetDistance;
+
+    [HideInInspector] public Vector3 offset;
     public float moveSpeed = 1f;
-    public bool inverseRotation = false;
+    [HideInInspector] public bool inverseRotation = false;
     [Space]
     public int damageAmount;
-    public bool canMove;
+    [HideInInspector] public bool canMove;
     
     private void Awake()
     {
@@ -57,16 +57,12 @@ public class Projectiles : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //Damage every Character Collide
-        if(other.GetComponent<CharacterBase>() != null)
+        if(other.GetComponent<PlayerCondition>() != null)
         {
             if(other.GetComponent<PlayerCondition>() != null)
             {
-                if (other.GetComponent<PlayerCondition>()._state != PlayerCondition.State.DEFENDING)
-                    other.GetComponent<PlayerCondition>().TakeDamage(damageAmount);
+                other.GetComponent<PlayerCondition>().TakeDamage(damageAmount);
             }
-            else
-                other.GetComponent<CharacterBase>().TakeDamage(damageAmount);
-            
                 
             Destroy(this.gameObject);
         }

@@ -43,10 +43,13 @@ public class PlayerCondition : CharacterBase
     public override void TakeDamage(int damage)
     {
         if(_state != State.DEFENDING)
-            if(damageTakenTime < damageTakenCD)
+        {
+            if (damageTakenTime <= 0)
             {
                 base.TakeDamage(damage);
                 damageTakenTime = damageTakenCD;
             }
+        }
+            
     }
 }

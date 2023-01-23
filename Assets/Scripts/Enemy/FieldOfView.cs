@@ -39,20 +39,27 @@ public class FieldOfView : MonoBehaviour
 
         if (rangeChecks.Length != 0)
         {
-            Transform target = rangeChecks[0].transform;
-            Vector3 directionToTarget = (target.position - transform.position).normalized;
-
-            if (Vector3.Angle(transform.right, directionToTarget) < angle / 2)
+            Transform target;
+            for (int i = 0; i < rangeChecks.Length; i++)
             {
-                float distanceToTarget = Vector3.Distance(transform.position, target.position);
+                if (rangeChecks[i].GetComponent<PlayerCondition>() != null)
+                {
+                    target = rangeChecks[i].transform;
+                    Vector3 directionToTarget = (target.position - transform.position).normalized;
 
-                if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask))
-                    canSeePlayer = true;
-                else
-                    canSeePlayer = false;
+                    if (Vector3.Angle(transform.right, directionToTarget) < angle / 2)
+                    {
+                        float distanceToTarget = Vector3.Distance(transform.position, target.position);
+
+                        if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask))
+                            canSeePlayer = true;
+                        else
+                            canSeePlayer = false;
+                    }
+                    else
+                        canSeePlayer = false;
+                }
             }
-            else
-                canSeePlayer = false;
         }
         else if (canSeePlayer)
             canSeePlayer = false;
@@ -60,6 +67,6 @@ public class FieldOfView : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        
+        Debug.DrawRay(transform.position, transform.right * 3f);
     }
 }

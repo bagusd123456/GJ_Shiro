@@ -157,13 +157,12 @@ MonoBehaviour:
   currentMovementSpeed: 0
   normalMovementSpeed: 0.5
   hostileMovementSpeed: -1
-  DashMovementSpeed: 3
+  dashMovementSpeed: 0
   targetDistance: 2.85
   angle: 0
-  isFacingRight: 0
-  rb: {fileID: 999888570483483106}
   timeMovement: 0
   moveDir: -1
+  charMesh: {fileID: 0}
 --- !u!114 &2402018526773270593
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,7 +195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b42ca6386854d74b8a14a21c170c001, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 4
+  radius: 2.5
   angle: 94
   playerRef: {fileID: 0}
   targetMask:
