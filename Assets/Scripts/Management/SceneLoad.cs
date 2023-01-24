@@ -78,7 +78,7 @@ public class SceneLoad : MonoBehaviour
         {
             Tutor2.SetActive(true);
         }
-        if (SceneManager.GetActiveScene().name == "Level 6")
+        if (SceneManager.GetActiveScene().name == "Level 5")
         {
             Tutor3.SetActive(true);
         }
@@ -136,6 +136,7 @@ public class SceneLoad : MonoBehaviour
             SceneManager.LoadScene(sceneToContinue);
         else
             return;
+        Time.timeScale = 1f;
     }
     public void Restart()
     {

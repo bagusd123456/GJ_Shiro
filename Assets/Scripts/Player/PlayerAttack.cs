@@ -14,6 +14,7 @@ public class PlayerAttack : MonoBehaviour
     [Header("Attack Parameter")]
     public Projectiles prj;
     public GameObject Deff;
+    public Vector3 shieldplace;
     public Transform spawnTarget;
     public float distanceFromPlayer = 15f;
     float currentAttackTime;
@@ -41,6 +42,7 @@ public class PlayerAttack : MonoBehaviour
     void Start()
     {
         currentAttackTime = _char.attackSpeed;
+        
     }
 
     // Update is called once per frame
@@ -140,7 +142,7 @@ public class PlayerAttack : MonoBehaviour
             comboIndex = 0;
             Debug.Log("Defense");
             if (GameObject.FindGameObjectWithTag("Shield") == null)
-            Instantiate(Deff, transform.position + new Vector3(0,0,-0.5f), Quaternion.identity, transform);
+            Instantiate(Deff, transform.position + shieldplace, Quaternion.identity, transform);
 
             yield return new WaitForSeconds(cdDef);
 

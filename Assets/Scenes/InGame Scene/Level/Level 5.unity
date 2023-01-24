@@ -9006,6 +9006,10 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5543534788052546449, guid: ebf5c82bb2f232c4ca16020c59c07880, type: 3}
+      propertyPath: m_Text
+      value: LEVEL 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6807611140464952820, guid: ebf5c82bb2f232c4ca16020c59c07880, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -10815,13 +10819,12 @@ MonoBehaviour:
   currentMovementSpeed: 0
   normalMovementSpeed: 0
   hostileMovementSpeed: 0
-  DashMovementSpeed: 0
+  dashMovementSpeed: 0
   targetDistance: 1.7
   angle: 0
-  isFacingRight: 0
-  rb: {fileID: 2510946828259109264}
   timeMovement: 50
   moveDir: 1
+  charMesh: {fileID: 0}
 --- !u!212 &2510946828259109267
 SpriteRenderer:
   m_ObjectHideFlags: 0

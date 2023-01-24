@@ -4232,7 +4232,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Contiunue
+  m_text: Continue
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e5adf541975a01745b5c6fed1c74d5a6, type: 2}
   m_sharedMaterial: {fileID: -8694746300716561818, guid: e5adf541975a01745b5c6fed1c74d5a6, type: 2}
@@ -5773,6 +5773,9 @@ MonoBehaviour:
   armorUp: {fileID: 0}
   attackUp: {fileID: 0}
   movBtn: {fileID: 0}
+  Tutor1: {fileID: 0}
+  Tutor2: {fileID: 0}
+  Tutor3: {fileID: 0}
 --- !u!1 &2089724516
 GameObject:
   m_ObjectHideFlags: 0
