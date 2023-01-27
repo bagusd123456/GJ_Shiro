@@ -7,12 +7,11 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Enviroment
+  m_Name: M_Char_Enemy2
   m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
   m_ShaderKeywords: _EMISSION _METALLICSPECGLOSSMAP _NORMALMAP _OCCLUSIONMAP _PARALLAXMAP
-    _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
   m_LightmapFlags: 2
-  m_EnableInstancingVariants: 1
+  m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: 2000
   stringTagMap:
@@ -22,11 +21,11 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: 99722b3a7ac346543a5dbd5d6c4db2a5, type: 3}
+        m_Texture: {fileID: 2800000, guid: b34e46ae95f0e1e4e9cae67babdfde1a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: 3aa02596af7c5854f9ae5aaa711ffa81, type: 3}
+        m_Texture: {fileID: 2800000, guid: b2f06d516f15a75498990dd59786ea1b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -42,27 +41,27 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
-        m_Texture: {fileID: 2800000, guid: 99722b3a7ac346543a5dbd5d6c4db2a5, type: 3}
+        m_Texture: {fileID: 2800000, guid: cd570fdfbb1eb2d4c98941e6082719c1, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 99722b3a7ac346543a5dbd5d6c4db2a5, type: 3}
+        m_Texture: {fileID: 2800000, guid: b34e46ae95f0e1e4e9cae67babdfde1a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: c3c2b087727a8754b8e28687a49516a0, type: 3}
+        m_Texture: {fileID: 2800000, guid: a70fd540c425299449eaa06bce2345e5, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
-        m_Texture: {fileID: 2800000, guid: f40b07db1ccdb4041b6ab62bffb9ea8f, type: 3}
+        m_Texture: {fileID: 2800000, guid: 13a04631dfe239b40a2b441637efa54d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:
-        m_Texture: {fileID: 2800000, guid: 032182034d9f6224c85a5f0f14e37c79, type: 3}
+        m_Texture: {fileID: 2800000, guid: 36134c184e2addd4e9c98faea3bc2997, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
-        m_Texture: {fileID: 2800000, guid: c3c2b087727a8754b8e28687a49516a0, type: 3}
+        m_Texture: {fileID: 2800000, guid: ce45e625640f9ef42a13ff30e661788c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -89,29 +88,30 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _EnvironmentReflections: 1
-    - _GlossMapScale: 0
+    - _GlossMapScale: 1
     - _Glossiness: 0
-    - _GlossyReflections: 0
+    - _GlossyReflections: 1
     - _Metallic: 0
-    - _OcclusionStrength: 0.429
-    - _Parallax: 0.01
+    - _Mode: 0
+    - _OcclusionStrength: 0
+    - _Parallax: 0.02
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _Smoothness: 0.38
-    - _SmoothnessFromMetallic: 0
-    - _SmoothnessTextureChannel: 1
+    - _Smoothness: 0
+    - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _Surface: 0
+    - _UVSec: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 0.7830189, g: 0.6027015, b: 0.3723033, a: 1}
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
+    - _BaseColor: {r: 0.9063317, g: 0.9063317, b: 0.9063317, a: 1}
+    - _Color: {r: 0.8, g: 0.8, b: 0.8, a: 1}
+    - _EmissionColor: {r: 2.6701567, g: 2.6701567, b: 2.6701567, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
---- !u!114 &2002852591015191940
+--- !u!114 &2320928828311036364
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
