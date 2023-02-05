@@ -30,8 +30,12 @@ public class Btn_Action : MonoBehaviour,IPointerClickHandler, IPointerUpHandler
                 //Reset Value to 0
                 btnSlider.value = 0;
 
+                /*
                 if (player != null)
                     player.RegisterCombo(1);
+                */
+                player.BasicAttack();
+
             }
 
             else if (btnSlider.value == -1)
@@ -41,10 +45,11 @@ public class Btn_Action : MonoBehaviour,IPointerClickHandler, IPointerUpHandler
                     //Reset Value to 0
                     btnSlider.value = 0;
                     //Register Current Input to PlayerAttack
-                    player.RegisterCombo(-1);
+                    //player.RegisterCombo(-1);
 
                     //Trigger Defend Mechanic on First Combo
-                    if (player.comboIndex == 1)
+                    //if (player.comboIndex == 1)
+
                         StartCoroutine(player.Defend());
 
                 }

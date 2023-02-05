@@ -83,8 +83,11 @@ public class Mob_Crystal : MonoBehaviour
         yield return new WaitUntil(() => collide);
         collide = false;
         _state = state.IDLE;
-        yield return new WaitForSeconds(1f);
+        animator.SetTrigger("Attack");
+        yield return new WaitForSeconds(0.7f);
         _state = state.ATTACKING;
+        
+        PlayerCondition.Instance.TakeDamage(1);
     }
 
     public void Movement()
@@ -111,7 +114,6 @@ public class Mob_Crystal : MonoBehaviour
 
             case state.ATTACKING:
                 StartCoroutine(MeleeAttack());
-                animator.SetTrigger("Attack");
                 break;
         }
     }

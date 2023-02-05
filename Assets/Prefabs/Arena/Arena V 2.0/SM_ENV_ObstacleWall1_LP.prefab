@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1607358033562751971}
   - component: {fileID: 8629312857844479068}
   - component: {fileID: 4753846024461041796}
-  - component: {fileID: 3775725697576926294}
+  - component: {fileID: 45601848881035053}
   m_Layer: 7
   m_Name: SM_ENV_ObstacleWall1_LP
   m_TagString: NPCBorder
@@ -40,7 +40,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3072255391204392324}
-  m_Mesh: {fileID: -4562572943161633027, guid: aa643a592c6a4334dab6d46de313a013, type: 3}
+  m_Mesh: {fileID: -4273262896678275524, guid: a562d2f367085454cad3de4331af12df, type: 3}
 --- !u!23 &4753846024461041796
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -49,7 +49,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3072255391204392324}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 2
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_MotionVectors: 1
@@ -60,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8433bd6597b558c4c80eb3e575404741, type: 2}
+  - {fileID: 2100000, guid: cd1b550dcf512f04abaf258621595f87, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -82,7 +82,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &3775725697576926294
+--- !u!64 &45601848881035053
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -95,4 +95,4 @@ MeshCollider:
   serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30
-  m_Mesh: {fileID: -4562572943161633027, guid: aa643a592c6a4334dab6d46de313a013, type: 3}
+  m_Mesh: {fileID: -4273262896678275524, guid: a562d2f367085454cad3de4331af12df, type: 3}

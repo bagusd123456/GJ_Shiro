@@ -38,6 +38,10 @@ public class PlayerCondition : CharacterBase
             damageTakenTime -= Time.deltaTime;
         }
             
+        if(isDead == true)
+        {
+            SceneLoad.Instance.MatiCuk();
+        }
     }
 
     public override void TakeDamage(int damage)

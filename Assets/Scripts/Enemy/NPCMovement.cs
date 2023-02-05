@@ -81,11 +81,6 @@ public class NPCMovement : MonoBehaviour
         }
     }
 
-    IEnumerator Kalah()
-    {
-        yield return new WaitForSeconds(1.5f);
-        SceneLoad.Instance.panelKalah.SetActive(true);
-    }
 
     void Flip()
     {

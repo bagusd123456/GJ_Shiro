@@ -87,6 +87,7 @@ public class InputHandler : MonoBehaviour
 
     public void TurnLeft()
     {
+
         if (!invertInput)
         {
             isMoving = 2;

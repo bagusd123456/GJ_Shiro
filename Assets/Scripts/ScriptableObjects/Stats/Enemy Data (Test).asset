@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Enemy Data (Test)
   m_EditorClassIdentifier: 
   characterName: Enemy Null
-  HP: 100
+  HP: 1
   MP: 100
   moveSpeed: 2
   attackDamage: 10

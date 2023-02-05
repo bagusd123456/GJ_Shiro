@@ -82,11 +82,47 @@ public class SceneLoad : MonoBehaviour
         {
             Tutor3.SetActive(true);
         }
+        if (AudioManager.Instance.x == true)
+        {
+            if (SceneManager.GetActiveScene().name == ("MainMenu") ||
+                SceneManager.GetActiveScene().name == ("Level 1") ||
+                SceneManager.GetActiveScene().name == ("Level 2") ||
+                SceneManager.GetActiveScene().name == ("Level 3") ||
+                SceneManager.GetActiveScene().name == ("Level 4") ||
+                SceneManager.GetActiveScene().name == ("Level 5"))
+            {
+                AudioManager.Instance.PlayMusic("Level 1");
+            }
+
+            if (SceneManager.GetActiveScene().name == ("Level 6") ||
+                SceneManager.GetActiveScene().name == ("Level 7") ||
+                SceneManager.GetActiveScene().name == ("Level 8") ||
+                SceneManager.GetActiveScene().name == ("Level 9") ||
+                SceneManager.GetActiveScene().name == ("Level 10"))
+            {
+                AudioManager.Instance.PlayMusic("Level 2");
+            }
+
+
+            if (SceneManager.GetActiveScene().name == ("Level 11") ||
+                SceneManager.GetActiveScene().name == ("Level 12") ||
+                SceneManager.GetActiveScene().name == ("Level 13") ||
+                SceneManager.GetActiveScene().name == ("Level 14") ||
+                SceneManager.GetActiveScene().name == ("Level 15"))
+            {
+                AudioManager.Instance.PlayMusic("Level 3");
+            }
+
+            AudioManager.Instance.x = false;
+        }
     }
     public void NewGame()
     {
+        
         SceneManager.LoadScene(1);
         Time.timeScale = 1f;
+        AudioManager.Instance.x = true;
+
     }
 
     public void TutorPanel()
@@ -125,6 +161,7 @@ public class SceneLoad : MonoBehaviour
     {
         currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         PlayerPrefs.SetInt("SavedScene", currentSceneIndex);
+        AudioManager.Instance.x = true;
         SceneManager.LoadScene(0);
     }
 
@@ -137,6 +174,8 @@ public class SceneLoad : MonoBehaviour
         else
             return;
         Time.timeScale = 1f;
+
+        AudioManager.Instance.x = true;
     }
     public void Restart()
     {
@@ -159,6 +198,18 @@ public class SceneLoad : MonoBehaviour
         pausePanel.SetActive(false);
         Time.timeScale = 1f;
 
+    }
+
+    public void MatiCuk()
+    {
+        Debug.Log("Mati CUKKK");
+        StartCoroutine(Mati());
+    }
+
+    IEnumerator Mati()
+    {
+        yield return new WaitForSeconds(1.5f);
+        panelKalah.SetActive(true);
     }
 
     public void NextLevel()

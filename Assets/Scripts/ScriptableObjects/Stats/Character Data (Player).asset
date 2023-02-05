@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Character Data (Player)
   m_EditorClassIdentifier: 
   characterName: Player
-  HP: 100
+  HP: 2
   MP: 100
   moveSpeed: 2
   attackDamage: 5

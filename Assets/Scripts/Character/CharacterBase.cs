@@ -56,9 +56,15 @@ public class CharacterBase : MonoBehaviour
         {
             this.isDead = true;
             currentHP = 0;
+
+            this.gameObject.SetActive(false);
+
+            
+
         } 
     }
 
+    
     void OnMove()
     {
         if (_animator != null)

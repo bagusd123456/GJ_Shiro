@@ -57,14 +57,25 @@ public class Projectiles : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //Damage every Character Collide
-        if(other.GetComponent<PlayerCondition>() != null)
+
+        if (other.GetComponent<PlayerCondition>())
         {
-            if(other.GetComponent<PlayerCondition>() != null)
-            {
-                other.GetComponent<PlayerCondition>().TakeDamage(damageAmount);
-            }
+            other.GetComponent<PlayerCondition>().TakeDamage(damageAmount);
+            Destroy(this.gameObject);
+        }
                 
+       
+
+        if(other.GetComponent<NPCCondition>())
+        {
+            other.GetComponent<NPCCondition>().TakeDamage(damageAmount);
+            Destroy(this.gameObject);
+        }
+
+        if (other.tag == "NPCBorder")
+        {
             Destroy(this.gameObject);
         }
     }
+
 }

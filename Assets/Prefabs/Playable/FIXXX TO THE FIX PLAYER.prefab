@@ -515,7 +515,7 @@ MonoBehaviour:
   distanceFromPlayer: 20
   timeBetweenAttack: 0.5
   currentComboTime: 0
-  cdCombo: 1.5
+  cdCombo: 0.5
   comboIndex: 0
   comboInput: 000000000000000000000000
   cdDef: 1

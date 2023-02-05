@@ -68,7 +68,7 @@ public class PlayerAttack : MonoBehaviour
             }
             
         }
-        if (currentComboTime >= 0.7f && canCombo)
+        if (currentComboTime >= 0.4f && canCombo)
         {
             CheckCombo(comboInput.ToList());
             canCombo = false;

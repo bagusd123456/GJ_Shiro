@@ -12,6 +12,8 @@ public class AudioManager : MonoBehaviour
     public Sound[] musicSounds, sfxSounds;
     public AudioSource musicSource, sfxSource;
 
+    public bool x = true;
+
 
     private void Awake()
     {
@@ -25,31 +27,11 @@ public class AudioManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
-    private void Start()
-    {
-        if (SceneManager.GetActiveScene().name == ("MainMenu") ||
-            SceneManager.GetActiveScene().name == ("Level 1") ||
-            SceneManager.GetActiveScene().name == ("Level 2") ||
-            SceneManager.GetActiveScene().name == ("Level 3") ||
-            SceneManager.GetActiveScene().name == ("Level 4") ||
-            SceneManager.GetActiveScene().name == ("Level 5"))
-            PlayMusic("Level 1");
 
-        if (SceneManager.GetActiveScene().name == ("Level 6") ||
-            SceneManager.GetActiveScene().name == ("Level 7") ||
-            SceneManager.GetActiveScene().name == ("Level 8") ||
-            SceneManager.GetActiveScene().name == ("Level 9") ||
-            SceneManager.GetActiveScene().name == ("Level 10"))
-            PlayMusic("Level 2");
+         x = true;
 
-        if (SceneManager.GetActiveScene().name == ("Level 11") ||
-            SceneManager.GetActiveScene().name == ("Level 12") ||
-            SceneManager.GetActiveScene().name == ("Level 13") ||
-            SceneManager.GetActiveScene().name == ("Level 14") ||
-            SceneManager.GetActiveScene().name == ("Level 15"))
-            PlayMusic("Level 3");
-    }
+}
+
     public void PlayMusic(string name)
     {
         Sound s = Array.Find(musicSounds, x => x.name == name);
@@ -100,5 +82,7 @@ public class AudioManager : MonoBehaviour
     {
         sfxSource.volume = volume;
     }
+
+    
 
 }
