@@ -74,6 +74,7 @@ public class Projectiles : MonoBehaviour
             other.GetComponent<PlayerCondition>().TakeDamage(damageAmount);
             if (projectileOnHit != null)
                 Instantiate(projectileOnHit, transform.position, Quaternion.identity);
+
             Destroy(this.gameObject);
         }
                 
@@ -84,13 +85,15 @@ public class Projectiles : MonoBehaviour
             other.GetComponent<NPCCondition>().TakeDamage(damageAmount);
             if(projectileOnHit != null)
                 Instantiate(projectileOnHit, transform.position, Quaternion.identity);
+
             Destroy(this.gameObject);
         }
 
-        if (other.tag == "Wall")
+        if (other.tag == "NPCBorder")
         {
             if(projectileOnHit != null)
                 Instantiate(projectileOnHit, transform.position, Quaternion.identity);
+
             Destroy(this.gameObject);
         }
     }
