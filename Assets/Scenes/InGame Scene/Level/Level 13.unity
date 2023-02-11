@@ -4413,17 +4413,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4834614826503699721, guid: b3df317d580bdb449afaad82e1c4a9e9, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 8551148550605321813, guid: aa643a592c6a4334dab6d46de313a013, type: 3}
     - target: {fileID: 7713056002529425543, guid: b3df317d580bdb449afaad82e1c4a9e9, type: 3}
       propertyPath: m_Name
       value: SM_ENV_Portal_LP (3)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7713056002529425543, guid: b3df317d580bdb449afaad82e1c4a9e9, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3df317d580bdb449afaad82e1c4a9e9, type: 3}
@@ -8784,17 +8776,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4834614826503699721, guid: b3df317d580bdb449afaad82e1c4a9e9, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 8551148550605321813, guid: aa643a592c6a4334dab6d46de313a013, type: 3}
     - target: {fileID: 7713056002529425543, guid: b3df317d580bdb449afaad82e1c4a9e9, type: 3}
       propertyPath: m_Name
       value: SM_ENV_Portal_LP (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7713056002529425543, guid: b3df317d580bdb449afaad82e1c4a9e9, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3df317d580bdb449afaad82e1c4a9e9, type: 3}
@@ -10265,17 +10249,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4834614826503699721, guid: b3df317d580bdb449afaad82e1c4a9e9, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 8551148550605321813, guid: aa643a592c6a4334dab6d46de313a013, type: 3}
     - target: {fileID: 7713056002529425543, guid: b3df317d580bdb449afaad82e1c4a9e9, type: 3}
       propertyPath: m_Name
       value: SM_ENV_Portal_LP (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7713056002529425543, guid: b3df317d580bdb449afaad82e1c4a9e9, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3df317d580bdb449afaad82e1c4a9e9, type: 3}

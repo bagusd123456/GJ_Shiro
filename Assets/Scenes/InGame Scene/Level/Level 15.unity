@@ -1245,6 +1245,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4673691858355849279}
     m_Modifications:
+    - target: {fileID: 2854609594532417482, guid: b3df317d580bdb449afaad82e1c4a9e9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2895773017750074112, guid: b3df317d580bdb449afaad82e1c4a9e9, type: 3}
       propertyPath: m_RootOrder
       value: 12
@@ -2336,6 +2340,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1410964109977837842}
     m_Modifications:
+    - target: {fileID: 2854609594532417482, guid: b3df317d580bdb449afaad82e1c4a9e9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2895773017750074112, guid: b3df317d580bdb449afaad82e1c4a9e9, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -7214,6 +7222,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4673691858355849279}
     m_Modifications:
+    - target: {fileID: 2854609594532417482, guid: b3df317d580bdb449afaad82e1c4a9e9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2895773017750074112, guid: b3df317d580bdb449afaad82e1c4a9e9, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -10245,6 +10257,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4673691858355849279}
     m_Modifications:
+    - target: {fileID: 2854609594532417482, guid: b3df317d580bdb449afaad82e1c4a9e9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2895773017750074112, guid: b3df317d580bdb449afaad82e1c4a9e9, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -10903,6 +10919,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3606614030655636787}
     m_Modifications:
+    - target: {fileID: 2854609594532417482, guid: b3df317d580bdb449afaad82e1c4a9e9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2895773017750074112, guid: b3df317d580bdb449afaad82e1c4a9e9, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -13035,6 +13055,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1410964109977837842}
     m_Modifications:
+    - target: {fileID: 2854609594532417482, guid: b3df317d580bdb449afaad82e1c4a9e9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2895773017750074112, guid: b3df317d580bdb449afaad82e1c4a9e9, type: 3}
       propertyPath: m_RootOrder
       value: 11
@@ -14220,6 +14244,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1410964109977837842}
     m_Modifications:
+    - target: {fileID: 2854609594532417482, guid: b3df317d580bdb449afaad82e1c4a9e9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2895773017750074112, guid: b3df317d580bdb449afaad82e1c4a9e9, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -14403,6 +14431,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3606614030655636787}
     m_Modifications:
+    - target: {fileID: 2854609594532417482, guid: b3df317d580bdb449afaad82e1c4a9e9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2895773017750074112, guid: b3df317d580bdb449afaad82e1c4a9e9, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -16808,6 +16840,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3606614030655636787}
     m_Modifications:
+    - target: {fileID: 2854609594532417482, guid: b3df317d580bdb449afaad82e1c4a9e9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2895773017750074112, guid: b3df317d580bdb449afaad82e1c4a9e9, type: 3}
       propertyPath: m_RootOrder
       value: 5
