@@ -106,7 +106,6 @@ public class PlayerAttack : MonoBehaviour
 
         if(_char._state == State.IDLE && !_char.isDead && !_char.isTired)
         {
-            PlayerCondition.Instance.UseMana(10);
             currentAttackTime = 0; //Time needed before next Attack
 
             SpawnProjectile();
