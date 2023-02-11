@@ -49,7 +49,7 @@ public class DeveloperCheat : MonoBehaviour
         else
         {
             toggleCheatMenu = true;
-            cheatButton.SetActive(true);
+            //cheatButton.SetActive(true);
         }
     }
 

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8716097671434738857}
   - component: {fileID: 6936707632336776735}
   - component: {fileID: 8120190276655499196}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: SM_ENV_ObstacleWall2_LP
   m_TagString: NPCBorder
   m_Icon: {fileID: 0}

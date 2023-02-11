@@ -998,6 +998,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   center: {x: 0, y: 0, z: 0}
+  initEffect: {fileID: 0}
   _portalType: 0
   target: {fileID: 0}
 --- !u!1001 &492653964
@@ -1301,6 +1302,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   center: {x: 0, y: 0, z: 0}
+  initEffect: {fileID: 0}
   _portalType: 0
   target: {fileID: 0}
 --- !u!1 &532556441
@@ -1349,6 +1351,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   center: {x: 0, y: 0, z: 0}
+  initEffect: {fileID: 0}
   _portalType: 2
   target: {fileID: 0}
 --- !u!135 &532556444
@@ -1644,6 +1647,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   center: {x: 0, y: 0, z: 0}
+  initEffect: {fileID: 0}
   _portalType: 0
   target: {fileID: 0}
 --- !u!135 &588084434
@@ -1820,6 +1824,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   center: {x: 0, y: 0, z: 0}
+  initEffect: {fileID: 0}
   _portalType: 0
   target: {fileID: 0}
 --- !u!1001 &600656559
@@ -1973,6 +1978,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   center: {x: 0, y: 0, z: 0}
+  initEffect: {fileID: 0}
   _portalType: 2
   target: {fileID: 0}
 --- !u!135 &628108676
@@ -2210,6 +2216,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   center: {x: 0, y: 0, z: 0}
+  initEffect: {fileID: 0}
   _portalType: 0
   target: {fileID: 0}
 --- !u!1001 &689158457
@@ -2500,6 +2507,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   center: {x: 0, y: 0, z: 0}
+  initEffect: {fileID: 0}
   _portalType: 2
   target: {fileID: 0}
 --- !u!135 &717866327
@@ -2706,6 +2714,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 1658677281}
   offset: -15.5
+  followPlayer: 0
 --- !u!114 &750557339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3022,6 +3031,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_ENV_ObstacleWall1_LP (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3072255391204392324, guid: 2e76dedec1ebc634bb69eb752a24fe7e, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4753846024461041796, guid: 2e76dedec1ebc634bb69eb752a24fe7e, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -3143,6 +3156,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   center: {x: 0, y: 0, z: 0}
+  initEffect: {fileID: 0}
   _portalType: 1
   target: {fileID: 0}
 --- !u!1001 &874754676
@@ -3345,6 +3359,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   center: {x: 0, y: 0, z: 0}
+  initEffect: {fileID: 0}
   _portalType: 0
   target: {fileID: 0}
 --- !u!135 &903630812
@@ -3984,6 +3999,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   center: {x: 0, y: 0, z: 0}
+  initEffect: {fileID: 0}
   _portalType: 0
   target: {fileID: 0}
 --- !u!58 &1126078102
@@ -4699,6 +4715,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   center: {x: 0, y: 0, z: 0}
+  initEffect: {fileID: 0}
   _portalType: 0
   target: {fileID: 0}
 --- !u!1 &1443863228
@@ -4876,6 +4893,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   center: {x: 0, y: 0, z: 0}
+  initEffect: {fileID: 0}
   _portalType: 0
   target: {fileID: 0}
 --- !u!1 &1572715612
@@ -4976,6 +4994,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   center: {x: 0, y: 0, z: 0}
+  initEffect: {fileID: 0}
   _portalType: 2
   target: {fileID: 0}
 --- !u!135 &1593293134
@@ -5394,6 +5413,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   center: {x: 0, y: 0, z: 0}
+  initEffect: {fileID: 0}
   _portalType: 0
   target: {fileID: 0}
 --- !u!1001 &1649112156
@@ -5693,6 +5713,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   center: {x: 0, y: 0, z: 0}
+  initEffect: {fileID: 0}
   _portalType: 0
   target: {fileID: 0}
 --- !u!58 &1698600430
@@ -6079,6 +6100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   center: {x: 0, y: 0, z: 0}
+  initEffect: {fileID: 0}
   _portalType: 1
   target: {fileID: 0}
 --- !u!1 &1782615425
@@ -6210,6 +6232,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   center: {x: 0, y: 0, z: 0}
+  initEffect: {fileID: 0}
   _portalType: 2
   target: {fileID: 0}
 --- !u!135 &1824639309
@@ -6686,6 +6709,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   center: {x: 0, y: 0, z: 0}
+  initEffect: {fileID: 0}
   _portalType: 0
   target: {fileID: 0}
 --- !u!1001 &2037073002
@@ -7645,6 +7669,10 @@ PrefabInstance:
     - target: {fileID: 3072255391204392324, guid: 2e76dedec1ebc634bb69eb752a24fe7e, type: 3}
       propertyPath: m_Name
       value: SM_ENV_ObstacleWall1_LP
+      objectReference: {fileID: 0}
+    - target: {fileID: 3072255391204392324, guid: 2e76dedec1ebc634bb69eb752a24fe7e, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4753846024461041796, guid: 2e76dedec1ebc634bb69eb752a24fe7e, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -9908,6 +9936,10 @@ PrefabInstance:
     - target: {fileID: 4212793107221882980, guid: 546ed2ead6657794da0082275253af53, type: 3}
       propertyPath: m_Name
       value: SM_ENV_ObstacleWall2_LP
+      objectReference: {fileID: 0}
+    - target: {fileID: 4212793107221882980, guid: 546ed2ead6657794da0082275253af53, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4960276351440832142, guid: 546ed2ead6657794da0082275253af53, type: 3}
       propertyPath: m_RootOrder

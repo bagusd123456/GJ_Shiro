@@ -60,7 +60,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        collide = Physics.Raycast(transform.position, transform.up, wallDistance, LayerMask.GetMask("Character"));
+        collide = Physics.Raycast(transform.position, transform.up, wallDistance, LayerMask.GetMask("Wall"));
         if (!GetComponent<PlayerCondition>().isDead)
         {
             //float vertical = Input.GetAxisRaw("Vertical");

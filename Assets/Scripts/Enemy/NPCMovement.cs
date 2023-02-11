@@ -66,7 +66,7 @@ public class NPCMovement : MonoBehaviour
 
     public void CheckWall()
     {
-        if (Physics.Raycast(transform.position, transform.right, .5f, LayerMask.GetMask("Character")))
+        if (Physics.Raycast(transform.position, transform.right, .5f, LayerMask.GetMask("Wall")))
         {
             if (moveDir == 1)
             {

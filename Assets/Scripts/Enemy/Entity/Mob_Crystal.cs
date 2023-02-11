@@ -45,21 +45,13 @@ public class Mob_Crystal : MonoBehaviour
 
         if (!GameManager.Instance.player.isDead)
         {
-            if (_state == state.DASHING || _state == state.ATTACKING)
-            {
-                Collider[] hit = Physics.OverlapSphere(transform.position, closeDistance, fov.targetMask);
-                if (hit.Length > 0)
-                    collide = true;
-                else
-                    collide = false;
-            }
 
-            else if (_state == state.PATROL)
+            if (_state == state.PATROL)
             {
                 inRange = fov.canSeePlayer;
 
                 if (inRange)
-                    StartCoroutine(FallbackBehavior());
+                    _state = state.ATTACKING;
             }
 
             Movement();
@@ -120,19 +112,12 @@ public class Mob_Crystal : MonoBehaviour
 
     public IEnumerator MeleeAttack()
     {
-        if (collide)
+        if (time <= 0)
         {
-            if (time <= 0)
-            {
-                Debug.Log("Attack Player");
-                time = timeCooldown;
-            }
-        }
-        else
-        {
-            _state = state.IDLE;
-            yield return new WaitForSeconds(0.5f);
-            _state = state.PATROL;
+            PlayerCondition.Instance.TakeDamage(1);
+            yield return new WaitForSeconds(1f);
+
+            time = timeCooldown;
         }
     }
 
