@@ -508,8 +508,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89392d93f079f7e4e80fef2d897b234d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prj: {fileID: 2707637908052337801, guid: 3b082c0cc0a54ef41b1e8f85497f03b1, type: 3}
+  prj: {fileID: 2787747742659086180, guid: e8d1ae11ddf991542a9db6bcd4a00139, type: 3}
   Deff: {fileID: 1696672928266267173, guid: 81c2344799a56884dab8442ca5f7160a, type: 3}
+  muzzlePrefab: {fileID: 4205016205119676587, guid: b85e26d288450d2479d9250de531381d, type: 3}
+  muzzleTarget: {fileID: 6918687253583388161}
   shieldplace: {x: 0, y: 0, z: -0.6}
   spawnTarget: {fileID: 1688856949679390268}
   distanceFromPlayer: 20
@@ -579,6 +581,7 @@ MonoBehaviour:
   canGo: 0
   currentPortal: {fileID: 0}
   currentAngle: 0
+  targetPos: {x: 0, y: 0, z: 0}
   Shadow: {fileID: 6267547636216553322}
 --- !u!114 &1512314575
 MonoBehaviour:
@@ -1052,7 +1055,7 @@ PrefabInstance:
     - target: {fileID: -7882509027243407002, guid: 7defcb9ab5393434dba65223346ec3f4, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 66cecbab66399cc438dd3b99d31edf6a, type: 2}
+      objectReference: {fileID: 2100000, guid: 7ac9b54d8e5fb4d4ab8c973aa103cd74, type: 2}
     - target: {fileID: -7803089895980053211, guid: 7defcb9ab5393434dba65223346ec3f4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: -0.00000026680428
@@ -3393,6 +3396,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 7defcb9ab5393434dba65223346ec3f4, type: 3}
   m_PrefabInstance: {fileID: 8462697591941433559}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &6918687253583388161 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1546309143259076310, guid: 7defcb9ab5393434dba65223346ec3f4, type: 3}
+  m_PrefabInstance: {fileID: 8462697591941433559}
+  m_PrefabAsset: {fileID: 0}
 --- !u!95 &8358398753459406547
 Animator:
   serializedVersion: 3
@@ -3412,3 +3420,16 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2607631320759367043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8768758400872101254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e70f7435af4b4b94fa898b14cc4a146a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1965271478657266886}

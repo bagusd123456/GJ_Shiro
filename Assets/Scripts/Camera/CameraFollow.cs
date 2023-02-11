@@ -7,6 +7,8 @@ public class CameraFollow : MonoBehaviour
     public Transform target;
     public float offset;
 
+    public bool followPlayer;
+
     public static CameraFollow Instance { get; private set; }
     private void Awake()
     {

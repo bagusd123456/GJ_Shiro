@@ -14,6 +14,10 @@ public class PlayerAttack : MonoBehaviour
     [Header("Attack Parameter")]
     public Projectiles prj;
     public GameObject Deff;
+    [Space]
+    public GameObject muzzlePrefab;
+    public Transform muzzleTarget;
+    [Space]
     public Vector3 shieldplace;
     public Transform spawnTarget;
     public float distanceFromPlayer = 15f;
@@ -114,6 +118,7 @@ public class PlayerAttack : MonoBehaviour
         PlayerMovement.Instance.animator.SetTrigger("Attack");
 
         var GO = Instantiate(prj, spawnTarget.forward * distanceFromPlayer, Quaternion.identity, transform.parent);
+        var muzzle = Instantiate(muzzlePrefab, muzzleTarget.position, Quaternion.identity);
         GO.player = PlayerMovement.Instance;
         GO.center = PlayerMovement.Instance.center;
 

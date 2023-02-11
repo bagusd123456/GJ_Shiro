@@ -7,7 +7,7 @@ using System.Linq;
 public class PlayerMovement : MonoBehaviour
 {
     Rigidbody2D rb;
-    [HideInInspector] public Animator animator;
+    public Animator animator;
     public Transform center;
     Vector3 posOffset;
     public static PlayerMovement Instance { get; private set; }
@@ -32,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
     public Portal currentPortal;
 
     public float currentAngle;
+    public Vector3 targetPos;
     public GameObject Shadow;
 
     private void Awake()
@@ -108,6 +109,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if (canGo && currentPortal != null)
             {
+                animator.SetTrigger("StartTP");
                 currentPortal.TriggerPortal();
                 StartCoroutine(CanMove());
             }
@@ -153,6 +155,8 @@ public class PlayerMovement : MonoBehaviour
         InputHandler.Instance.canMove = false;
         yield return new WaitForSeconds(1.5f);
         InputHandler.Instance.canMove = true;
+        animator.SetTrigger("EndTP");
+
         if (currentLevelIndex != levelList.Count - 1)
             Shadow.SetActive(true);
     }

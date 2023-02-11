@@ -16,7 +16,8 @@ public class Projectiles : MonoBehaviour
     [Space]
     public int damageAmount;
     [HideInInspector] public bool canMove;
-    
+
+    public GameObject projectileOnHit;
     private void Awake()
     {
         if(player == null)
@@ -27,6 +28,7 @@ public class Projectiles : MonoBehaviour
     void Update()
     {
         RotationSet();
+        LookAtTarget();
         Invoke("DestroyGO", 1f);
     }
 
@@ -40,6 +42,15 @@ public class Projectiles : MonoBehaviour
     {
         float a = degrees * Mathf.PI / 180f;
         return new Vector3(Mathf.Sin(a) * dist, Mathf.Cos(a) * dist, 0);
+    }
+
+    public void LookAtTarget()
+    {
+        Vector2 lookDir = center.position - transform.position;
+        float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
+
+        transform.rotation = Quaternion.Euler(0, 0, Mathf.Lerp(0, angle, 2f));
+        
     }
 
     public void RotationSet()
@@ -61,6 +72,7 @@ public class Projectiles : MonoBehaviour
         if (other.GetComponent<PlayerCondition>())
         {
             other.GetComponent<PlayerCondition>().TakeDamage(damageAmount);
+            Instantiate(projectileOnHit, transform.position, Quaternion.identity);
             Destroy(this.gameObject);
         }
                 
@@ -69,11 +81,13 @@ public class Projectiles : MonoBehaviour
         if(other.GetComponent<NPCCondition>())
         {
             other.GetComponent<NPCCondition>().TakeDamage(damageAmount);
+            Instantiate(projectileOnHit, transform.position, Quaternion.identity);
             Destroy(this.gameObject);
         }
 
         if (other.tag == "NPCBorder")
         {
+            Instantiate(projectileOnHit, transform.position, Quaternion.identity);
             Destroy(this.gameObject);
         }
     }

@@ -1,4 +1,5 @@
 using DG.Tweening;
+using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -9,6 +10,7 @@ public class Portal : MonoBehaviour
 {
     public enum PortalType { STANDARD, BUSWAY, BUSWAY_EXIT, POWERUP }
     public Vector3 center = Vector3.zero;
+    public GameObject initEffect;
 
     [Space]
     public PortalType _portalType;
@@ -24,11 +26,17 @@ public class Portal : MonoBehaviour
 
     private void Awake()
     {
+        if(initEffect == null)
+            initEffect = Resources.Load("Teleport/PortalVFX") as GameObject;
+
         player = FindObjectOfType<PlayerMovement>();
         angle = CalculateAngle();
-        //defaultColor = GetComponent<SpriteRenderer>().color;
     }
-    
+
+    private void Start()
+    {
+    }
+
     public void TriggerPortal()
     {
         switch (_portalType)
@@ -81,10 +89,10 @@ public class Portal : MonoBehaviour
     
     public void DescendLevel()
     {
-        //Get to Lower Ground
-        Vector3 lastPos = player.transform.localPosition;
         player.currentLevelIndex++;
-        player.transform.DOLocalMove(new Vector3(lastPos.x, 0, lastPos.z), 1.5f);
+        var go = Instantiate(initEffect, transform.position,Quaternion.identity,transform);
+        player.targetPos = transform.localPosition;
+        //go.transform.localPosition = Vector3.zero;
     }
 
     IEnumerator ChoosePortal()
@@ -115,9 +123,11 @@ public class Portal : MonoBehaviour
     {
         //Get to Lower Ground
         player.currentLevelIndex++;
-        player.transform.DOLocalMove(new Vector3(target.x, 0, target.z), 1.5f);
+        var go = Instantiate(initEffect, transform.position, Quaternion.identity, transform);
+        player.targetPos = target;
+        //player.transform.DOLocalMove(new Vector3(target.x, 0, target.z), 1.5f);
     }
-    
+
     public float CalculateAngle()
     {
         Vector3 dir = center - transform.position;

@@ -979,6 +979,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   center: {x: 0, y: 0, z: 0}
+  initEffect: {fileID: 0}
   _portalType: 0
   target: {fileID: 0}
 --- !u!1 &513100606
@@ -1027,6 +1028,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   center: {x: 0, y: 0, z: 0}
+  initEffect: {fileID: 0}
   _portalType: 2
   target: {fileID: 0}
 --- !u!135 &513100609
@@ -1203,6 +1205,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   center: {x: 0, y: 0, z: 0}
+  initEffect: {fileID: 0}
   _portalType: 0
   target: {fileID: 0}
 --- !u!1001 &554576319
@@ -1490,6 +1493,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   center: {x: 0, y: 0, z: 0}
+  initEffect: {fileID: 0}
   _portalType: 0
   target: {fileID: 0}
 --- !u!1 &618174391
@@ -1699,6 +1703,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   center: {x: 0, y: 0, z: 0}
+  initEffect: {fileID: 0}
   _portalType: 0
   target: {fileID: 0}
 --- !u!1001 &689158457
@@ -2058,6 +2063,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 1658677281}
   offset: -15.5
+  followPlayer: 0
 --- !u!114 &750557339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2250,6 +2256,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   center: {x: 0, y: 0, z: 0}
+  initEffect: {fileID: 0}
   _portalType: 2
   target: {fileID: 0}
 --- !u!135 &797823011
@@ -2542,6 +2549,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   center: {x: 0, y: 0, z: 0}
+  initEffect: {fileID: 0}
   _portalType: 1
   target: {fileID: 0}
 --- !u!1 &904448412
@@ -3095,6 +3103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   center: {x: 0, y: 0, z: 0}
+  initEffect: {fileID: 0}
   _portalType: 0
   target: {fileID: 0}
 --- !u!135 &1102798012
@@ -3537,6 +3546,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   center: {x: 0, y: 0, z: 0}
+  initEffect: {fileID: 0}
   _portalType: 2
   target: {fileID: 0}
 --- !u!135 &1254405479
@@ -3857,6 +3867,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   center: {x: 0, y: 0, z: 0}
+  initEffect: {fileID: 0}
   _portalType: 0
   target: {fileID: 0}
 --- !u!1 &1403626120
@@ -4257,6 +4268,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   center: {x: 0, y: 0, z: 0}
+  initEffect: {fileID: 0}
   _portalType: 0
   target: {fileID: 0}
 --- !u!1 &1443863228
@@ -5328,6 +5340,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   center: {x: 0, y: 0, z: 0}
+  initEffect: {fileID: 0}
   _portalType: 1
   target: {fileID: 0}
 --- !u!1 &1782615425
@@ -5531,6 +5544,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   center: {x: 0, y: 0, z: 0}
+  initEffect: {fileID: 0}
   _portalType: 2
   target: {fileID: 0}
 --- !u!135 &1866352012
@@ -5758,6 +5772,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   center: {x: 0, y: 0, z: 0}
+  initEffect: {fileID: 0}
   _portalType: 2
   target: {fileID: 0}
 --- !u!135 &1894783630
@@ -6031,6 +6046,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   center: {x: 0, y: 0, z: 0}
+  initEffect: {fileID: 0}
   _portalType: 0
   target: {fileID: 0}
 --- !u!1001 &2014683800
@@ -6226,6 +6242,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   center: {x: 0, y: 0, z: 0}
+  initEffect: {fileID: 0}
   _portalType: 2
   target: {fileID: 0}
 --- !u!135 &2088771510
@@ -9266,6 +9283,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   center: {x: 0, y: 0, z: 0}
+  initEffect: {fileID: 0}
   _portalType: 1
   target: {fileID: 0}
 --- !u!1001 &8171743025124243488
